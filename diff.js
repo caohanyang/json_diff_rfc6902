@@ -1,7 +1,7 @@
-var jpn = require('./JPN');
+var jpn = require('./JSON-Diff');
 
-var f_old = require("./old1.json");
-var f_new = require("./new1.json");
+var f_old = require("./old.json");
+var f_new = require("./new.json");
 
 
 jpn.diff(f_old, f_new);
