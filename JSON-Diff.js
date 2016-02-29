@@ -1,12 +1,13 @@
 var copy = require('./deepClone');
 var equal = require('deep-equal');
+var unchanged = [];
 
 function diff(oldJson, newJson) {
     console.log("===========  Data  ======================");
 	console.log(JSON.stringify(oldJson));
 	console.log(JSON.stringify(newJson));
     // Get the unchanged area
-    var unchanged = [];
+    // var unchanged = [];
     generateUnchanged(oldJson, newJson, unchanged, '');
     console.log("===========  Unchanged  =================");
     console.log(unchanged);
@@ -24,7 +25,7 @@ function generateUnchanged(oldJson, newJson, unchanged, path) {
     // Equal
     if (equal(oldJson, newJson)) {
         // console.log({path: path, value: copy.clone(newJson)});
-        unchanged.push({path: path, value: copy.clone(newJson)});
+        unchanged.push( path+"="+copy.clone(newJson));
         return;
     }
 
@@ -145,9 +146,28 @@ function generateObjectDiff(oldJson, newJson, patches, path) {
         var newKey = newKeys[j];
         var newValue = newJson[newKey];
         if (!oldJson.hasOwnProperty(newKey)) {
-            console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newValue)});
-            patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newValue)});
+            //Try to find the value in the unchanged area
+            var pointer = findValue(newValue);
+            console.log("pointer: " + pointer);
+            if (pointer) {
+              //COPY
+              console.log({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
+              patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
+            } else {
+              //ADD
+              console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newValue)});
+              patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newValue)});
+            }
+           
         } 
+    }
+}
+
+function findValue(newValue) {
+    for (var i = 0; i < unchanged.length; i++) {
+        var value = unchanged[i].split("=")[1];
+        // console.log("Value = " +value);
+        if (newValue == value) return unchanged[i].split("=")[0];
     }
 }
 
