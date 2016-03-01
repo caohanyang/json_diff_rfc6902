@@ -16,8 +16,20 @@ function diff(oldJson, newJson) {
     // Generate the diff
 	var patches = [];
 	generateDiff(oldJson, newJson, patches, '');
-	console.log("===========Final Patches=================");
+    handlePatch(patches);
+    console.log("===========Final Patches=================");
 	console.log(patches);
+
+    return patches;
+}
+
+function handlePatch(patches) {
+   // Delete the value in 'remove' option
+   for (var i = 0; i < patches.length; i++) {
+      if (patches[i].op == 'remove') {
+         delete patches[i].value;
+      }
+   };
 }
 
 function generateUnchanged(oldJson, newJson, unchanged, path) {
