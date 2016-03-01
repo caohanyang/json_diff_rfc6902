@@ -25,7 +25,7 @@ function generateUnchanged(oldJson, newJson, unchanged, path) {
     // Equal
     if (equal(oldJson, newJson)) {
         // console.log({path: path, value: copy.clone(newJson)});
-        unchanged.push( path+"="+copy.clone(newJson));
+        unchanged.push( path+"=" + JSON.stringify(newJson));
         return;
     }
 
@@ -129,9 +129,9 @@ function generateObjectDiff(oldJson, newJson, patches, path) {
 
         } else {
             // Remove
-            console.log({ op: "remove", path: path + "/" + patchPointString(oldKey) });
+            console.log({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
             removed = true;
-            patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey) });
+            patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
         }
 
     }
@@ -147,23 +147,46 @@ function generateObjectDiff(oldJson, newJson, patches, path) {
         var newValue = newJson[newKey];
         if (!oldJson.hasOwnProperty(newKey)) {
             //Try to find the value in the unchanged area
-            var pointer = findValue(newValue);
+            var pointer = findValueInUnchanged(newValue);
             console.log("pointer: " + pointer);
             if (pointer) {
               //COPY
               console.log({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
               patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
             } else {
-              //ADD
-              console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newValue)});
-              patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newValue)});
+              
+              var previousIndex = findValueInPatch(newValue, patches);
+              console.log("previousIndex: " + previousIndex);
+              
+              if (previousIndex != -1) {
+                // MOVE
+                var oldPath = patches[previousIndex].path;
+                patches.splice(previousIndex, 1);
+                console.log({ op: "move", from: oldPath, to: path + "/" + patchPointString(newKey)});
+                patches.push({ op: "move", from: oldPath, to: path + "/" + patchPointString(newKey)});
+              } else {
+                //ADD
+                console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newValue)});
+                patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newValue)});
+              }
+              
             }
            
         } 
     }
 }
 
-function findValue(newValue) {
+function findValueInPatch(newValue, patches) {
+    for (var i = 0; i < patches.length; i++) {
+
+        if (equal(newValue, patches[i].value) && patches[i].op == 'remove')
+            return i;
+    };
+
+    return -1;
+}
+
+function findValueInUnchanged(newValue) {
     for (var i = 0; i < unchanged.length; i++) {
         var value = unchanged[i].split("=")[1];
         // console.log("Value = " +value);
