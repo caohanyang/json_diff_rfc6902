@@ -1,10 +1,15 @@
 var jpn = require('./JSON-Diff');
-var fs = require('fs')
+var fs = require('fs');
 
-var f_old = require("./old1.json");
-var f_new = require("./new1.json");
+var n_pathlogic = 5;
 
+for (var i = 1; i <= n_pathlogic; i++) {
+   var root = "./tests/" + i + "/";
 
-var jpn_patch = jpn.diff(f_old, f_new);
+   var f_old = require(root + "old.json");
+   var f_new = require(root + "new.json");
 
-fs.writeFile("jpn_patch.json", JSON.stringify(jpn_patch, null, 2));
+   var jpn_patch = jpn.diff(f_old, f_new);
+
+   fs.writeFile(root + "jpn_patch.json", JSON.stringify(jpn_patch, null, 2));
+};
