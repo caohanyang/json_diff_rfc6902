@@ -1,0 +1,28 @@
+{
+  "name": "JSON-Diff",
+  "version": "1.0.0",
+  "description": "This framework is to compare two JSON data and generate the Patch",
+  "main": "diff.js",
+  "dependencies": {
+    "deep-equal": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caohanyang/JSON-Diff.git"
+  },
+  "keywords": [
+    "JSON",
+    "Diff",
+    "Patch"
+  ],
+  "author": "Hanyang CAO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caohanyang/JSON-Diff/issues"
+  },
+  "homepage": "https://github.com/caohanyang/JSON-Diff"
+}
