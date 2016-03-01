@@ -8,7 +8,7 @@
 ```js
 var jpn = require('./JSON-Diff');
 var jpn_patch = jpn.diff(f_old, f_new);
-```js
+```
 
 ## TEST
 `node diff.js`
