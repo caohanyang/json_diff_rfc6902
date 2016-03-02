@@ -42,3 +42,9 @@ This is an object where a property is copied.
 OBJ_PROP_REN
 
 This is an object where a field is renamed.
+
+# Test 6 
+
+ARR_OBJ_INS
+
+This is an array of objects with a insertion at the beginning of the array. 

@@ -1,6 +1,6 @@
 var copy = require('./deepClone');
 var equal = require('deep-equal');
-// var unchanged = [];
+var lcs = require('./LCS.js');
 
 function diff(oldJson, newJson) {
     console.log("===========  Data  ======================");
@@ -59,6 +59,7 @@ function generateUnchanged(oldJson, newJson, unchanged, path) {
     }
 }
 
+//********************Need to be changed
 function generateUnchangedArray(oldJson, newJson, unchanged, path) {
     var miniLength = Math.min(oldJson.length, newJson.length);
     console.log("miniLength is " + miniLength);
@@ -109,11 +110,15 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
     console.log("--------This is Array-------------");
-    console.log(oldJson);
+    lcs.LCS(hashArray(oldJson), hashArray(newJson));
+    console.log("--------Array complete-------");
     // console.log(typeof(oldJson));
     // console.log(Array.isArray(oldJson));
 }
 
+function hashArray(json) {
+    return JSON.stringify(json);
+}
 function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     var oldKeys = getKeys(oldJson);
     var newKeys = getKeys(newJson);
