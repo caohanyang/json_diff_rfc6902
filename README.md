@@ -45,13 +45,13 @@ This is an object where a field is renamed.
 
 # Test 6 
 
-ARR_OBJ_INS
+ARR_OBJ_UNSHIFT
 
 This is an array of objects with a insertion at the beginning of the array. 
 
 # Test 7
 
-ARR_OBJ_APP
+ARR_OBJ_PUSH
 
 This is an array of objects with a insertion at the end of the array.
 
@@ -60,3 +60,21 @@ This is an array of objects with a insertion at the end of the array.
 ARR_OBJ_RINS
 
 This is an array of objects with a insertion in the middle of the array.
+
+# Test 9
+
+ARR_OBJ_SHIFT
+
+This is an array of objects with a deletion of the first element.
+
+# Test 10
+
+ARR_OBJ_POP
+
+This is an array of objects with a deletion of the last element
+
+# Test 11
+
+ARR_OBJ_RDEL
+
+This is an array of objects with a deletion of the moddle element
