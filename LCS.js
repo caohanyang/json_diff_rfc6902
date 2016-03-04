@@ -110,11 +110,23 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
     // console.log("-----------------------------------");
     // console.log("offset " + offset.value);
     // console.log("i =  " + i);
-    //First add
-    console.log({  op: "add", path: path + "/" + (i + start + offset.value), value: y[j] });
-    patches.push({ op: "add", path: path + "/" + (i + start + offset.value), value: JSON.parse(y[j]) });
-    //Then change offset
-    offset.value++;
+
+    // First Add or Replace
+    var lastElement = patches[patches.length - 1];
+    var tmpPath = path + "/" + (i + start + offset.value);
+    if (lastElement !== void 0 && lastElement.op == "remove" && lastElement.path == tmpPath) {
+      // Replace 
+      console.log({  op: "replace", path: tmpPath, value: y[j] });
+      patches[patches.length - 1].op = "replace";
+      patches[patches.length - 1].value = JSON.parse(y[j]);
+      // patches.push({ op: "replace", path: tmpPath, value: JSON.parse(y[j]) });
+    } else {
+      //First add
+      console.log({  op: "add", path: tmpPath, value: y[j] });
+      patches.push({ op: "add", path: tmpPath, value: JSON.parse(y[j]) });
+    }
+      //Then change offset
+      offset.value++;
 
   } else if (i > -1 && (j == -1 || matrix[i+1][j] < matrix[i][j+1])) {
     // console.log("remove " + x[i]);
@@ -133,4 +145,13 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
     // console.log("offset " + offset.value);
     // console.log("reach the end i = " + i);
   }
+}
+
+function replaceOrA(patches, path) {
+   console.log(patches);
+   // var lastElement = patches[patches.length -1];
+   // if (lastElement !== void 0 && lastElement.op == "remove" && lastElement.path = path)
+   //  return true;
+
+   return false;
 }

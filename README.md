@@ -78,3 +78,21 @@ This is an array of objects with a deletion of the last element
 ARR_OBJ_RDEL
 
 This is an array of objects with a deletion of the moddle element
+
+# Test 12
+
+ARR_OBJ_BREPLACE
+
+This is an array of objects with a replacement of the first element
+
+# Test 13
+
+ARR_OBJ_EREPLACE
+
+This is an array of objects with a replacement of the last element
+
+# Test 14
+
+ARR_OBJ_MREPLACE
+
+This is an array of objects with a replacement of the middle element
