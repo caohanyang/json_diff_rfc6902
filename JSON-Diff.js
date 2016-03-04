@@ -110,14 +110,19 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
     console.log("--------This is Array-------------");
-    lcs.LCS(hashArray(oldJson), hashArray(newJson));
+    // Hash array
+    var x = oldJson.map(hashArray);
+    var y = newJson.map(hashArray);
+    // Use LCS
+    lcs.LCS(x, y, unchanged, patches, path);
     console.log("--------Array complete-------");
     // console.log(typeof(oldJson));
     // console.log(Array.isArray(oldJson));
 }
 
-function hashArray(json) {
-    return JSON.stringify(json);
+function hashArray(obj) {
+    //Default hash
+    return JSON.stringify(obj);
 }
 function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     var oldKeys = getKeys(oldJson);

@@ -1,6 +1,6 @@
 module.exports.LCS = LCS;
 
-function LCS (x, y) {
+function LCS (x, y, unchanged, patches, path) {
   //get the trimed sequence
   var start = 0;
   var x_end = x.length - 1;
@@ -29,10 +29,14 @@ function LCS (x, y) {
   // For Array 
   // var finalResult = x.slice(0, start).join("") + result + x.slice(x_end + 1, x.length).join("");
   console.log("Result: " + finalResult);
+
+  // Set offset = 1
+  var offset = {};
+  offset.value = 1;
+  // pass offset reference 
+  printDiff(newX, newY, matrix, newX.length - 1, newY.length -1, start, offset, unchanged, patches, path);
+
 }
-
-
-
 
 function LCSMatrix(x, y) {
     var x_length = x.length;
@@ -89,4 +93,44 @@ function backtrack(x, y, matrix, i, j) {
    	 }
    	 
    }
+}
+
+function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) {
+  if (i > -1 && j > -1 && x[i] == y[j]) {
+
+    printDiff(x, y, matrix, i-1, j-1, start, offset, unchanged, patches, path);
+    // console.log("-----------------------------------");
+    // console.log("offset " + offset.value);
+    // console.log(" " + x[i]+ " i=" +i);
+
+  } else if (j > -1 && (i == -1 || matrix[i+1][j] >= matrix[i][j+1])) {
+    // console.log("add " + y[j]);
+
+    printDiff(x, y, matrix, i, j-1, start, offset, unchanged, patches, path);
+    // console.log("-----------------------------------");
+    // console.log("offset " + offset.value);
+    // console.log("i =  " + i);
+    //First add
+    console.log({  op: "add", path: path + "/" + (i + start + offset.value), value: y[j] });
+    patches.push({ op: "add", path: path + "/" + (i + start + offset.value), value: JSON.parse(y[j]) });
+    //Then change offset
+    offset.value++;
+
+  } else if (i > -1 && (j == -1 || matrix[i+1][j] < matrix[i][j+1])) {
+    // console.log("remove " + x[i]);
+
+    printDiff(x, y, matrix, i-1, j, start, offset, unchanged, patches, path);
+    // console.log("-----------------------------------");
+    // console.log("offset " + offset.value);
+    // console.log("i =  " + i);
+    //First change offset
+    offset.value--;
+    //Then remove
+    console.log({  op: "remove", path: path + "/" + (i + start + offset.value), value: x[i] });
+    patches.push({ op: "remove", path: path + "/" + (i + start + offset.value), value: JSON.parse(x[i]) });
+  } else {
+    // console.log("-----------------------------------");
+    // console.log("offset " + offset.value);
+    // console.log("reach the end i = " + i);
+  }
 }
