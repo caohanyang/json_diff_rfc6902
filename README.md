@@ -48,3 +48,15 @@ This is an object where a field is renamed.
 ARR_OBJ_INS
 
 This is an array of objects with a insertion at the beginning of the array. 
+
+# Test 7
+
+ARR_OBJ_APP
+
+This is an array of objects with a insertion at the end of the array.
+
+# Test 8
+
+ARR_OBJ_RINS
+
+This is an array of objects with a insertion in the middle of the array.

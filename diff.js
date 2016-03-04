@@ -1,9 +1,9 @@
 var jpn = require('./JSON-Diff');
 var fs = require('fs');
 
-var n_pathlogic = 7;
+var n_pathlogic = 8;
 
-for (var i = 7; i <= n_pathlogic; i++) {
+for (var i = 8; i <= n_pathlogic; i++) {
    console.log("Processing test case " + i);
 
    var root = "./tests/" + i + "/";
