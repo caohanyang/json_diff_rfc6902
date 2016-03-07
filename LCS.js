@@ -115,15 +115,27 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
     var lastElement = patches[patches.length - 1];
     var tmpPath = path + "/" + (i + start + offset.value);
     if (lastElement !== void 0 && lastElement.op == "remove" && lastElement.path == tmpPath) {
-      // Replace 
+      //First Replace 
       console.log({  op: "replace", path: tmpPath, value: y[j] });
       patches[patches.length - 1].op = "replace";
       patches[patches.length - 1].value = JSON.parse(y[j]);
       // patches.push({ op: "replace", path: tmpPath, value: JSON.parse(y[j]) });
     } else {
       //First add
-      console.log({  op: "add", path: tmpPath, value: y[j] });
-      patches.push({ op: "add", path: tmpPath, value: JSON.parse(y[j]) });
+      //Try to find the value in the unchanged area
+      var pointer = findValueInUnchanged(y[j], unchanged);
+      console.log("pointer: " + pointer);
+
+      if (pointer) {
+        // COPY
+        console.log({  op: "copy", path: tmpPath, from: pointer });
+        patches.push({ op: "copy", path: tmpPath, from: pointer });
+      } else {
+        // ADD
+        console.log({  op: "add", path: tmpPath, value: y[j] });
+        patches.push({ op: "add", path: tmpPath, value: JSON.parse(y[j]) });
+      }
+
     }
       //Then change offset
       offset.value++;
@@ -147,11 +159,11 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
   }
 }
 
-function replaceOrA(patches, path) {
-   console.log(patches);
-   // var lastElement = patches[patches.length -1];
-   // if (lastElement !== void 0 && lastElement.op == "remove" && lastElement.path = path)
-   //  return true;
-
-   return false;
+function findValueInUnchanged(newValue, unchanged) {
+    for (var i = 0; i < unchanged.length; i++) {
+        var value = unchanged[i].split("=")[1];
+        console.log("Value = " + value);
+        console.log("newValue = " + newValue);
+        if (newValue == value) return unchanged[i].split("=")[0];
+    }
 }

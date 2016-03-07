@@ -96,3 +96,9 @@ This is an array of objects with a replacement of the last element
 ARR_OBJ_MREPLACE
 
 This is an array of objects with a replacement of the middle element
+
+# Test 15
+
+ARR_OBJ_CPY
+
+This is an array of objects where a object is copied.

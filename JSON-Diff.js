@@ -37,7 +37,7 @@ function generateUnchanged(oldJson, newJson, unchanged, path) {
     // Equal
     if (equal(oldJson, newJson)) {
         // console.log({path: path, value: copy.clone(newJson)});
-        unchanged.push( path+"=" + newJson);
+        unchanged.push( path + "=" + JSON.stringify(newJson));
         return;
     }
 
