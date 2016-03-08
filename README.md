@@ -13,41 +13,41 @@ var jpn_patch = jpn.diff(f_old, f_new);
 ## TEST
 `node diff.js`
 
-# Test 1 
+# Test 1
 
 OBJ_PROP_INS
 
 This is an object where a property is added.
 
-# Test 2 
+# Test 2
 
 OBJ_PROP_DEL
 
 This is an object where a property is removed.
 
-# Test 3 
+# Test 3
 
 OBJ_PROP_MOD
 
 This is an object where a property value is modified.
 
-# Test 4 
+# Test 4
 
 OBJ_PROP_CPY
 
 This is an object where a property is copied.
 
-# Test 5 
+# Test 5
 
 OBJ_PROP_REN
 
 This is an object where a field is renamed.
 
-# Test 6 
+# Test 6
 
 ARR_OBJ_UNSHIFT
 
-This is an array of objects with a insertion at the beginning of the array. 
+This is an array of objects with a insertion at the beginning of the array.
 
 # Test 7
 
@@ -102,3 +102,33 @@ This is an array of objects with a replacement of the middle element
 ARR_OBJ_CPY
 
 This is an array of objects where a object is copied.
+
+# Test 16
+
+ARR_OBJ_PERM1
+
+Permutation of a objects in an array of objects. [a, b, c] => [a, c, b]
+
+# Test 17
+
+ARR_OBJ_PERM2
+
+Permutation of a objects in an array of objects. [a, b, c] => [b, c, a]
+
+# Test 18
+
+ARR_OBJ_PERM3
+
+Permutation of a objects in an array of objects. [a, b, c] => [b, a, c]
+
+# Test 19
+
+ARR_OBJ_PERM4
+
+Permutation of a objects in an array of objects. [a, b, c] => [c, b, a]
+
+# Test 20
+
+ARR_OBJ_PERM5
+
+Permutation of a objects in an array of objects. [a, b, c] => [c, a, b]
