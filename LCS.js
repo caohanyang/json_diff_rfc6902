@@ -44,8 +44,8 @@ function LCSMatrix(x, y) {
     var y_length = y.length;
 	// Create a two dimention array
 	var matrix = new Array(x_length + 1);
-	for (var i = 0; i <= x_length; i++) {
-		matrix[i] = new Array(y_length + 1);
+	for (var l = 0; l <= x_length; l++) {
+		matrix[l] = new Array(y_length + 1);
 	}
 
 	// fill the first column

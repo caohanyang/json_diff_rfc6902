@@ -4,8 +4,8 @@ var lcs = require('./LCS.js');
 
 function diff(oldJson, newJson) {
     console.log("===========  Data  ======================");
-	console.log(JSON.stringify(oldJson));
-	console.log(JSON.stringify(newJson));
+ 	  console.log(JSON.stringify(oldJson));
+	  console.log(JSON.stringify(newJson));
     // Get the unchanged area
     var unchanged = [];
     generateUnchanged(oldJson, newJson, unchanged, '');
@@ -114,7 +114,12 @@ function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
     var x = oldJson.map(hashArray);
     var y = newJson.map(hashArray);
     // Use LCS
-    lcs.LCS(x, y, unchanged, patches, path);
+    var tmpPatches = [];
+    lcs.LCS(x, y, unchanged, tmpPatches, path);
+    for (var l = 0; l < tmpPatches.length; l++) {
+      console.log(tmpPatches[l]);
+      patches.push(tmpPatches[l]);
+    }
     console.log("--------Array complete-------");
     // console.log(typeof(oldJson));
     // console.log(Array.isArray(oldJson));
