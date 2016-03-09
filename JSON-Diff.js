@@ -3,245 +3,245 @@ var equal = require('deep-equal');
 var lcs = require('./LCS.js');
 
 function diff(oldJson, newJson) {
-    console.log("===========  Data  ======================");
- 	  console.log(JSON.stringify(oldJson));
-	  console.log(JSON.stringify(newJson));
-    // Get the unchanged area
-    var unchanged = [];
-    generateUnchanged(oldJson, newJson, unchanged, '');
-    console.log("===========  Unchanged  =================");
-    console.log(unchanged);
-    console.log("=========================================");
+  console.log("===========  Data  ======================");
+  console.log(JSON.stringify(oldJson));
+  console.log(JSON.stringify(newJson));
+  // Get the unchanged area
+  var unchanged = [];
+  generateUnchanged(oldJson, newJson, unchanged, '');
+  console.log("===========  Unchanged  =================");
+  console.log(unchanged);
+  console.log("=========================================");
 
-    // Generate the diff
-	var patches = [];
-	generateDiff(oldJson, newJson, unchanged, patches, '');
-    handlePatch(patches);
-    console.log("===========Final Patches=================");
-	console.log(patches);
+  // Generate the diff
+  var patches = [];
+  generateDiff(oldJson, newJson, unchanged, patches, '');
+  handlePatch(patches);
+  console.log("===========Final Patches=================");
+  console.log(patches);
 
-    return patches;
+  return patches;
 }
 
 function handlePatch(patches) {
-   // Delete the value in 'remove' option
-   for (var i = 0; i < patches.length; i++) {
-      if (patches[i].op === 'remove') {
-         delete patches[i].value;
-      }
-   }
+  // Delete the value in 'remove' option
+  for (var i = 0; i < patches.length; i++) {
+    if (patches[i].op === 'remove') {
+      delete patches[i].value;
+    }
+  }
 }
 
 function generateUnchanged(oldJson, newJson, unchanged, path) {
-    // Check if two json is the same
-    // Equal
-    if (equal(oldJson, newJson)) {
-        // console.log({path: path, value: copy.clone(newJson)});
-        unchanged.push( path + "=" + JSON.stringify(newJson));
-        return;
-    }
+  // Check if two json is the same
+  // Equal
+  if (equal(oldJson, newJson)) {
+    // console.log({path: path, value: copy.clone(newJson)});
+    unchanged.push( path + "=" + JSON.stringify(newJson));
+    return;
+  }
 
-    // Not equal
-    // Check the type
-    if (typeof oldJson !== typeof newJson) { return; }
+  // Not equal
+  // Check the type
+  if (typeof oldJson !== typeof newJson) { return; }
 
-    // Type is the same
-    if (Array.isArray(oldJson) && Array.isArray(newJson)) {
-        // Array
-        generateUnchangedArray(oldJson, newJson, unchanged, path);
-        return;
-    }
+  // Type is the same
+  if (Array.isArray(oldJson) && Array.isArray(newJson)) {
+    // Array
+    generateUnchangedArray(oldJson, newJson, unchanged, path);
+    return;
+  }
 
-    if (typeof oldJson === "object" && oldJson !== null && typeof newJson === "object"  && newJson !== null) {
-        // Object
-        generateUnchangedObject(oldJson, newJson, unchanged, path);
-        return;
-    }
+  if (typeof oldJson === "object" && oldJson !== null && typeof newJson === "object"  && newJson !== null) {
+    // Object
+    generateUnchangedObject(oldJson, newJson, unchanged, path);
+    return;
+  }
 }
 
 //********************Need to be changed
 function generateUnchangedArray(oldJson, newJson, unchanged, path) {
-    var miniLength = Math.min(oldJson.length, newJson.length);
-    console.log("miniLength is " + miniLength);
-    for (var i = 0; i < miniLength; i++) {
-        generateUnchanged(oldJson[i], newJson[i], unchanged, path + "/" + i);
-    }
+  var miniLength = Math.min(oldJson.length, newJson.length);
+  console.log("miniLength is " + miniLength);
+  for (var i = 0; i < miniLength; i++) {
+    generateUnchanged(oldJson[i], newJson[i], unchanged, path + "/" + i);
+  }
 }
 
 function generateUnchangedObject(oldJson, newJson, unchanged, path) {
-   var oldKeys = getKeys(oldJson);
-   var newKeys = getKeys(newJson);
+  var oldKeys = getKeys(oldJson);
+  var newKeys = getKeys(newJson);
 
-   for (var i = 0; i < oldKeys.length; i++) {
-       var oldKey = oldKeys[i];
-       if (newJson.hasOwnProperty(oldKey)) {
-        generateUnchanged(oldJson[oldKey], newJson[oldKey], unchanged, path + "/" + oldKey);
-       }
-   }
+  for (var i = 0; i < oldKeys.length; i++) {
+    var oldKey = oldKeys[i];
+    if (newJson.hasOwnProperty(oldKey)) {
+      generateUnchanged(oldJson[oldKey], newJson[oldKey], unchanged, path + "/" + oldKey);
+    }
+  }
 }
 
 function generateDiff(oldJson, newJson, unchanged, patches, path) {
 
-    // var a = null  object     Array.isArray: false
-    // var a = 5     number
-    // var a = [1,2] object     Array.isArray: true
-    // var a         undefined  Array.isArray: false
-    if (Array.isArray(oldJson) && Array.isArray(newJson)) {
-        generateArrayDiff(oldJson, newJson, unchanged, patches, path);
-        return;
-    }
+  // var a = null  object     Array.isArray: false
+  // var a = 5     number
+  // var a = [1,2] object     Array.isArray: true
+  // var a         undefined  Array.isArray: false
+  if (Array.isArray(oldJson) && Array.isArray(newJson)) {
+    generateArrayDiff(oldJson, newJson, unchanged, patches, path);
+    return;
+  }
 
-    if (typeof oldJson === "object" && oldJson !== null && typeof newJson === "object"  && newJson !== null) {
-        generateObjectDiff(oldJson, newJson, unchanged, patches, path);
-        return;
-    }
+  if (typeof oldJson === "object" && oldJson !== null && typeof newJson === "object"  && newJson !== null) {
+    generateObjectDiff(oldJson, newJson, unchanged, patches, path);
+    return;
+  }
 
-    return generateValueDiff(oldJson, newJson, unchanged, patches, path);
+  return generateValueDiff(oldJson, newJson, unchanged, patches, path);
 }
 
 function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
-    // the endpoint
-    if (newJson !== oldJson) {
-        console.log({ op: "replace", path: path, value: copy.clone(newJson)});
-        patches.push({ op: "replace", path: path, value: copy.clone(newJson)});
-    }
+  // the endpoint
+  if (newJson !== oldJson) {
+    console.log({ op: "replace", path: path, value: copy.clone(newJson)});
+    patches.push({ op: "replace", path: path, value: copy.clone(newJson)});
+  }
 
 }
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
-    console.log("--------This is Array-------------");
-    // Hash array
-    var x = oldJson.map(hashArray);
-    var y = newJson.map(hashArray);
-    // Use LCS
-    var tmpPatches = [];
-    lcs.LCS(x, y, unchanged, tmpPatches, path);
-    for (var l = 0; l < tmpPatches.length; l++) {
-      console.log(tmpPatches[l]);
-      patches.push(tmpPatches[l]);
-    }
-    console.log("--------Array complete-------");
-    // console.log(typeof(oldJson));
-    // console.log(Array.isArray(oldJson));
+  console.log("--------This is Array-------------");
+  // Hash array
+  var x = oldJson.map(hashArray);
+  var y = newJson.map(hashArray);
+  // Use LCS
+  var tmpPatches = [];
+  lcs.LCS(x, y, unchanged, tmpPatches, path);
+  for (var l = 0; l < tmpPatches.length; l++) {
+    console.log(tmpPatches[l]);
+    patches.push(tmpPatches[l]);
+  }
+  console.log("--------Array complete-------");
+  // console.log(typeof(oldJson));
+  // console.log(Array.isArray(oldJson));
 }
 
 function hashArray(obj) {
-    //Default hash
-    return JSON.stringify(obj);
+  //Default hash
+  return JSON.stringify(obj);
 }
 function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
-    var oldKeys = getKeys(oldJson);
-    var newKeys = getKeys(newJson);
-    var removed = false;
+  var oldKeys = getKeys(oldJson);
+  var newKeys = getKeys(newJson);
+  var removed = false;
 
-    console.log("oldKeys: " + oldKeys);
-    console.log("newKeys: " + newKeys);
+  console.log("oldKeys: " + oldKeys);
+  console.log("newKeys: " + newKeys);
 
-    // Loop from the old; from lengths -1 to 0
-    for (var i = oldKeys.length -1; i >= 0; i--) {
-        var oldKey = oldKeys[i];
-        var oldValue = oldJson[oldKey];
+  // Loop from the old; from lengths -1 to 0
+  for (var i = oldKeys.length -1; i >= 0; i--) {
+    var oldKey = oldKeys[i];
+    var oldValue = oldJson[oldKey];
 
-        console.log("oldKey: " + oldKey);
-        console.log("oldValue: " + JSON.stringify(oldValue));
+    console.log("oldKey: " + oldKey);
+    console.log("oldValue: " + JSON.stringify(oldValue));
 
-        if (newJson.hasOwnProperty(oldKey)) {
-            var newValue = newJson[oldKey];
+    if (newJson.hasOwnProperty(oldKey)) {
+      var newValue = newJson[oldKey];
 
-            console.log("newValue: " + JSON.stringify(newValue));
+      console.log("newValue: " + JSON.stringify(newValue));
 
-            // go deeper
-            generateDiff(oldJson[oldKey], newJson[oldKey], unchanged, patches, path + "/" + oldKey );
-            // ???? patchPointString(oldKey)
+      // go deeper
+      generateDiff(oldJson[oldKey], newJson[oldKey], unchanged, patches, path + "/" + oldKey );
+      // ???? patchPointString(oldKey)
 
+    } else {
+      // Remove
+      console.log({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
+      removed = true;
+      patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
+    }
+
+  }
+
+  // If doesn't remove and the length is the same, return
+  // Return: only the length is equal and doesn't remove
+  if (!removed && newKeys.length === oldKeys.length) { return; }
+
+  // Loop from the new
+  // length is not the same
+  var newKey;
+  var newVal;
+  for (var j = 0; j < newKeys.length; j ++) {
+    newKey = newKeys[j];
+    newVal = newJson[newKey];
+    if (!oldJson.hasOwnProperty(newKey)) {
+      //Try to find the value in the unchanged area
+      // change JSON.stringify()
+      var pointer = findValueInUnchanged(JSON.stringify(newVal), unchanged);
+      console.log("pointer: " + pointer);
+      if (pointer) {
+        //COPY
+        console.log({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
+        patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
+      } else {
+        // no json.stringnify
+        var previousIndex = findValueInPatch(newVal, patches);
+        console.log("previousIndex: " + previousIndex);
+
+        if (previousIndex !== -1) {
+          // MOVE
+          var oldPath = patches[previousIndex].path;
+          patches.splice(previousIndex, 1);
+          console.log({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
+          patches.push({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
         } else {
-            // Remove
-            console.log({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
-            removed = true;
-            patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
+          //ADD
+          console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
+          patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
         }
 
+      }
+
     }
-
-    // If doesn't remove and the length is the same, return
-    // Return: only the length is equal and doesn't remove
-    if (!removed && newKeys.length === oldKeys.length) { return; }
-
-    // Loop from the new
-    // length is not the same
-    var newKey;
-    var newVal;
-    for (var j = 0; j < newKeys.length; j ++) {
-        newKey = newKeys[j];
-        newVal = newJson[newKey];
-        if (!oldJson.hasOwnProperty(newKey)) {
-            //Try to find the value in the unchanged area
-            // change JSON.stringify()
-            var pointer = findValueInUnchanged(JSON.stringify(newVal), unchanged);
-            console.log("pointer: " + pointer);
-            if (pointer) {
-              //COPY
-              console.log({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
-              patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
-            } else {
-              // no json.stringnify
-              var previousIndex = findValueInPatch(newVal, patches);
-              console.log("previousIndex: " + previousIndex);
-
-              if (previousIndex !== -1) {
-                // MOVE
-                var oldPath = patches[previousIndex].path;
-                patches.splice(previousIndex, 1);
-                console.log({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
-                patches.push({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
-              } else {
-                //ADD
-                console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
-                patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
-              }
-
-            }
-
-        }
-    }
+  }
 }
 
 function findValueInPatch(newValue, patches) {
-    for (var i = 0; i < patches.length; i++) {
+  for (var i = 0; i < patches.length; i++) {
 
-        if (equal(newValue, patches[i].value) && patches[i].op === 'remove') {
-          return i;
-        }
+    if (equal(newValue, patches[i].value) && patches[i].op === 'remove') {
+      return i;
     }
+  }
 
-    return -1;
+  return -1;
 }
 
 function findValueInUnchanged(newValue, unchanged) {
-    for (var i = 0; i < unchanged.length; i++) {
-        var value = unchanged[i].split("=")[1];
-        console.log("Value = " + value);
-        console.log("newValue = " + newValue);
-        if (equal(newValue, value)) {
-          return unchanged[i].split("=")[0];
-        }
+  for (var i = 0; i < unchanged.length; i++) {
+    var value = unchanged[i].split("=")[1];
+    console.log("Value = " + value);
+    console.log("newValue = " + newValue);
+    if (equal(newValue, value)) {
+      return unchanged[i].split("=")[0];
     }
+  }
 }
 
 function getKeys(json) {
 
-   	return Object.keys(json);
+  return Object.keys(json);
 
 }
 
 function patchPointString(str) {
-    // According to RFC 6901
-    // '~' needs to be encoded as '~0'
-    // '/' needs to be encoded as '~1'
-	if (str.indexOf('/') === -1 && str.indexOf('~') === -1) {
+  // According to RFC 6901
+  // '~' needs to be encoded as '~0'
+  // '/' needs to be encoded as '~1'
+  if (str.indexOf('/') === -1 && str.indexOf('~') === -1) {
     return str;
   }
-	return str.replace(/~/g, '~0').replace(/\//g, '~1');
+  return str.replace(/~/g, '~0').replace(/\//g, '~1');
 }
 
 

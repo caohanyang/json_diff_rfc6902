@@ -8,13 +8,13 @@ function LCS (x, y, unchanged, patches, path) {
   var y_end = y.length - 1;
   //trim off the sequence in the beginning
   while (start <= x_end && start <= y_end && x[start] === y[start]) {
-     start++;
+    start++;
   }
 
   //trim off the sequence in the end
   while (start <= x_end && start <= y_end && x[x_end] === y[y_end]) {
-     x_end--;
-     y_end--;
+    x_end--;
+    y_end--;
   }
 
   var newX = x.slice(start, x_end + 1);
@@ -40,60 +40,60 @@ function LCS (x, y, unchanged, patches, path) {
 }
 
 function LCSMatrix(x, y) {
-    var x_length = x.length;
-    var y_length = y.length;
-	// Create a two dimention array
-	var matrix = new Array(x_length + 1);
-	for (var l = 0; l <= x_length; l++) {
-		matrix[l] = new Array(y_length + 1);
-	}
+  var x_length = x.length;
+  var y_length = y.length;
+  // Create a two dimention array
+  var matrix = new Array(x_length + 1);
+  for (var l = 0; l <= x_length; l++) {
+    matrix[l] = new Array(y_length + 1);
+  }
 
-	// fill the first column
-	for (var m = 0; m <= x_length; m++) {
-		matrix[m][0] = 0;
-	}
-	// fill the first row
-	for (var n = 0; n <= y_length; n++) {
-		matrix[0][n] = 0;
-	}
+  // fill the first column
+  for (var m = 0; m <= x_length; m++) {
+    matrix[m][0] = 0;
+  }
+  // fill the first row
+  for (var n = 0; n <= y_length; n++) {
+    matrix[0][n] = 0;
+  }
 
-    // LCS
-    for (var i = 0; i < x_length; i++) {
-    	for(var j = 0; j < y_length; j++) {
-          if (x[i] === y[j]){
-             matrix[i+1][j+1] = matrix[i][j] + 1;
-          } else {
-          	 matrix[i+1][j+1] = Math.max(matrix[i+1][j], matrix[i][j+1]);
-          }
+  // LCS
+  for (var i = 0; i < x_length; i++) {
+    for(var j = 0; j < y_length; j++) {
+      if (x[i] === y[j]){
+        matrix[i+1][j+1] = matrix[i][j] + 1;
+      } else {
+        matrix[i+1][j+1] = Math.max(matrix[i+1][j], matrix[i][j+1]);
+      }
 
-    	}
     }
+  }
 
-    // console.log(matrix);
-    console.log("LCSLength = " + matrix[x_length][y_length]);
-    // return matrix[x_length][y_length];
-    return matrix;
+  // console.log(matrix);
+  console.log("LCSLength = " + matrix[x_length][y_length]);
+  // return matrix[x_length][y_length];
+  return matrix;
 }
 
 function LCSResult(x, y, matrix) {
-   return backtrack(x, y, matrix, x.length - 1, y.length - 1);
+  return backtrack(x, y, matrix, x.length - 1, y.length - 1);
 }
 
 function backtrack(x, y, matrix, i, j) {
 
-   if (i === -1 || j === -1) {
-   	 return "";
-   } else if (x[i] === y[j]) {
-     return backtrack(x, y, matrix, i-1, j-1) + x[i];
-   } else {
+  if (i === -1 || j === -1) {
+    return "";
+  } else if (x[i] === y[j]) {
+    return backtrack(x, y, matrix, i-1, j-1) + x[i];
+  } else {
 
-   	 if (matrix[i+1][j] >= matrix[i][j+1]) {
-   	 	return backtrack(x, y, matrix, i, j-1);
-   	 } else {
-   	 	return backtrack(x, y, matrix, i-1, j);
-   	 }
+    if (matrix[i+1][j] >= matrix[i][j+1]) {
+      return backtrack(x, y, matrix, i, j-1);
+    } else {
+      return backtrack(x, y, matrix, i-1, j);
+    }
 
-   }
+  }
 }
 
 function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) {
@@ -182,8 +182,8 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
 
 
     }
-      //Then change offset
-      offset.value++;
+    //Then change offset
+    offset.value++;
 
 
   } else if (i > -1 && (j === -1 || matrix[i+1][j] < matrix[i][j+1])) {
@@ -206,23 +206,23 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
 }
 
 function findValueInUnchanged(newValue, unchanged) {
-    for (var i = 0; i < unchanged.length; i++) {
-        var value = unchanged[i].split("=")[1];
-        console.log("Value = " + value);
-        console.log("newValue = " + newValue);
-        if (equal(newValue, JSON.stringify(value))) {return unchanged[i].split("=")[0];}
-    }
+  for (var i = 0; i < unchanged.length; i++) {
+    var value = unchanged[i].split("=")[1];
+    console.log("Value = " + value);
+    console.log("newValue = " + newValue);
+    if (equal(newValue, JSON.stringify(value))) {return unchanged[i].split("=")[0];}
+  }
 }
 
 function findValueInPatch(newValue, patches) {
 
-    for (var i = 0; i < patches.length; i++) {
-        // change JSON.stringify()
+  for (var i = 0; i < patches.length; i++) {
+    // change JSON.stringify()
 
-        if (equal(newValue, JSON.stringify(patches[i].value)) && patches[i].op === 'remove') {
-          return i;
-        }
+    if (equal(newValue, JSON.stringify(patches[i].value)) && patches[i].op === 'remove') {
+      return i;
     }
+  }
 
-    return -1;
+  return -1;
 }
