@@ -1,4 +1,26 @@
 # JSON-Diff
+JSON-Diff is to diff two JSON object and generate the patch, which is compliant to [JSON Patch RFC6902](https://tools.ietf.org/html/rfc6902).
+
+You can use JSON-Diff to
+- **diff** two JSON object
+- **apply** patches (to be done)
+
+JSON-Diff is able to handle operations:
+
+_**Object**_
+- **add**
+- **remove**
+- **replace**
+- **copy**
+- **move**
+
+_**Array**_
+- **add**
+- **remove**
+- **replace**
+- **copy**
+- **move**
+- **permutation**
 
 ## INSTALL
 `npm install`
