@@ -6,6 +6,7 @@ function diff(oldJson, newJson) {
   console.log("===========  Data  ======================");
   console.log(JSON.stringify(oldJson));
   console.log(JSON.stringify(newJson));
+
   // Get the unchanged area
   var unchanged = [];
   generateUnchanged(oldJson, newJson, unchanged, '');
@@ -59,7 +60,7 @@ function generateUnchanged(oldJson, newJson, unchanged, path) {
   }
 }
 
-//********************Need to be changed
+//********************Need to be changed ********************
 function generateUnchangedArray(oldJson, newJson, unchanged, path) {
   var miniLength = Math.min(oldJson.length, newJson.length);
   console.log("miniLength is " + miniLength);
@@ -121,8 +122,6 @@ function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
     patches.push(tmpPatches[l]);
   }
   console.log("--------Array complete-------");
-  // console.log(typeof(oldJson));
-  // console.log(Array.isArray(oldJson));
 }
 
 function hashArray(obj) {
@@ -229,9 +228,7 @@ function findValueInUnchanged(newValue, unchanged) {
 }
 
 function getKeys(json) {
-
   return Object.keys(json);
-
 }
 
 function patchPointString(str) {
@@ -243,7 +240,5 @@ function patchPointString(str) {
   }
   return str.replace(/~/g, '~0').replace(/\//g, '~1');
 }
-
-
 
 exports = module.exports.diff = diff;
