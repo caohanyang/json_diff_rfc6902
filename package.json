@@ -6,7 +6,9 @@
   "dependencies": {
     "deep-equal": "^1.0.1",
     "fast-json-patch": "^0.5.6",
-    "mocha": "^2.4.5"
+    "fuzzer": "^0.2.0",
+    "mocha": "^2.4.5",
+    "mockjs": "^1.0.1-beta2"
   },
   "devDependencies": {},
   "scripts": {

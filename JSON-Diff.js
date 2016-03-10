@@ -1,6 +1,11 @@
 var copy = require('./deepClone');
 var equal = require('deep-equal');
+// var deepEqual = require('./deepEquals.js');
 var lcs = require('./LCS.js');
+var unchangedArea = require('./unchangedArea.js');
+var patchArea = require('./patchArea.js');
+
+exports = module.exports.diff = diff;
 
 function diff(oldJson, newJson) {
   console.log("===========  Data  ======================");
@@ -9,7 +14,7 @@ function diff(oldJson, newJson) {
 
   // Get the unchanged area
   var unchanged = [];
-  generateUnchanged(oldJson, newJson, unchanged, '');
+  unchangedArea.generateUnchanged(oldJson, newJson, unchanged, '');
   console.log("===========  Unchanged  =================");
   console.log(unchanged);
   console.log("=========================================");
@@ -17,68 +22,11 @@ function diff(oldJson, newJson) {
   // Generate the diff
   var patches = [];
   generateDiff(oldJson, newJson, unchanged, patches, '');
-  handlePatch(patches);
+  patchArea.handlePatch(patches);
   console.log("===========Final Patches=================");
   console.log(patches);
 
   return patches;
-}
-
-function handlePatch(patches) {
-  // Delete the value in 'remove' option
-  for (var i = 0; i < patches.length; i++) {
-    if (patches[i].op === 'remove') {
-      delete patches[i].value;
-    }
-  }
-}
-
-function generateUnchanged(oldJson, newJson, unchanged, path) {
-  // Check if two json is the same
-  // Equal
-  if (equal(oldJson, newJson)) {
-    // console.log({path: path, value: copy.clone(newJson)});
-    unchanged.push( path + "=" + JSON.stringify(newJson));
-    return;
-  }
-
-  // Not equal
-  // Check the type
-  if (typeof oldJson !== typeof newJson) { return; }
-
-  // Type is the same
-  if (Array.isArray(oldJson) && Array.isArray(newJson)) {
-    // Array
-    generateUnchangedArray(oldJson, newJson, unchanged, path);
-    return;
-  }
-
-  if (typeof oldJson === "object" && oldJson !== null && typeof newJson === "object"  && newJson !== null) {
-    // Object
-    generateUnchangedObject(oldJson, newJson, unchanged, path);
-    return;
-  }
-}
-
-//********************Need to be changed ********************
-function generateUnchangedArray(oldJson, newJson, unchanged, path) {
-  var miniLength = Math.min(oldJson.length, newJson.length);
-  console.log("miniLength is " + miniLength);
-  for (var i = 0; i < miniLength; i++) {
-    generateUnchanged(oldJson[i], newJson[i], unchanged, path + "/" + i);
-  }
-}
-
-function generateUnchangedObject(oldJson, newJson, unchanged, path) {
-  var oldKeys = getKeys(oldJson);
-  var newKeys = getKeys(newJson);
-
-  for (var i = 0; i < oldKeys.length; i++) {
-    var oldKey = oldKeys[i];
-    if (newJson.hasOwnProperty(oldKey)) {
-      generateUnchanged(oldJson[oldKey], newJson[oldKey], unchanged, path + "/" + oldKey);
-    }
-  }
 }
 
 function generateDiff(oldJson, newJson, unchanged, patches, path) {
@@ -129,8 +77,8 @@ function hashArray(obj) {
   return JSON.stringify(obj);
 }
 function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
-  var oldKeys = getKeys(oldJson);
-  var newKeys = getKeys(newJson);
+  var oldKeys = Object.keys(oldJson);
+  var newKeys = Object.keys(newJson);
   var removed = false;
 
   console.log("oldKeys: " + oldKeys);
@@ -176,7 +124,7 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     if (!oldJson.hasOwnProperty(newKey)) {
       //Try to find the value in the unchanged area
       // change JSON.stringify()
-      var pointer = findValueInUnchanged(JSON.stringify(newVal), unchanged);
+      var pointer = unchangedArea.findValueInUnchanged(JSON.stringify(newVal), unchanged);
       console.log("pointer: " + pointer);
       if (pointer) {
         //COPY
@@ -184,7 +132,7 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
         patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
       } else {
         // no json.stringnify
-        var previousIndex = findValueInPatch(newVal, patches);
+        var previousIndex = patchArea.findValueInPatch(newVal, patches);
         console.log("previousIndex: " + previousIndex);
 
         if (previousIndex !== -1) {
@@ -205,32 +153,6 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
   }
 }
 
-function findValueInPatch(newValue, patches) {
-  for (var i = 0; i < patches.length; i++) {
-
-    if (equal(newValue, patches[i].value) && patches[i].op === 'remove') {
-      return i;
-    }
-  }
-
-  return -1;
-}
-
-function findValueInUnchanged(newValue, unchanged) {
-  for (var i = 0; i < unchanged.length; i++) {
-    var value = unchanged[i].split("=")[1];
-    console.log("Value = " + value);
-    console.log("newValue = " + newValue);
-    if (equal(newValue, value)) {
-      return unchanged[i].split("=")[0];
-    }
-  }
-}
-
-function getKeys(json) {
-  return Object.keys(json);
-}
-
 function patchPointString(str) {
   // According to RFC 6901
   // '~' needs to be encoded as '~0'
@@ -240,5 +162,3 @@ function patchPointString(str) {
   }
   return str.replace(/~/g, '~0').replace(/\//g, '~1');
 }
-
-exports = module.exports.diff = diff;

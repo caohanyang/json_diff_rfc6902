@@ -2,7 +2,7 @@ var jpn = require('./JSON-Diff');
 var fs = require('fs');
 var fjp = require('fast-json-patch');
 
-var n_pathlogic = 20;
+var n_pathlogic = 27;
 
 for (var i = 1; i <= n_pathlogic; i++) {
   console.log("Processing test case " + i);

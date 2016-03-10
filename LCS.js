@@ -1,4 +1,8 @@
 var equal = require('deep-equal');
+// var dEqual = require('./deepEquals.js');
+var unchangedArea = require('./unchangedArea.js');
+var patchArea = require('./patchArea.js');
+
 module.exports.LCS = LCS;
 
 function LCS (x, y, unchanged, patches, path) {
@@ -115,7 +119,7 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
     } else {
 
       // First MOVE or ADD or COPY
-      var previousIndex = findValueInPatch(y[j], patches);
+      var previousIndex = patchArea.findValueInPatch(y[j], patches);
       console.log("previousIndex: " + previousIndex);
       // ********Need to be fiexed*****************
       // only move when the previousIndex is 0 and patchLength is 1
@@ -129,7 +133,8 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
       } else {
         // ADD OR COPY
         //Try to find the value in the unchanged area
-        var pointer = findValueInUnchanged(JSON.stringify(y[j]), unchanged);
+        // var pointer = findValueInUnchanged(JSON.stringify(y[j]), unchanged);
+        var pointer = unchangedArea.findValueInUnchanged(y[j], unchanged);
         console.log("pointer: " + pointer);
         if (pointer) {
           // COPY
@@ -185,25 +190,4 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
   } else {
     // console.log("reach the end i = " + i);
   }
-}
-
-function findValueInUnchanged(newValue, unchanged) {
-  for (var i = 0; i < unchanged.length; i++) {
-    var value = unchanged[i].split("=")[1];
-    console.log("Value = " + value);
-    console.log("newValue = " + newValue);
-    if (equal(newValue, JSON.stringify(value))) {return unchanged[i].split("=")[0];}
-  }
-}
-
-function findValueInPatch(newValue, patches) {
-
-  for (var i = 0; i < patches.length; i++) {
-    // change JSON.stringify()
-    if (equal(newValue, JSON.stringify(patches[i].value)) && patches[i].op === 'remove') {
-      return i;
-    }
-  }
-
-  return -1;
 }
