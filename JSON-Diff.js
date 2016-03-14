@@ -1,11 +1,18 @@
 var copy = require('./deepClone');
 var equal = require('deep-equal');
 // var deepEqual = require('./deepEquals.js');
+var applyPatches = require('./applyPatches');
 var lcs = require('./LCS.js');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 
 exports = module.exports.diff = diff;
+exports = module.exports.apply = apply;
+
+function apply(app_old, jpn_patch) {
+  console.log("===========Begin to apply patches==============");
+  applyPatches.apply(app_old, jpn_patch);
+}
 
 function diff(oldJson, newJson) {
   console.log("===========  Data  ======================");

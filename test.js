@@ -17,14 +17,19 @@ for (var i = 1; i <= n_pathlogic; i++) {
     var expect_patch = require(root + "expected.json");
     var jpn_patch = require(root + "jpn_patch.json");
     var gen_new = require(root + "gen_new.json");
+    var app_new = require(root + "app_new.json");
 
     it('Case ' + i + ': generate expected patch', function() {
       var equalPatch = deepCompare(jpn_patch, expect_patch);
       assert.equal(equalPatch, true);
     });
-    it('Case ' + i + ': apply patch to get the same JSON', function() {
+    it('Case ' + i + ': FJP apply to get the same JSON', function() {
       var equalJson = deepCompare(gen_new, f_new);
       assert.equal(equalJson, true);
+    });
+    it('Case ' + i + ': Our apply to get the same JSON', function() {
+      var equalJsonApp = deepCompare(app_new, f_new);
+      assert.equal(equalJsonApp, true);
     });
 
   });
