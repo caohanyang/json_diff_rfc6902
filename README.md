@@ -3,7 +3,7 @@ JSON-Diff is to diff two JSON object and generate the patch, which is compliant 
 
 You can use JSON-Diff to
 - **diff** two JSON object
-- **apply** patches (to be done)
+- **apply** patches to get JSON
 
 JSON-Diff is able to handle operations:
 
@@ -31,7 +31,11 @@ _**Array**_
 
 ```js
 var jpn = require('./JSON-Diff');
+
+//diff the two JSON objects to get the pathes
 var jpn_patch = jpn.diff(f_old, f_new);
+//apply the patches to the f_old object
+jpn.apply(f_old, jpn_patch);
 ```
 
 ## TEST
