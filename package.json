@@ -1,6 +1,6 @@
 {
   "name": "json-diff-rfc6902",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This framework is to compare two JSON data and generate the Patch",
   "main": "JSON-Diff.js",
   "dependencies": {
