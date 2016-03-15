@@ -12,6 +12,7 @@
   "authors": [
     "Hanyang CAO"
   ],
+  "ignore": [],
   "license": "MIT",
   "dependencies": {
     "deep-equal": "~0.0.0"
