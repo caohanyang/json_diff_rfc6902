@@ -1,4 +1,3 @@
-var equal = require('deep-equal');
 // var dEqual = require('./deepEquals.js');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');

@@ -1,14 +1,10 @@
 {
-  "name": "JSON-Diff",
+  "name": "json-diff-rfc6902",
   "version": "1.0.0",
   "description": "This framework is to compare two JSON data and generate the Patch",
-  "main": "diff.js",
+  "main": "JSON-Diff.js",
   "dependencies": {
-    "deep-equal": "^1.0.1",
-    "fast-json-patch": "^0.5.6",
-    "fuzzer": "^0.2.0",
-    "mocha": "^2.4.5",
-    "mockjs": "^1.0.1-beta2"
+    "deep-equal": "^1.0.1"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,5 +1,4 @@
 var copy = require('./deepClone');
-var equal = require('deep-equal');
 // var deepEqual = require('./deepEquals.js');
 var applyPatches = require('./applyPatches');
 var lcs = require('./LCS.js');
