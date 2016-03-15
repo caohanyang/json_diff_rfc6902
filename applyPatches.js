@@ -64,11 +64,38 @@ var arrayOps = {
   val_get: objectOps.val_get
 };
 
+var rootOps = {
+  remove: function(root_json) {
+    for (var element in root_json) {
+      // this here is the patch
+      objectOps.remove.call(this, root_json, element);
+    }
+    return true;
+  },
+  add: function(root_json) {
+    rootOps.remove.call(this, root_json);
+    for (var element in this.value) {
+      root_json[element] = this.value[element];
+    }
+    return true;
+  },
+  replace: function(root_json) {
+    apply(root_json, [{"op": "remove", "path": this.path}]);
+    apply(root_json, [{"op": "add", "path": this.path, "value": this.value}]);
+    return true;
+  },
+  copy: objectOps.copy,
+  move: objectOps.move,
+  val_get: function(child_json) {
+    this.value = child_json;
+  }
+};
 
 function apply(all_json, patches) {
    for (var i = 0; i < patches.length; i++) {
      var patch = patches[i];
      if (patch !== void 0) {
+      //when patch = "", it's the root
       var path = patch.path || "";
       console.log(path);
       var keys = path.split("/");
@@ -84,8 +111,11 @@ function apply(all_json, patches) {
       //key is the last element's path
       key = keys[keys.length -1];
 
-      if (key === void 0) {
+      //This is the root operations
+      if (key === "") {
         console.log("The key is undefined");
+        rootOps[patch.op].call(patch, child_json, stringToPoint(key), all_json);
+        break;
       }
 
       if (Array.isArray(child_json)) {
