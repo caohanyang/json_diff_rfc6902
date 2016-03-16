@@ -7,17 +7,17 @@ var objectOps = {
     // console.log(this);
     // console.log(child_json);
     child_json[key] = this.value;
-    console.log("Add operation = " + this.value);
+    // console.log("Add operation = " + this.value);
     return true;
   },
   remove: function(child_json, key, all_json) {
     delete child_json[key];
-    console.log("Remove operation = " + child_json);
+    // console.log("Remove operation = " + child_json);
     return true;
   },
   replace: function(child_json, key, all_json) {
    child_json[key] = this.value;
-   console.log("replace operation = " + this.value);
+  //  console.log("replace operation = " + this.value);
    return true;
   },
   copy: function(child_json, key, all_json) {
@@ -32,7 +32,7 @@ var objectOps = {
     return true;
   },
   move: function(child_json, key, all_json) {
-    console.log("move operation = " + JSON.stringify(child_json));
+    // console.log("move operation = " + JSON.stringify(child_json));
     var tmpOp = {"op": "val_get", "path": this.from};
     //Get the tmp value
     apply(all_json, [tmpOp]);
@@ -47,12 +47,12 @@ var objectOps = {
 var arrayOps = {
   add: function(arr, key, all_json) {
     arr.splice(key, 0, this.value);
-    console.log("Add operation = " + this.value);
+    // console.log("Add operation = " + this.value);
     return true;
   },
   remove: function(arr, key, all_json) {
     arr.splice(key, 1);
-    console.log("Remove operation = " + key);
+    // console.log("Remove operation = " + key);
     return true;
   },
   replace: function(arr, key, all_json) {
@@ -97,7 +97,7 @@ function apply(all_json, patches) {
      if (patch !== void 0) {
       //when patch = "", it's the root
       var path = patch.path || "";
-      console.log(path);
+      // console.log(path);
       var keys = path.split("/");
       var child_json = all_json;
 
@@ -113,13 +113,13 @@ function apply(all_json, patches) {
 
       //This is the root operations
       if (key === "") {
-        console.log("The key is undefined");
+        // console.log("The key is undefined");
         rootOps[patch.op].call(patch, child_json, stringToPoint(key), all_json);
         break;
       }
 
       if (Array.isArray(child_json)) {
-        console.log("***********Array operations****************");
+        // console.log("***********Array operations****************");
         if (key === '-') {
           key = child_json.length;
         } else {
@@ -127,7 +127,7 @@ function apply(all_json, patches) {
         }
         arrayOps[patch.op].call(patch, child_json, key, all_json);
       } else {
-        console.log("***********Object operations***************");
+        // console.log("***********Object operations***************");
         objectOps[patch.op].call(patch, child_json, stringToPoint(key), all_json);
       }
      }

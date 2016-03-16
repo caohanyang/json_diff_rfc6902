@@ -33,7 +33,7 @@ function generateUnchanged(oldJson, newJson, unchanged, path) {
 //********************Need to be changed ********************
 function generateUnchangedArray(oldJson, newJson, unchanged, path) {
   var miniLength = Math.min(oldJson.length, newJson.length);
-  console.log("miniLength is " + miniLength);
+  // console.log("miniLength is " + miniLength);
   for (var i = 0; i < miniLength; i++) {
     generateUnchanged(oldJson[i], newJson[i], unchanged, path + "/" + i);
   }
