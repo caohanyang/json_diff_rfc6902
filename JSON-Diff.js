@@ -8,6 +8,8 @@ var patchArea = require('./patchArea.js');
 exports = module.exports.diff = diff;
 exports = module.exports.apply = apply;
 
+// browserify -s jdr -e JSON-Diff.js -o json-diff-rfc6902.js
+
 function apply(app_old, jpn_patch) {
   applyPatches.apply(app_old, jpn_patch);
 }
