@@ -58,9 +58,13 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // console.log("--------This is Array-------------");
-  // Hash array
-  var x = oldJson.map(hashArray);
-  var y = newJson.map(hashArray);
+  // 1. Array.prototype.map  slow
+  // var x = oldJson.map(hashArray);
+  // var y = newJson.map(hashArray);
+
+  // 2.
+  var x = map(hashArray, oldJson);
+  var y = map(hashArray, newJson);
   // Use LCS
   var tmpPatches = [];
   lcs.LCS(x, y, unchanged, tmpPatches, path);
@@ -159,4 +163,22 @@ function patchPointString(str) {
     return str;
   }
   return str.replace(/~/g, '~0').replace(/\//g, '~1');
+}
+
+
+
+/**
+ * map the array. Faster than Array.prototype.map
+ *
+ * @param  {function} f function
+ * @param  {Array} a array-like
+ * @return {Array}   new Array mapped by f
+ */
+function map(f, a) {
+
+  var b =  new Array(a.length);
+  for (var i = 0; i < a.length; i++) {
+    b[i] = f(a[i]);
+  }
+  return b;
 }

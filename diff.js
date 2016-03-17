@@ -1,6 +1,7 @@
 var jpn = require('./JSON-Diff');
 var fs = require('fs');
 var fjp = require('fast-json-patch');
+var jiff = require('jiff');
 
 var n_pathlogic = 20;
 
@@ -15,6 +16,8 @@ for (var i = 1; i <= n_pathlogic; i++) {
 
   // var exp_patch = require(root + "expected.json");
   var jpn_patch = jpn.diff(f_old, f_new);
+  var jiff_patch = jiff.diff(f_old, f_new);
+  var fjp_patch = fjp.compare(f_old, f_new);
 
   // Use fjp to apply the patch
   fjp.apply(f_old, jpn_patch);

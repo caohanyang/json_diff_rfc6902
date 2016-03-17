@@ -59,9 +59,13 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // console.log("--------This is Array-------------");
-  // Hash array
-  var x = oldJson.map(hashArray);
-  var y = newJson.map(hashArray);
+  // 1. Array.prototype.map  slow
+  // var x = oldJson.map(hashArray);
+  // var y = newJson.map(hashArray);
+
+  // 2.
+  var x = map(hashArray, oldJson);
+  var y = map(hashArray, newJson);
   // Use LCS
   var tmpPatches = [];
   lcs.LCS(x, y, unchanged, tmpPatches, path);
@@ -160,6 +164,24 @@ function patchPointString(str) {
     return str;
   }
   return str.replace(/~/g, '~0').replace(/\//g, '~1');
+}
+
+
+
+/**
+ * map the array. Faster than Array.prototype.map
+ *
+ * @param  {function} f function
+ * @param  {Array} a array-like
+ * @return {Array}   new Array mapped by f
+ */
+function map(f, a) {
+
+  var b =  new Array(a.length);
+  for (var i = 0; i < a.length; i++) {
+    b[i] = f(a[i]);
+  }
+  return b;
 }
 
 },{"./LCS.js":2,"./applyPatches":3,"./deepClone":4,"./patchArea.js":8,"./unchangedArea.js":9}],2:[function(require,module,exports){
@@ -263,33 +285,25 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
   if (i > -1 && j > -1 && x[i] === y[j]) {
 
     printDiff(x, y, matrix, i-1, j-1, start, offset, unchanged, patches, path);
-    // console.log("-----------------------------------");
-    // console.log("offset " + offset.value);
-    // console.log(" " + x[i]+ " i=" +i);
 
   } else if (j > -1 && (i === -1 || matrix[i+1][j] >= matrix[i][j+1])) {
 
     printDiff(x, y, matrix, i, j-1, start, offset, unchanged, patches, path);
-    // console.log("-----------------------------------");
-    // console.log("offset " + offset.value);
-    // console.log("i =  " + i);
 
     // First Add or Replace
     var lastElement = patches[patches.length - 1];
     var tmpPath = path + "/" + (i + start + offset.value);
     if (lastElement !== void 0 && lastElement.op === "remove" && lastElement.path === tmpPath) {
       //First Replace
-      // console.log({  op: "replace", path: tmpPath, value: y[j] });
       patches[patches.length - 1].op = "replace";
       patches[patches.length - 1].value = JSON.parse(y[j]);
     } else {
 
       // First MOVE or ADD or COPY
       var previousIndex = patchArea.findValueInPatch(y[j], patches);
-      // console.log("previousIndex: " + previousIndex);
       // ********Need to be fiexed*****************
       // only move when the previousIndex is 0 and patchLength is 1
-      // if (previousIndex !== -1) {
+      // if (previousIndex !== -1)
       if (previousIndex === 0 && patches.length === 1) {
         // MOVE
         var oldPath = patches[previousIndex].path;
@@ -301,15 +315,11 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
         //Try to find the value in the unchanged area
         // var pointer = findValueInUnchanged(JSON.stringify(y[j]), unchanged);
         var pointer = unchangedArea.findValueInUnchanged(y[j], unchanged);
-        // console.log("pointer: " + pointer);
         if (pointer) {
           // COPY
           // Adjust the index in the unchanged area
           var newPointerArr = pointer.split('/');
           var initIndex = parseInt(newPointerArr[newPointerArr.length - 1]);
-          // console.log("offset: " + offset.value);
-          // console.log("start: " + start);
-          // console.log("initIndex: " + initIndex);
 
           var newIndex;
           // change index
@@ -329,12 +339,10 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
             }
           } else {
             // newIndex < 0, hence the element doesn't exist in the array, add
-            // console.log({  op: "add", path: tmpPath, value: y[j] });
             patches.push({ op: "add", path: tmpPath, value: JSON.parse(y[j]) });
           }
         } else {
           // ADD
-          // console.log({  op: "add", path: tmpPath, value: y[j] });
           patches.push({ op: "add", path: tmpPath, value: JSON.parse(y[j]) });
         }
       }
@@ -345,9 +353,6 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
   } else if (i > -1 && (j === -1 || matrix[i+1][j] < matrix[i][j+1])) {
 
     printDiff(x, y, matrix, i-1, j, start, offset, unchanged, patches, path);
-    // console.log("-----------------------------------");
-    // console.log("offset " + offset.value);
-    // console.log("i =  " + i);
     //First change offset
     offset.value--;
     //Then remove
