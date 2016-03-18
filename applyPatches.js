@@ -1,6 +1,4 @@
-var fs = require('fs');
-
-module.exports.apply = apply;
+exports.apply = apply;
 
 var objectOps = {
   add: function(child_json, key, all_json) {

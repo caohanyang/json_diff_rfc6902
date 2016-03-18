@@ -1,14 +1,13 @@
-var equal = require('deep-equal');
-
-module.exports.findValueInPatch = findValueInPatch;
-module.exports.handlePatch = handlePatch;
+var deepEqual = require('./deepEquals.js');
+exports.findValueInPatch = findValueInPatch;
+exports.handlePatch = handlePatch;
 
 function findValueInPatch(newValue, patches) {
 
   var patchValue;
   for (var i = 0; i < patches.length; i++) {
     patchValue = patches[i].value;
-    if (equal(newValue, typeof patchValue === "string"? patchValue: JSON.stringify(patchValue)) && patches[i].op === 'remove') {
+    if (deepEqual._equals(newValue, typeof patchValue === "string"? patchValue: JSON.stringify(patchValue)) && patches[i].op === 'remove') {
       return i;
     }
   }

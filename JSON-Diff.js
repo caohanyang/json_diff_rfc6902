@@ -1,12 +1,10 @@
-var copy = require('./deepClone');
-// var deepEqual = require('./deepEquals.js');
 var applyPatches = require('./applyPatches');
 var lcs = require('./LCS.js');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 
-exports = module.exports.diff = diff;
-exports = module.exports.apply = apply;
+exports.diff = diff;
+exports.apply = apply;
 
 // browserify -s jdr -e JSON-Diff.js -o json-diff-rfc6902.js
 
@@ -51,20 +49,17 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
   // the endpoint
   if (newJson !== oldJson) {
     // console.log({ op: "replace", path: path, value: copy.clone(newJson)});
-    patches.push({ op: "replace", path: path, value: copy.clone(newJson)});
+    patches.push({ op: "replace", path: path, value: newJson});
   }
 
 }
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // console.log("--------This is Array-------------");
-  // 1. Array.prototype.map  slow
-  // var x = oldJson.map(hashArray);
-  // var y = newJson.map(hashArray);
-
-  // 2.
+  console.time("mapSpeed");
   var x = map(hashArray, oldJson);
   var y = map(hashArray, newJson);
+  console.timeEnd("mapSpeed");
   // Use LCS
   var tmpPatches = [];
   lcs.LCS(x, y, unchanged, tmpPatches, path);
@@ -107,7 +102,9 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
       // Remove
       // console.log({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
       removed = true;
-      patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
+      console.time("Object-remove");
+      patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: oldValue });
+      console.timeEnd("Object-remove");
     }
 
   }
@@ -126,7 +123,9 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     if (!oldJson.hasOwnProperty(newKey)) {
       //Try to find the value in the unchanged area
       // change JSON.stringify()
+      console.time("Object-find");
       var pointer = unchangedArea.findValueInUnchanged(JSON.stringify(newVal), unchanged);
+      console.timeEnd("Object-find");
       // console.log("pointer: " + pointer);
       if (pointer) {
         //COPY
@@ -146,7 +145,7 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
         } else {
           //ADD
           // console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
-          patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
+          patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: newVal});
         }
 
       }

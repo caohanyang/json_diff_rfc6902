@@ -1,12 +1,13 @@
-var equal = require('deep-equal');
-exports = module.exports.generateUnchanged = generateUnchanged;
-exports = module.exports.findValueInUnchanged = findValueInUnchanged;
+var deepEqual = require('./deepEquals.js');
+exports.generateUnchanged = generateUnchanged;
+exports.findValueInUnchanged = findValueInUnchanged;
 
 
 function generateUnchanged(oldJson, newJson, unchanged, path) {
   // Check if two json is the same
   // Equal
-  if (equal(oldJson, newJson)) {
+  if (deepEqual._equals(oldJson, newJson)) {
+  // if (equal(oldJson, newJson)) {
     // console.log({path: path, value: copy.clone(newJson)});
     unchanged.push( path + "=" + JSON.stringify(newJson));
     return;
@@ -58,7 +59,7 @@ function findValueInUnchanged(newValue, unchanged) {
     // console.log("ValueType = " +  Array.isArray(value));
     // console.log("newValue = " +  newValue);
     // console.log("newValueType = " +  typeof newValue);
-    if (equal(newValue, value)) {
+    if (deepEqual._equals(newValue, value)) {
       return unchanged[i].split("=")[0];
     }
   }

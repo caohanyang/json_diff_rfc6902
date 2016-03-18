@@ -1,8 +1,7 @@
-// var dEqual = require('./deepEquals.js');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 
-module.exports.LCS = LCS;
+exports.LCS = LCS;
 
 function LCS (x, y, unchanged, patches, path) {
   //get the trimed sequence
@@ -23,8 +22,9 @@ function LCS (x, y, unchanged, patches, path) {
   var newX = x.slice(start, x_end + 1);
   var newY = y.slice(start, y_end + 1);
 
+  console.time("matrix");
   var matrix = lcsMatrix(newX, newY);
-
+  console.timeEnd("matrix");
   //backtrack
   // var result = lcsResult(newX, newY, matrix);
   // var finalResult = x.slice(0, start) + result + x.slice(x_end + 1, x.length);
@@ -35,8 +35,9 @@ function LCS (x, y, unchanged, patches, path) {
   var offset = {};
   offset.value = 1;
   // pass offset reference
+  console.time("printDiff");
   printDiff(newX, newY, matrix, newX.length - 1, newY.length -1, start, offset, unchanged, patches, path);
-
+  console.timeEnd("printDiff");
 }
 
 function lcsMatrix(x, y) {
@@ -114,6 +115,8 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
 
       // First MOVE or ADD or COPY
       var previousIndex = patchArea.findValueInPatch(y[j], patches);
+      // var previousIndex = -1;  //save 4ms
+      // //
       // ********Need to be fiexed*****************
       // only move when the previousIndex is 0 and patchLength is 1
       // if (previousIndex !== -1)
@@ -126,8 +129,8 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
       } else {
         // ADD OR COPY
         //Try to find the value in the unchanged area
-        // var pointer = findValueInUnchanged(JSON.stringify(y[j]), unchanged);
         var pointer = unchangedArea.findValueInUnchanged(y[j], unchanged);
+        // var pointer = null;  // save 5ms
         if (pointer) {
           // COPY
           // Adjust the index in the unchanged area

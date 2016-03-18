@@ -1,13 +1,11 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.jdr = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var copy = require('./deepClone');
-// var deepEqual = require('./deepEquals.js');
 var applyPatches = require('./applyPatches');
 var lcs = require('./LCS.js');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 
-exports = module.exports.diff = diff;
-exports = module.exports.apply = apply;
+exports.diff = diff;
+exports.apply = apply;
 
 // browserify -s jdr -e JSON-Diff.js -o json-diff-rfc6902.js
 
@@ -52,20 +50,17 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
   // the endpoint
   if (newJson !== oldJson) {
     // console.log({ op: "replace", path: path, value: copy.clone(newJson)});
-    patches.push({ op: "replace", path: path, value: copy.clone(newJson)});
+    patches.push({ op: "replace", path: path, value: newJson});
   }
 
 }
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // console.log("--------This is Array-------------");
-  // 1. Array.prototype.map  slow
-  // var x = oldJson.map(hashArray);
-  // var y = newJson.map(hashArray);
-
-  // 2.
+  console.time("mapSpeed");
   var x = map(hashArray, oldJson);
   var y = map(hashArray, newJson);
+  console.timeEnd("mapSpeed");
   // Use LCS
   var tmpPatches = [];
   lcs.LCS(x, y, unchanged, tmpPatches, path);
@@ -108,7 +103,9 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
       // Remove
       // console.log({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
       removed = true;
-      patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
+      console.time("Object-remove");
+      patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: oldValue });
+      console.timeEnd("Object-remove");
     }
 
   }
@@ -127,7 +124,9 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     if (!oldJson.hasOwnProperty(newKey)) {
       //Try to find the value in the unchanged area
       // change JSON.stringify()
+      console.time("Object-find");
       var pointer = unchangedArea.findValueInUnchanged(JSON.stringify(newVal), unchanged);
+      console.timeEnd("Object-find");
       // console.log("pointer: " + pointer);
       if (pointer) {
         //COPY
@@ -147,7 +146,7 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
         } else {
           //ADD
           // console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
-          patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
+          patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: newVal});
         }
 
       }
@@ -184,12 +183,11 @@ function map(f, a) {
   return b;
 }
 
-},{"./LCS.js":2,"./applyPatches":3,"./deepClone":4,"./patchArea.js":8,"./unchangedArea.js":9}],2:[function(require,module,exports){
-// var dEqual = require('./deepEquals.js');
+},{"./LCS.js":2,"./applyPatches":3,"./patchArea.js":5,"./unchangedArea.js":6}],2:[function(require,module,exports){
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 
-module.exports.LCS = LCS;
+exports.LCS = LCS;
 
 function LCS (x, y, unchanged, patches, path) {
   //get the trimed sequence
@@ -210,8 +208,9 @@ function LCS (x, y, unchanged, patches, path) {
   var newX = x.slice(start, x_end + 1);
   var newY = y.slice(start, y_end + 1);
 
+  console.time("matrix");
   var matrix = lcsMatrix(newX, newY);
-
+  console.timeEnd("matrix");
   //backtrack
   // var result = lcsResult(newX, newY, matrix);
   // var finalResult = x.slice(0, start) + result + x.slice(x_end + 1, x.length);
@@ -222,8 +221,9 @@ function LCS (x, y, unchanged, patches, path) {
   var offset = {};
   offset.value = 1;
   // pass offset reference
+  console.time("printDiff");
   printDiff(newX, newY, matrix, newX.length - 1, newY.length -1, start, offset, unchanged, patches, path);
-
+  console.timeEnd("printDiff");
 }
 
 function lcsMatrix(x, y) {
@@ -301,6 +301,8 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
 
       // First MOVE or ADD or COPY
       var previousIndex = patchArea.findValueInPatch(y[j], patches);
+      // var previousIndex = -1;  //save 4ms
+      // //
       // ********Need to be fiexed*****************
       // only move when the previousIndex is 0 and patchLength is 1
       // if (previousIndex !== -1)
@@ -313,8 +315,8 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
       } else {
         // ADD OR COPY
         //Try to find the value in the unchanged area
-        // var pointer = findValueInUnchanged(JSON.stringify(y[j]), unchanged);
         var pointer = unchangedArea.findValueInUnchanged(y[j], unchanged);
+        // var pointer = null;  // save 5ms
         if (pointer) {
           // COPY
           // Adjust the index in the unchanged area
@@ -363,10 +365,8 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
   }
 }
 
-},{"./patchArea.js":8,"./unchangedArea.js":9}],3:[function(require,module,exports){
-var fs = require('fs');
-
-module.exports.apply = apply;
+},{"./patchArea.js":5,"./unchangedArea.js":6}],3:[function(require,module,exports){
+exports.apply = apply;
 
 var objectOps = {
   add: function(child_json, key, all_json) {
@@ -510,191 +510,97 @@ function stringToPoint(str) {
   return str;
 }
 
-},{"fs":10}],4:[function(require,module,exports){
-/** @license MIT License (c) copyright 2010-2014 original author or authors */
-/** @author Brian Cavalier */
-/** @author John Hann */
+},{}],4:[function(require,module,exports){
+module.exports._equals = _equals;
 
 /**
- * Create a deep copy of x which must be a legal JSON object/array/value
- * @param {object|array|string|number|null} x object/array/value to clone
- * @returns {object|array|string|number|null} clone of x
+ * Compare 2 JSON values, or recursively compare 2 JSON objects or arrays
+ * @param {object|array|string|number|boolean|null} a
+ * @param {object|array|string|number|boolean|null} b
+ * @returns {boolean} true iff a and b are recursively equal
  */
+ var _objectKeys = (function () {
+     if (Object.keys)
+         {return Object.keys;}
 
-function clone(x) {
-  if (x === null | x !== "object")
-  {return x;}
-  // array is object
-  if (Array.isArray(x))
-  {return copyArray(x);}
+     return function (o) {
+         var keys = [];
+         for (var i in o) {
+             if (o.hasOwnProperty(i)) {
+                 keys.push(i);
+             }
+         }
+         return keys;
+     };
+ })();
 
-  if (typeof x === "object")
-  {return copyObject(x);}
-}
+ var _isArray;
+ if (Array.isArray) {
+     _isArray = Array.isArray;
+ } else {
+     _isArray = function (obj) {
+         return obj.push && typeof obj.length === 'number';
+     };
+ }
 
-function copyArray(x) {
+ /**
+  * _equals - This can save a lot of time 5 ms
+  *
+  * @param  {type} a description
+  * @param  {type} b description
+  * @return {type}   description
+  */
+ function _equals(a, b) {
+     switch (typeof a) {
+         case 'undefined':
+         case 'boolean':
+         case 'string':
+         case 'number':
+             return a === b;
+         case 'object':
+             if (a === null)
+                 {return b === null;}
+             if (_isArray(a)) {
+                 if (!_isArray(b) || a.length !== b.length)
+                     {return false;}
 
-  var arr = [];
-  for (var i = 0; i < x.length; x++) {
-    arr[i] = x[i];
-  }
-  return arr;
-}
+                 for (var i = 0, l = a.length; i < l; i++) {
+                   if (!_equals(a[i], b[i]))
+                   {return false;}
+                 }
 
-function copyObject(x) {
-  var objectKeys = Object.keys(x);
-  var obj = {};
-  for (var k, i = 0; i < objectKeys.length; i++) {
-    k = objectKeys[i];
-    obj[k] = x[k];
-  }
+                 return true;
+             }
 
-  return obj;
-}
+             var bKeys = _objectKeys(b);
+             var bLength = bKeys.length;
+             if (_objectKeys(a).length !== bLength)
+                 {return false;}
 
-module.exports.clone = clone;
+             for (var i = 0, k; i < bLength; i++) {
+               k = bKeys[i];
+               if (!(k in a && _equals(a[k], b[k])))
+               {return false;}
+             }
+
+             return true;
+
+         default:
+             return false;
+     }
+ }
 
 },{}],5:[function(require,module,exports){
-var pSlice = Array.prototype.slice;
-var objectKeys = require('./lib/keys.js');
-var isArguments = require('./lib/is_arguments.js');
-
-var deepEqual = module.exports = function (actual, expected, opts) {
-  if (!opts) opts = {};
-  // 7.1. All identical values are equivalent, as determined by ===.
-  if (actual === expected) {
-    return true;
-
-  } else if (actual instanceof Date && expected instanceof Date) {
-    return actual.getTime() === expected.getTime();
-
-  // 7.3. Other pairs that do not both pass typeof value == 'object',
-  // equivalence is determined by ==.
-  } else if (!actual || !expected || typeof actual != 'object' && typeof expected != 'object') {
-    return opts.strict ? actual === expected : actual == expected;
-
-  // 7.4. For all other Object pairs, including Array objects, equivalence is
-  // determined by having the same number of owned properties (as verified
-  // with Object.prototype.hasOwnProperty.call), the same set of keys
-  // (although not necessarily the same order), equivalent values for every
-  // corresponding key, and an identical 'prototype' property. Note: this
-  // accounts for both named and indexed properties on Arrays.
-  } else {
-    return objEquiv(actual, expected, opts);
-  }
-}
-
-function isUndefinedOrNull(value) {
-  return value === null || value === undefined;
-}
-
-function isBuffer (x) {
-  if (!x || typeof x !== 'object' || typeof x.length !== 'number') return false;
-  if (typeof x.copy !== 'function' || typeof x.slice !== 'function') {
-    return false;
-  }
-  if (x.length > 0 && typeof x[0] !== 'number') return false;
-  return true;
-}
-
-function objEquiv(a, b, opts) {
-  var i, key;
-  if (isUndefinedOrNull(a) || isUndefinedOrNull(b))
-    return false;
-  // an identical 'prototype' property.
-  if (a.prototype !== b.prototype) return false;
-  //~~~I've managed to break Object.keys through screwy arguments passing.
-  //   Converting to array solves the problem.
-  if (isArguments(a)) {
-    if (!isArguments(b)) {
-      return false;
-    }
-    a = pSlice.call(a);
-    b = pSlice.call(b);
-    return deepEqual(a, b, opts);
-  }
-  if (isBuffer(a)) {
-    if (!isBuffer(b)) {
-      return false;
-    }
-    if (a.length !== b.length) return false;
-    for (i = 0; i < a.length; i++) {
-      if (a[i] !== b[i]) return false;
-    }
-    return true;
-  }
-  try {
-    var ka = objectKeys(a),
-        kb = objectKeys(b);
-  } catch (e) {//happens when one is a string literal and the other isn't
-    return false;
-  }
-  // having the same number of owned properties (keys incorporates
-  // hasOwnProperty)
-  if (ka.length != kb.length)
-    return false;
-  //the same set of keys (although not necessarily the same order),
-  ka.sort();
-  kb.sort();
-  //~~~cheap key test
-  for (i = ka.length - 1; i >= 0; i--) {
-    if (ka[i] != kb[i])
-      return false;
-  }
-  //equivalent values for every corresponding key, and
-  //~~~possibly expensive deep test
-  for (i = ka.length - 1; i >= 0; i--) {
-    key = ka[i];
-    if (!deepEqual(a[key], b[key], opts)) return false;
-  }
-  return typeof a === typeof b;
-}
-
-},{"./lib/is_arguments.js":6,"./lib/keys.js":7}],6:[function(require,module,exports){
-var supportsArgumentsClass = (function(){
-  return Object.prototype.toString.call(arguments)
-})() == '[object Arguments]';
-
-exports = module.exports = supportsArgumentsClass ? supported : unsupported;
-
-exports.supported = supported;
-function supported(object) {
-  return Object.prototype.toString.call(object) == '[object Arguments]';
-};
-
-exports.unsupported = unsupported;
-function unsupported(object){
-  return object &&
-    typeof object == 'object' &&
-    typeof object.length == 'number' &&
-    Object.prototype.hasOwnProperty.call(object, 'callee') &&
-    !Object.prototype.propertyIsEnumerable.call(object, 'callee') ||
-    false;
-};
-
-},{}],7:[function(require,module,exports){
-exports = module.exports = typeof Object.keys === 'function'
-  ? Object.keys : shim;
-
-exports.shim = shim;
-function shim (obj) {
-  var keys = [];
-  for (var key in obj) keys.push(key);
-  return keys;
-}
-
-},{}],8:[function(require,module,exports){
-var equal = require('deep-equal');
-
-module.exports.findValueInPatch = findValueInPatch;
-module.exports.handlePatch = handlePatch;
+var deepEqual = require('./deepEquals.js');
+exports.findValueInPatch = findValueInPatch;
+exports.handlePatch = handlePatch;
 
 function findValueInPatch(newValue, patches) {
 
   var patchValue;
   for (var i = 0; i < patches.length; i++) {
     patchValue = patches[i].value;
-    if (equal(newValue, typeof patchValue === "string"? patchValue: JSON.stringify(patchValue)) && patches[i].op === 'remove') {
+    if (deepEqual._equals(newValue, typeof patchValue === "string"? patchValue: JSON.stringify(patchValue)) && patches[i].op === 'remove') {
       return i;
     }
   }
@@ -711,16 +617,17 @@ function handlePatch(patches) {
   }
 }
 
-},{"deep-equal":5}],9:[function(require,module,exports){
-var equal = require('deep-equal');
-exports = module.exports.generateUnchanged = generateUnchanged;
-exports = module.exports.findValueInUnchanged = findValueInUnchanged;
+},{"./deepEquals.js":4}],6:[function(require,module,exports){
+var deepEqual = require('./deepEquals.js');
+exports.generateUnchanged = generateUnchanged;
+exports.findValueInUnchanged = findValueInUnchanged;
 
 
 function generateUnchanged(oldJson, newJson, unchanged, path) {
   // Check if two json is the same
   // Equal
-  if (equal(oldJson, newJson)) {
+  if (deepEqual._equals(oldJson, newJson)) {
+  // if (equal(oldJson, newJson)) {
     // console.log({path: path, value: copy.clone(newJson)});
     unchanged.push( path + "=" + JSON.stringify(newJson));
     return;
@@ -772,13 +679,11 @@ function findValueInUnchanged(newValue, unchanged) {
     // console.log("ValueType = " +  Array.isArray(value));
     // console.log("newValue = " +  newValue);
     // console.log("newValueType = " +  typeof newValue);
-    if (equal(newValue, value)) {
+    if (deepEqual._equals(newValue, value)) {
       return unchanged[i].split("=")[0];
     }
   }
 }
 
-},{"deep-equal":5}],10:[function(require,module,exports){
-
-},{}]},{},[1])(1)
+},{"./deepEquals.js":4}]},{},[1])(1)
 });
