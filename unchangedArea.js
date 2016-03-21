@@ -1,4 +1,6 @@
 var deepEqual = require('./deepEquals.js');
+var hashObject = require('./hashObject.js');
+
 exports.generateUnchanged = generateUnchanged;
 exports.findValueInUnchanged = findValueInUnchanged;
 
@@ -31,12 +33,29 @@ function generateUnchanged(oldJson, newJson, unchanged, path) {
   }
 }
 
+function arrayCompare(oldArr, newArr, unchanged, path) {
+  // Check if two array element (string) is the same
+  // Equal
+  if (oldArr === newArr) {
+  // if (equal(oldJson, newJson)) {
+    // console.log({path: path, value: copy.clone(newJson)});
+    unchanged.push( path + "=" + newArr);
+    return;
+  }
+
+}
+
 //********************Need to be changed ********************
 function generateUnchangedArray(oldJson, newJson, unchanged, path) {
-  var miniLength = Math.min(oldJson.length, newJson.length);
+  //When is the Array, stop to find leaf node
+  var x = hashObject.map(hashObject.hash, oldJson);
+  var y = hashObject.map(hashObject.hash, newJson);
+
+  var miniLength = Math.min(x.length, y.length);
   // console.log("miniLength is " + miniLength);
   for (var i = 0; i < miniLength; i++) {
-    generateUnchanged(oldJson[i], newJson[i], unchanged, path + "/" + i);
+    // generateUnchanged(x[i], y[i], unchanged, path + "/" + i);
+    arrayCompare(x[i], y[i], unchanged, path + "/" + i);
   }
 }
 
@@ -55,10 +74,11 @@ function generateUnchangedObject(oldJson, newJson, unchanged, path) {
 function findValueInUnchanged(newValue, unchanged) {
   for (var i = 0; i < unchanged.length; i++) {
     var value = unchanged[i].split("=")[1];
-    // console.log("Value = " +  value);
-    // console.log("ValueType = " +  Array.isArray(value));
-    // console.log("newValue = " +  newValue);
-    // console.log("newValueType = " +  typeof newValue);
+    if (value.length !== newValue.length) {
+      // Speed up ?????
+      continue;
+    }
+
     if (deepEqual._equals(newValue, value)) {
       return unchanged[i].split("=")[0];
     }

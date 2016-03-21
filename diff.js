@@ -2,10 +2,11 @@ var jpn = require('./JSON-Diff');
 var fs = require('fs');
 var fjp = require('fast-json-patch');
 var jiff = require('jiff');
+var jsondiffpatch = require('jsondiffpatch');
 
-var n_pathlogic = 29;
+var n_pathlogic = 20;
 
-for (var i = 29; i <= n_pathlogic; i++) {
+for (var i = 1; i <= n_pathlogic; i++) {
   console.log("Processing test case " + i);
 
   var root = "./tests/" + i + "/";
@@ -25,6 +26,9 @@ for (var i = 29; i <= n_pathlogic; i++) {
   console.time("fjp-diff");
   var fjp_patch = fjp.compare(f_old, f_new);
   console.timeEnd("fjp-diff");
+  console.time("jdp-diff");
+  var jdp_patch = jsondiffpatch.diff(f_old, f_new);
+  console.timeEnd("jdp-diff");
 
   // Use fjp to apply the patch
   fjp.apply(f_old, jpn_patch);
@@ -32,6 +36,7 @@ for (var i = 29; i <= n_pathlogic; i++) {
   jpn.apply(app_old, jpn_patch);
 
   fs.writeFile(root + "jpn_patch.json", JSON.stringify(jpn_patch, null, 2));
+  fs.writeFile(root + "jdp_patch.json", JSON.stringify(jdp_patch, null, 2));
   fs.writeFile(root + "gen_new.json", JSON.stringify(f_old, null, 1));
   fs.writeFile(root + "app_new.json", JSON.stringify(app_old, null, 1));
 
