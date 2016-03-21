@@ -95,6 +95,14 @@ function backtrack(x, y, matrix, i, j) {
   }
 }
 
+function hashObject(obj) {
+  //Default hash
+  return JSON.stringify(obj);
+
+  //String-hash
+  // return hash(obj);
+}
+
 function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) {
   if (i > -1 && j > -1 && x[i] === y[j]) {
 
@@ -107,61 +115,20 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
     // First Add or Replace
     var lastElement = patches[patches.length - 1];
     var tmpPath = path + "/" + (i + start + offset.value);
-    if (lastElement !== void 0 && lastElement.op === "remove" && lastElement.path === tmpPath) {
-      //First Replace
-      patches[patches.length - 1].op = "replace";
-      patches[patches.length - 1].value = JSON.parse(y[j]);
-    } else {
 
-      // First MOVE or ADD or COPY
-      var previousIndex = patchArea.findValueInPatch(y[j], patches);
-      // var previousIndex = -1;  //save 4ms
-      // //
-      // ********Need to be fiexed*****************
-      // only move when the previousIndex is 0 and patchLength is 1
-      // if (previousIndex !== -1)
-      if (previousIndex === 0 && patches.length === 1) {
-        // MOVE
-        var oldPath = patches[previousIndex].path;
-        // console.log({  op: "move", from: oldPath, path: tmpPath});
-        patches.splice(previousIndex, 1);
-        patches.push({ op: "move", from: oldPath, path: tmpPath});
+    if (lastElement !== void 0) {
+      lastElement = JSON.parse(lastElement);
+      if (lastElement !== void 0 && lastElement.op === "remove" && lastElement.path === tmpPath) {
+        //First Replace
+        lastElement.op = "replace";
+        lastElement.value = JSON.parse(y[j]);
+        patches.splice(patches.length - 1, 1, JSON.stringify(lastElement));
+
       } else {
-        // ADD OR COPY
-        //Try to find the value in the unchanged area
-        var pointer = unchangedArea.findValueInUnchanged(y[j], unchanged);
-        // var pointer = null;  // save 5ms
-        if (pointer) {
-          // COPY
-          // Adjust the index in the unchanged area
-          var newPointerArr = pointer.split('/');
-          var initIndex = parseInt(newPointerArr[newPointerArr.length - 1]);
-
-          var newIndex;
-          // change index
-          if (initIndex < start) {
-            newIndex = initIndex;
-          } else {
-            newIndex = initIndex + offset.value - 1;
-          }
-          // console.log("newIndex: " + newIndex);
-          if (newIndex >= 0) {
-            // newIndex >= 0, hence the element exists in the array, copy
-            var index = pointer.lastIndexOf('/');
-            if (index !== -1) {
-              var newPointer = pointer.slice(0, index + 1) + newIndex;
-              // console.log({  op: "copy", path: tmpPath, from: newPointer });
-              patches.push({ op: "copy", path: tmpPath, from: newPointer });
-            }
-          } else {
-            // newIndex < 0, hence the element doesn't exist in the array, add
-            patches.push({ op: "add", path: tmpPath, value: JSON.parse(y[j]) });
-          }
-        } else {
-          // ADD
-          patches.push({ op: "add", path: tmpPath, value: JSON.parse(y[j]) });
-        }
+        addCopyMove(x, y, matrix, i, j, start, offset, unchanged, patches, path, tmpPath);
       }
+    } else {
+      addCopyMove(x, y, matrix, i, j, start, offset, unchanged, patches, path, tmpPath);
     }
     //Then change offset
     offset.value++;
@@ -173,8 +140,65 @@ function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) 
     offset.value--;
     //Then remove
     // console.log({  op: "remove", path: path + "/" + (i + start + offset.value), value: x[i] });
-    patches.push({ op: "remove", path: path + "/" + (i + start + offset.value), value: JSON.parse(x[i]) });
+    patches.push(hashObject({ op: "remove", path: path + "/" + (i + start + offset.value), value: JSON.parse(x[i]) }));
+    // patches.push({ op: "remove", path: path + "/" + (i + start + offset.value), value: oldJson[i] });
   } else {
     // console.log("reach the end i = " + i);
+  }
+}
+
+function addCopyMove(x, y, matrix, i, j, start, offset, unchanged, patches, path, tmpPath) {
+  // First MOVE or ADD or COPY
+  // var templeOps = hashObject({ op: "remove", path: tmpPath, value: JSON.parse(y[j])});
+  var previousIndex = patchArea.findValueInPatch(y[j], patches);
+  // var previousIndex = -1;  //save 4ms
+  // //
+  // ********Need to be fiexed*****************
+  // only move when the previousIndex is 0 and patchLength is 1
+  // if (previousIndex !== -1)
+  if (previousIndex === 0 && patches.length === 1) {
+    // MOVE
+    var oldPath = JSON.parse(patches[previousIndex]).path;
+    // console.log({  op: "move", from: oldPath, path: tmpPath});
+    patches.splice(previousIndex, 1);
+    patches.push(hashObject({ op: "move", from: oldPath, path: tmpPath}));
+  } else {
+    // ADD OR COPY
+    //Try to find the value in the unchanged area
+    // var pointer = unchangedArea.findValueInUnchanged(y[j], unchanged);
+    var pointer = null;  // save 5ms
+    if (pointer) {
+      // COPY
+      // Adjust the index in the unchanged area
+      var newPointerArr = pointer.split('/');
+      var initIndex = parseInt(newPointerArr[newPointerArr.length - 1]);
+
+      var newIndex;
+      // change index
+      if (initIndex < start) {
+        newIndex = initIndex;
+      } else {
+        newIndex = initIndex + offset.value - 1;
+      }
+      // console.log("newIndex: " + newIndex);
+      if (newIndex >= 0) {
+        // newIndex >= 0, hence the element exists in the array, copy
+        var index = pointer.lastIndexOf('/');
+        if (index !== -1) {
+          var newPointer = pointer.slice(0, index + 1) + newIndex;
+          // console.log({  op: "copy", path: tmpPath, from: newPointer });
+          patches.push(hashObject({ op: "copy", path: tmpPath, from: newPointer }));
+        }
+      } else {
+        // newIndex < 0, hence the element doesn't exist in the array, add
+        patches.push(hashObject({ op: "add", path: tmpPath, value: JSON.parse(y[j]) }));
+        // patches.push({ op: "add", path: tmpPath, value: newJson[j] });
+      }
+    } else {
+      // ADD
+      patches.push(hashObject({ op: "add", path: tmpPath, value: JSON.parse(y[j]) }));
+      // patches.push({ op: "add", path: tmpPath, value:  newJson[j] });
+
+    }
   }
 }
