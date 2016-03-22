@@ -30,12 +30,12 @@ _**Array**_
 ## API
 
 ```js
-var jpn = require('./JSON-Diff');
+var jdr = require('json-diff-rfc6902');
 
 //diff the two JSON objects to get the pathes
-var jpn_patch = jpn.diff(f_old, f_new);
+var jdr_patch = jdr.diff(f_old, f_new);
 //apply the patches to the f_old object
-jpn.apply(f_old, jpn_patch);
+jdr.apply(f_old, jdr_patch);
 ```
 
 ## TEST
