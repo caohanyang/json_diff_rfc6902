@@ -23,9 +23,15 @@ _**Array**_
 - **permutation**
 
 ## INSTALL
-`npm install`
 
-`npm install -g mocha`
+### npm
+`npm install json-diff-rfc6902 --save`
+
+### bower
+`bower install json-diff-rfc6902 --save`
+
+- ```json-diff-rfc6902.js``` main bundle
+- ```jdr```  global variable
 
 ## API
 
@@ -39,6 +45,8 @@ jdr.apply(f_old, jdr_patch);
 ```
 
 ## TEST
+`npm install -g mocha`
+
 `node diff.js`
 
 `mocha`
