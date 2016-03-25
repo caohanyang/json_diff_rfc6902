@@ -4,7 +4,7 @@ var lcs = require('./LCS.js');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 var hashObject = require('./hashObject.js');
-// var hash = require('string-hash');
+
 
 exports.diff = diff;
 exports.apply = apply;
@@ -52,18 +52,20 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
   // the endpoint
   if (newJson !== oldJson) {
     // console.log({ op: "replace", path: path, value: copy.clone(newJson)});
-    patches.push(hashObject.hash({ op: "replace", path: path, value: newJson}));
+    patches.push({ op: "replace", path: path, value: newJson});
   }
 
 }
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // console.log("--------This is Array-------------");
+  // x, y is the hash of json
   var x = hashObject.map(hashObject.hash, oldJson);
   var y = hashObject.map(hashObject.hash, newJson);
   // Use LCS
   var tmpPatches = [];
-  lcs.LCS(x, y, unchanged, tmpPatches, path);
+  var tmpPatchHashes = [];
+  lcs.LCS(x, y, oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
   for (var l = 0; l < tmpPatches.length; l++) {
     patches.push(tmpPatches[l]);
   }
@@ -97,7 +99,7 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
       // Remove
       // console.log({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
       removed = true;
-      patches.push(hashObject.hash({ op: "remove", path: path + "/" + patchPointString(oldKey), value: oldValue }));
+      patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: oldValue });
     }
 
   }
@@ -121,26 +123,26 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
       if (pointer) {
         //COPY
         // console.log({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
-        patches.push(hashObject.hash({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer}));
+        patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
       } else {
         // no json.stringnify
-        if (typeof newVal === "string") {
-          // Ajust 333 => "333"
-           newVal = "\"" + newVal + "\"";
-        }
+        // if (typeof newVal === "string") {
+        //   // Ajust 333 => "333"
+        //    newVal = "\"" + newVal + "\"";
+        // }
         var previousIndex = patchArea.findValueInPatch(newVal, patches);
         // console.log("previousIndex: " + previousIndex);
 
         if (previousIndex !== -1) {
           // MOVE
-          var oldPath = JSON.parse(patches[previousIndex]).path;
+          var oldPath = patches[previousIndex].path;
           patches.splice(previousIndex, 1);
           // console.log({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
-          patches.push(hashObject.hash({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)}));
+          patches.push({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
         } else {
           //ADD
           // console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
-          patches.push(hashObject.hash({ op: "add", path: path + "/" + patchPointString(newKey), value: newVal}));
+          patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: newVal});
         }
 
       }
@@ -159,14 +161,14 @@ function patchPointString(str) {
   return str.replace(/~/g, '~0').replace(/\//g, '~1');
 }
 
-},{"./LCS.js":2,"./applyPatches":3,"./hashObject.js":5,"./patchArea.js":6,"./unchangedArea.js":7}],2:[function(require,module,exports){
+},{"./LCS.js":2,"./applyPatches":3,"./hashObject.js":5,"./patchArea.js":7,"./unchangedArea.js":8}],2:[function(require,module,exports){
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 var hashObject = require('./hashObject.js');
 
 exports.LCS = LCS;
 
-function LCS (x, y, unchanged, patches, path) {
+function LCS (x, y, oldJson, newJson, unchanged, patches, patchHashes, path) {
   //get the trimed sequence
   var start = 0;
   var x_end = x.length - 1;
@@ -196,7 +198,7 @@ function LCS (x, y, unchanged, patches, path) {
   var offset = {};
   offset.value = 1;
   // pass offset reference
-  printDiff(newX, newY, matrix, newX.length - 1, newY.length -1, start, offset, unchanged, patches, path);
+  printDiff(newX, newY, oldJson, newJson, matrix, newX.length - 1, newY.length -1, start, offset, unchanged, patches, patchHashes, path);
 }
 
 function lcsMatrix(x, y) {
@@ -255,54 +257,58 @@ function backtrack(x, y, matrix, i, j) {
 }
 
 
-function printDiff(x, y, matrix, i, j, start, offset, unchanged, patches, path) {
+function printDiff(x, y, oldJson, newJson, matrix, i, j, start, offset, unchanged, patches, patchHashes, path) {
   if (i > -1 && j > -1 && x[i] === y[j]) {
 
-    printDiff(x, y, matrix, i-1, j-1, start, offset, unchanged, patches, path);
+    printDiff(x, y, oldJson, newJson, matrix, i-1, j-1, start, offset, unchanged, patches, patchHashes, path);
 
   } else if (j > -1 && (i === -1 || matrix[i+1][j] >= matrix[i][j+1])) {
 
-    printDiff(x, y, matrix, i, j-1, start, offset, unchanged, patches, path);
+    printDiff(x, y, oldJson, newJson, matrix, i, j-1, start, offset, unchanged, patches, patchHashes, path);
 
     // First Add or Replace
     var lastElement = patches[patches.length - 1];
     var tmpPath = path + "/" + (i + start + offset.value);
 
     if (lastElement !== void 0) {
-      lastElement = JSON.parse(lastElement);
-      if (lastElement !== void 0 && lastElement.op === "remove" && lastElement.path === tmpPath) {
+      // lastElement = JSON.parse(lastElement);
+      if (lastElement.op === "remove" && lastElement.path === tmpPath) {
         //First Replace
         lastElement.op = "replace";
-        lastElement.value = JSON.parse(y[j]);
-        patches.splice(patches.length - 1, 1, JSON.stringify(lastElement));
+        lastElement.value = newJson[j+start];
+
+        var lastHash = patchHashes[patchHashes.length - 1];
+        lastHash.op = "replace";
+        lastHash.value = y[j];
+        // patches.splice(patches.length - 1, 1, JSON.stringify(lastElement));
 
       } else {
-        addCopyMove(x, y, matrix, i, j, start, offset, unchanged, patches, path, tmpPath);
+        addCopyMove(x, y, oldJson, newJson, matrix, i, j, start, offset, unchanged, patches, patchHashes, path, tmpPath);
       }
     } else {
-      addCopyMove(x, y, matrix, i, j, start, offset, unchanged, patches, path, tmpPath);
+      addCopyMove(x, y, oldJson, newJson, matrix, i, j, start, offset, unchanged, patches, patchHashes, path, tmpPath);
     }
     //Then change offset
     offset.value++;
 
   } else if (i > -1 && (j === -1 || matrix[i+1][j] < matrix[i][j+1])) {
 
-    printDiff(x, y, matrix, i-1, j, start, offset, unchanged, patches, path);
+    printDiff(x, y, oldJson, newJson, matrix, i-1, j, start, offset, unchanged, patches, patchHashes, path);
     //First change offset
     offset.value--;
     //Then remove
     // console.log({  op: "remove", path: path + "/" + (i + start + offset.value), value: x[i] });
-    patches.push(hashObject.hash({ op: "remove", path: path + "/" + (i + start + offset.value), value: JSON.parse(x[i]) }));
-    // patches.push({ op: "remove", path: path + "/" + (i + start + offset.value), value: oldJson[i] });
+    patchHashes.push({ op: "remove", path: path + "/" + (i + start + offset.value), value: x[i] });
+    patches.push({ op: "remove", path: path + "/" + (i + start + offset.value), value: oldJson[i+start] });
   } else {
     // console.log("reach the end i = " + i);
   }
 }
 
-function addCopyMove(x, y, matrix, i, j, start, offset, unchanged, patches, path, tmpPath) {
+function addCopyMove(x, y, oldJson, newJson, matrix, i, j, start, offset, unchanged, patches, patchHashes, path, tmpPath) {
   // First MOVE or ADD or COPY
   // var templeOps = hashObject({ op: "remove", path: tmpPath, value: JSON.parse(y[j])});
-  var previousIndex = patchArea.findValueInPatch(y[j], patches);
+  var previousIndex = patchArea.findValueInPatchHashes(y[j], patchHashes);
   // var previousIndex = -1;  //save 4ms
   // //
   // ********Need to be fiexed*****************
@@ -310,10 +316,12 @@ function addCopyMove(x, y, matrix, i, j, start, offset, unchanged, patches, path
   // if (previousIndex !== -1)
   if (previousIndex === 0 && patches.length === 1) {
     // MOVE
-    var oldPath = JSON.parse(patches[previousIndex]).path;
+    var oldPath = patches[previousIndex].path;
     // console.log({  op: "move", from: oldPath, path: tmpPath});
+    patchHashes.splice(previousIndex, 1);
     patches.splice(previousIndex, 1);
-    patches.push(hashObject.hash({ op: "move", from: oldPath, path: tmpPath}));
+    patchHashes.push({ op: "move", from: oldPath, path: tmpPath});
+    patches.push({ op: "move", from: oldPath, path: tmpPath});
   } else {
     // ADD OR COPY
     //Try to find the value in the unchanged area
@@ -339,23 +347,25 @@ function addCopyMove(x, y, matrix, i, j, start, offset, unchanged, patches, path
         if (index !== -1) {
           var newPointer = pointer.slice(0, index + 1) + newIndex;
           // console.log({  op: "copy", path: tmpPath, from: newPointer });
-          patches.push(hashObject.hash({ op: "copy", path: tmpPath, from: newPointer }));
+          patchHashes.push({ op: "copy", path: tmpPath, from: newPointer });
+          patches.push({ op: "copy", path: tmpPath, from: newPointer });
         }
       } else {
         // newIndex < 0, hence the element doesn't exist in the array, add
-        patches.push(hashObject.hash({ op: "add", path: tmpPath, value: JSON.parse(y[j]) }));
+        patchHashes.push({ op: "add", path: tmpPath, value: y[j] });
+        patches.push({ op: "add", path: tmpPath, value: newJson[j+start] });
         // patches.push({ op: "add", path: tmpPath, value: newJson[j] });
       }
     } else {
       // ADD
-      patches.push(hashObject.hash({ op: "add", path: tmpPath, value: JSON.parse(y[j]) }));
-      // patches.push({ op: "add", path: tmpPath, value:  newJson[j] });
+      patchHashes.push({ op: "add", path: tmpPath, value: y[j] });
+      patches.push({ op: "add", path: tmpPath, value: newJson[j+start] });
 
     }
   }
 }
 
-},{"./hashObject.js":5,"./patchArea.js":6,"./unchangedArea.js":7}],3:[function(require,module,exports){
+},{"./hashObject.js":5,"./patchArea.js":7,"./unchangedArea.js":8}],3:[function(require,module,exports){
 exports.apply = apply;
 
 var objectOps = {
@@ -581,16 +591,17 @@ module.exports._equals = _equals;
  }
 
 },{}],5:[function(require,module,exports){
+var hashToNum = require('string-hash');
 
 exports.hash = hash;
 exports.map = map;
 
 function hash(obj) {
   //Default hash
-  return JSON.stringify(obj);
+  // return JSON.stringify(obj);
 
   //String-hash
-  // return hash(obj);
+  return hashToNum(obj);
 }
 
 /**
@@ -604,37 +615,56 @@ function map(f, a) {
 
   var b =  new Array(a.length);
   for (var i = 0; i < a.length; i++) {
-    // b[i] = f(typeof a[i] === "string"? a[i]: JSON.stringify(a[i]));
-    b[i] = f(a[i]);
+    b[i] = f(typeof a[i] === "string"? a[i]: JSON.stringify(a[i]));
+    // JSON.stringnify
+    // b[i] = f(a[i]);
   }
   return b;
 }
 
-},{}],6:[function(require,module,exports){
+},{"string-hash":6}],6:[function(require,module,exports){
+module.exports = function(str) {
+  var hash = 5381,
+      i    = str.length
+
+  while(i)
+    hash = (hash * 33) ^ str.charCodeAt(--i)
+
+  /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
+   * integers. Since we want the results to be always positive, if the high bit
+   * is set, unset it and add it back in through (64-bit IEEE) addition. */
+  return hash >= 0 ? hash : (hash & 0x7FFFFFFF) + 0x80000000
+}
+
+},{}],7:[function(require,module,exports){
 var deepEqual = require('./deepEquals.js');
+exports.findValueInPatchHashes = findValueInPatchHashes;
 exports.findValueInPatch = findValueInPatch;
 exports.handlePatch = handlePatch;
+
+function findValueInPatchHashes(newValue, patchHashes) {
+
+  var patchValue;
+
+  for (var i = 0; i < patchHashes.length; i++) {
+    patchValue = patchHashes[i].value;
+
+    if (newValue === patchValue) {
+      return i;
+    }
+  }
+
+  return -1;
+}
 
 function findValueInPatch(newValue, patches) {
 
   var patchValue;
-  // for (var i = 0; i < patches.length; i++) {
-  //   patchValue = patches[i].value;
-  //   if (deepEqual._equals(newValue, typeof patchValue === "string"? patchValue: JSON.stringify(patchValue)) && patches[i].op === 'remove') {
-  //     return i;
-  //   }
-  // }
 
   for (var i = 0; i < patches.length; i++) {
-    patchValue = patches[i];
-    patchValue = patchValue.substring(patchValue.indexOf('value') + 7, patchValue.length - 1);
+    patchValue = patches[i].value;
 
-    if (patchValue.length !== newValue.length) {
-      // Speed up ?????
-      continue;
-    }
-
-    if (deepEqual._equals(newValue, patchValue)) {
+    if (newValue === patchValue) {
       return i;
     }
   }
@@ -645,14 +675,14 @@ function findValueInPatch(newValue, patches) {
 function handlePatch(patches) {
   // Delete the value in 'remove' option
   for (var i = 0; i < patches.length; i++) {
-    patches[i] = JSON.parse(patches[i]);
+    // patches[i] = JSON.parse(patches[i]);
     if (patches[i].op === 'remove') {
       delete patches[i].value;
     }
   }
 }
 
-},{"./deepEquals.js":4}],7:[function(require,module,exports){
+},{"./deepEquals.js":4}],8:[function(require,module,exports){
 var deepEqual = require('./deepEquals.js');
 var hashObject = require('./hashObject.js');
 
@@ -729,12 +759,8 @@ function generateUnchangedObject(oldJson, newJson, unchanged, path) {
 function findValueInUnchanged(newValue, unchanged) {
   for (var i = 0; i < unchanged.length; i++) {
     var value = unchanged[i].split("=")[1];
-    if (value.length !== newValue.length) {
-      // Speed up ?????
-      continue;
-    }
 
-    if (deepEqual._equals(newValue, value)) {
+    if (newValue.toString() === value) {
       return unchanged[i].split("=")[0];
     }
   }

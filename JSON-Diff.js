@@ -3,7 +3,7 @@ var lcs = require('./LCS.js');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 var hashObject = require('./hashObject.js');
-// var hash = require('string-hash');
+
 
 exports.diff = diff;
 exports.apply = apply;
@@ -51,18 +51,20 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
   // the endpoint
   if (newJson !== oldJson) {
     // console.log({ op: "replace", path: path, value: copy.clone(newJson)});
-    patches.push(hashObject.hash({ op: "replace", path: path, value: newJson}));
+    patches.push({ op: "replace", path: path, value: newJson});
   }
 
 }
 
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // console.log("--------This is Array-------------");
+  // x, y is the hash of json
   var x = hashObject.map(hashObject.hash, oldJson);
   var y = hashObject.map(hashObject.hash, newJson);
   // Use LCS
   var tmpPatches = [];
-  lcs.LCS(x, y, unchanged, tmpPatches, path);
+  var tmpPatchHashes = [];
+  lcs.LCS(x, y, oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
   for (var l = 0; l < tmpPatches.length; l++) {
     patches.push(tmpPatches[l]);
   }
@@ -96,7 +98,7 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
       // Remove
       // console.log({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
       removed = true;
-      patches.push(hashObject.hash({ op: "remove", path: path + "/" + patchPointString(oldKey), value: oldValue }));
+      patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: oldValue });
     }
 
   }
@@ -120,26 +122,26 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
       if (pointer) {
         //COPY
         // console.log({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
-        patches.push(hashObject.hash({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer}));
+        patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
       } else {
         // no json.stringnify
-        if (typeof newVal === "string") {
-          // Ajust 333 => "333"
-           newVal = "\"" + newVal + "\"";
-        }
+        // if (typeof newVal === "string") {
+        //   // Ajust 333 => "333"
+        //    newVal = "\"" + newVal + "\"";
+        // }
         var previousIndex = patchArea.findValueInPatch(newVal, patches);
         // console.log("previousIndex: " + previousIndex);
 
         if (previousIndex !== -1) {
           // MOVE
-          var oldPath = JSON.parse(patches[previousIndex]).path;
+          var oldPath = patches[previousIndex].path;
           patches.splice(previousIndex, 1);
           // console.log({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
-          patches.push(hashObject.hash({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)}));
+          patches.push({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
         } else {
           //ADD
           // console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
-          patches.push(hashObject.hash({ op: "add", path: path + "/" + patchPointString(newKey), value: newVal}));
+          patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: newVal});
         }
 
       }

@@ -74,12 +74,8 @@ function generateUnchangedObject(oldJson, newJson, unchanged, path) {
 function findValueInUnchanged(newValue, unchanged) {
   for (var i = 0; i < unchanged.length; i++) {
     var value = unchanged[i].split("=")[1];
-    if (value.length !== newValue.length) {
-      // Speed up ?????
-      continue;
-    }
 
-    if (deepEqual._equals(newValue, value)) {
+    if (newValue.toString() === value) {
       return unchanged[i].split("=")[0];
     }
   }
