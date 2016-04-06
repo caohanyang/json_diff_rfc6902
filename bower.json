@@ -1,7 +1,7 @@
 {
   "name": "json-diff-rfc6902",
   "main": "JSON-Diff.js",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "homepage": "https://github.com/caohanyang/JSON-Diff",
   "description": "This framework is to compare two JSON data and generate the Patch",
   "keywords": [

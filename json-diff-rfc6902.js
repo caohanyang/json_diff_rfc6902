@@ -60,12 +60,16 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // console.log("--------This is Array-------------");
   // x, y is the hash of json
-  var x = hashObject.map(hashObject.hash, oldJson);
-  var y = hashObject.map(hashObject.hash, newJson);
+  // var x = hashObject.map(hashObject.hash, oldJson);
+  // var y = hashObject.map(hashObject.hash, newJson);
   // Use LCS
   var tmpPatches = [];
   var tmpPatchHashes = [];
-  lcs.LCS(x, y, oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+  // lcs.LCS(x, y, oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+
+  // Use sortBack
+  tmpPatches = lcs.sortBack(oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+
   for (var l = 0; l < tmpPatches.length; l++) {
     patches.push(tmpPatches[l]);
   }
@@ -165,8 +169,336 @@ function patchPointString(str) {
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 var hashObject = require('./hashObject.js');
+var applyPatches = require('./applyPatches');
 
 exports.LCS = LCS;
+exports.sortBack = sortBack;
+
+function transformIndex(element, m, array) {
+  var finalIndex;
+
+   switch(element.op) {
+     case 'add':
+     case 'replace':
+     case 'copy':
+          // When add, replace and copy, add directly
+          return element.index;
+     case 'remove':
+          finalIndex = element.index;
+          break;
+     case 'move':
+          finalIndex = element.from;
+          break;
+   }
+
+   for (var i = 0; i < m; i++) {
+      switch (array[i].op) {
+        case 'remove':
+           if(finalIndex > array[i].index) {
+             // when equal, don't --
+             finalIndex --;
+           }
+          break;
+        case 'add':
+        case 'copy':
+          if(finalIndex >= array[i].index) {
+            // when equal, do ++
+            finalIndex ++;
+          }
+          break;
+        case 'replace':
+          // When equal, don't change
+          break;
+
+        case 'move':
+          if (array[i].from !== array[i].index) {
+            var min = Math.min(array[i].from, array[i].index);
+            var max = Math.max(array[i].from, array[i].index);
+
+            if (finalIndex >= min && finalIndex <= max) {
+              if (array[i].from > array[i].index) {
+                finalIndex ++;
+              } else {
+                finalIndex --;
+              }
+            }
+          }
+          break;
+      }
+   }
+
+  return finalIndex;
+
+}
+
+function operationValue (op) {
+  switch (op) {
+    case "move"   : return 0;
+    case "remove" : return 1;
+    case "add"    : return 2;
+    case "replace": return 3;
+    case "copy"   : return 4;
+  }
+}
+
+function compare(a, b) {
+  if (a.index === b.index) {
+    // Order: move < remove < add
+    var a_value = operationValue(a.op);
+    var b_value = operationValue(b.op);
+
+    if (a_value > b_value) {
+      return 1;
+    } else {
+      return -1;
+    }
+  } else {
+    return a.index - b.index;
+  }
+}
+
+function findCopyInArray(element, m, array, arrUnchanged) {
+  var copyIndex = -1;
+
+  for (var i = 0; i < m; i++) {
+    switch (element.op) {
+      case 'remove':
+      case 'copy':
+                   break;
+      default:
+        // Move Replace Add
+        if (element.hash === array[i].hash) {
+          return array[i].index;
+        }
+        break;
+    }
+  }
+
+  //Find value in arrUnchanged
+  for (var j= 0; j< arrUnchanged.length; j++) {
+    if (element.hash === arrUnchanged[j].hash) {
+      return arrUnchanged[j].index;
+    }
+  }
+
+  return copyIndex;
+}
+
+function sortBack(oldJson, newJson, unchanged, patches, patchHashes, path) {
+  //When is the Array, stop to find leaf node
+  // (hash, value, index)
+  var x = hashObject.mapArray(hashObject.hash, oldJson);
+  var y = hashObject.mapArray(hashObject.hash, newJson);
+
+  // Reserve the origin index
+  // COPY ARRAY
+  var x_sorted = x.slice();
+  var y_sorted = y.slice();
+
+  x_sorted.sort(function(a, b) {return a.hash - b.hash;});
+  y_sorted.sort(function(a, b) {return a.hash - b.hash;});
+
+
+  //Diff
+  var arrPatch = [], arrUnchanged = [];
+  var i= 0, j = 0;
+
+  while (i < x_sorted.length) {
+    while( j < y_sorted.length) {
+      if(x_sorted[i] !== void 0) {
+
+        if (x_sorted[i].hash > y_sorted[j].hash) {
+          arrPatch.push({op: "add", value: y_sorted[j].value, index: y_sorted[j].index, hash: y_sorted[j].hash });
+          j++;
+
+        } else if (x_sorted[i].hash === y_sorted[j].hash) {
+          // Unchanged push
+          unchanged.push( path + '/' + y_sorted[j].index + "=" + JSON.stringify(x_sorted[i].hash));
+          arrPatch.push({op: "move", value: y_sorted[j].value, from: x_sorted[i].index , index: y_sorted[j].index, hash: y_sorted[j].hash });
+          i++;
+          j++;
+
+        } else {
+          arrPatch.push({op: "remove",  index: x_sorted[i].index});
+          i++;
+        }
+
+      } else {
+        arrPatch.push({op: "add", value: y_sorted[j].value, index: y_sorted[j].index, hash: y_sorted[j].hash });
+        j++;
+      }
+
+    }
+
+    if (i < x_sorted.length) {
+      // Remove the rest elements of the x_sorted
+      arrPatch.push({op: "remove",  index: x_sorted[i].index });
+      i++;
+    }
+  }
+
+  //Get the patch to make all the elements are the same, but index is random
+  arrPatch = arrPatch.sort(compare);
+
+  // console.log(arrPatch);
+
+  var m = 0;
+  while(arrPatch[m] !== void 0) {
+    // f_index = transformIndex(arrPatch[m], arrPatch);
+    switch(arrPatch[m].op) {
+      case 'add':
+           arrPatch[m].index = transformIndex(arrPatch[m], m, arrPatch);
+           // replace
+           if (arrPatch[m-1] !== void 0) {
+             if (arrPatch[m-1].op === 'remove' && arrPatch[m-1].index === arrPatch[m].index) {
+               arrPatch[m].op = 'replace';
+               arrPatch.splice(m-1,1);
+               continue;
+             }
+           }
+           // COPY
+           var copyIndex = findCopyInArray(arrPatch[m], m, arrPatch, arrUnchanged);
+           if (copyIndex !== -1) {
+             arrPatch[m].op = 'copy';
+             arrPatch[m].from = copyIndex;
+             if (arrPatch[m].index === arrPatch[m].from) {
+               arrPatch.splice(m, 1);
+               continue;
+             }
+           }
+           break;
+      case 'remove':
+           arrPatch[m].index = transformIndex(arrPatch[m], m, arrPatch);
+           break;
+      case 'move':
+           arrPatch[m].from = transformIndex(arrPatch[m], m, arrPatch);
+           if (arrPatch[m].index === arrPatch[m].from) {
+             arrUnchanged.push(arrPatch[m]);
+             arrPatch.splice(m, 1);
+             continue;
+           }
+           break;
+    }
+    m++;
+  }
+
+  // console.log("==========================");
+  // console.log(arrPatch);
+  //
+  // console.log("========Final===============");
+  arrPatch = arrPatch.map(function(obj) {
+    obj.path = path + '/' + obj.index;
+    delete obj.hash;
+    delete obj.index;
+    if (obj.op === 'move' || obj.op === 'copy') {
+      obj.from = path + '/' + obj.from;
+      delete obj.value;
+    }
+
+    return obj;
+  });
+  // console.log(arrPatch);
+
+  return arrPatch;
+//   arrRemove = arrRemove.map(function(obj) {
+//     obj.path = path + '/' + obj.index;
+//     delete obj.hash;
+//     delete obj.index;
+//     if (obj.op === 'move') {
+//       obj.from = path + '/' + obj.from;
+//       delete obj.value;
+//     }
+//     return obj;
+//   });
+//   arrAdd = arrAdd.sort(function(a,b) {return a.index - b.index;});
+//   arrAdd = arrAdd.map(function(obj, i) {
+//     // var pointer = unchangedArea.findValueInUnchanged(obj.hash, unchanged);
+//     // if (pointer) {
+//     //   var newPointerArr = pointer.split('/');
+//     //   var initIndex = parseInt(newPointerArr[newPointerArr.length - 1]);
+//     //   obj.path = path + '/' + obj.index;
+//     //   obj.from = path + '/' + initIndex;
+//     //   obj.op = "copy";
+//     //   delete obj.value;
+//     // } else {
+//       obj.path = path + '/' + obj.index;
+//     // }
+//
+//     // Adjust the index in the unchangedArea
+//     // for (var i = 0; i < unchanged.length; i++) {
+//     //   if (obj.index <= unchanged[i].index) {
+//     //     unchanged[i].index ++;
+//     //   }
+//     // }
+//
+//     delete obj.hash;
+//     delete obj.index;
+//     return obj;
+//   });
+//
+//   //Handle Replace need to be change
+//   if (arrRemove.length !== 0 && arrAdd.length !== 0) {
+//     if (arrRemove[arrRemove.length - 1].path === arrAdd[0].path) {
+//       arrAdd[0].op = "replace";
+//       arrRemove.pop();
+//     }
+//   }
+//
+//   arrPatch = arrRemove.concat(arrAdd);
+//
+//
+//   //Adjust the index
+//   var x_tmp = x.slice();
+//   applyPatches.apply(x_tmp, arrPatch);
+//
+//   var adjustPatch = [];
+//   var x1 = [];
+//   //remove the same element
+//   for (var m = 0; m< x_tmp.length; m++) {
+//     if (x_tmp[m].hash === y[m].hash) {
+//       delete x_tmp[m];
+//       delete y[m];
+//     } else {
+//       x_tmp[m]
+//     }
+//   }
+//
+//   for (var m = 0; m < x_tmp.length; m++) {
+//     if (x_tmp[m].hash === y[m].hash) {continue;}
+//
+//     for (var n = 0; n < y.length; n++) {
+//       if (x_tmp[m].hash === y[n].hash) {
+//         adjustPatch.push({op: "move", from: m, path: n});
+//       }
+//     }
+//   }
+//
+// adjustPatch = adjustPatch.sort(function(a, b) {return a.path - b.path;});
+// // var finalPatch = [];
+// var from_a, path_a, from_b;
+//
+//  for (var i = 0; i < adjustPatch.length; i++) {
+//    from_a = adjustPatch[i].from;
+//    path_a = adjustPatch[i].path;
+//    if (from_a !== path_a) {
+//      // Handle patch
+//      patches.push({op: "move", from: path + "/" + from_a, path: path + "/" + path_a });
+//      // Hanle index
+//      for (var j = i + 1; j < adjustPatch.length; j++) {
+//        from_b = adjustPatch[j].from;
+//        if (from_b >= Math.min(from_a, path_a) && from_b <= Math.max(from_a, path_a)) {
+//           adjustPatch[j].from ++;
+//        }
+//      }
+//    }
+//  }
+//
+// patches = arrPatch.concat(patches);
+//
+// return patches;
+
+}
+
 
 function LCS (x, y, oldJson, newJson, unchanged, patches, patchHashes, path) {
   //get the trimed sequence
@@ -365,7 +697,7 @@ function addCopyMove(x, y, oldJson, newJson, matrix, i, j, start, offset, unchan
   }
 }
 
-},{"./hashObject.js":5,"./patchArea.js":7,"./unchangedArea.js":8}],3:[function(require,module,exports){
+},{"./applyPatches":3,"./hashObject.js":5,"./patchArea.js":7,"./unchangedArea.js":8}],3:[function(require,module,exports){
 exports.apply = apply;
 
 var objectOps = {
@@ -595,6 +927,7 @@ var hashToNum = require('string-hash');
 
 exports.hash = hash;
 exports.map = map;
+exports.mapArray = mapArray;
 
 function hash(obj) {
   //Default hash
@@ -613,11 +946,30 @@ function hash(obj) {
  */
 function map(f, a) {
 
-  var b =  new Array(a.length);
+  var b =  new Array({});
   for (var i = 0; i < a.length; i++) {
     b[i] = f(typeof a[i] === "string"? a[i]: JSON.stringify(a[i]));
     // JSON.stringnify
     // b[i] = f(a[i]);
+  }
+  return b;
+}
+
+/**
+ * map the array. Faster than Array.prototype.map
+ *
+ * @param  {function} f function
+ * @param  {Array} a array-like
+ * @return {Array}   new Array mapped by f
+ */
+function mapArray(f, a) {
+
+  var b =  [];
+  for (var i = 0; i < a.length; i++) {
+    b[i] = {};
+    b[i].hash = f(typeof a[i] === "string"? a[i]: JSON.stringify(a[i]));
+    b[i].index = i;
+    b[i].value = a[i];
   }
   return b;
 }
@@ -685,6 +1037,7 @@ function handlePatch(patches) {
 },{"./deepEquals.js":4}],8:[function(require,module,exports){
 var deepEqual = require('./deepEquals.js');
 var hashObject = require('./hashObject.js');
+var applyPatches = require('./applyPatches');
 
 exports.generateUnchanged = generateUnchanged;
 exports.findValueInUnchanged = findValueInUnchanged;
@@ -732,16 +1085,8 @@ function arrayCompare(oldArr, newArr, unchanged, path) {
 
 //********************Need to be changed ********************
 function generateUnchangedArray(oldJson, newJson, unchanged, path) {
-  //When is the Array, stop to find leaf node
-  var x = hashObject.map(hashObject.hash, oldJson);
-  var y = hashObject.map(hashObject.hash, newJson);
-
-  var miniLength = Math.min(x.length, y.length);
-  // console.log("miniLength is " + miniLength);
-  for (var i = 0; i < miniLength; i++) {
-    // generateUnchanged(x[i], y[i], unchanged, path + "/" + i);
-    arrayCompare(x[i], y[i], unchanged, path + "/" + i);
-  }
+    // Do nothing now
+    // Generate when diff
 }
 
 function generateUnchangedObject(oldJson, newJson, unchanged, path) {
@@ -766,5 +1111,5 @@ function findValueInUnchanged(newValue, unchanged) {
   }
 }
 
-},{"./deepEquals.js":4,"./hashObject.js":5}]},{},[1])(1)
+},{"./applyPatches":3,"./deepEquals.js":4,"./hashObject.js":5}]},{},[1])(1)
 });

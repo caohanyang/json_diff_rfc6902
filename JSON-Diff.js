@@ -59,12 +59,16 @@ function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
 function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // console.log("--------This is Array-------------");
   // x, y is the hash of json
-  var x = hashObject.map(hashObject.hash, oldJson);
-  var y = hashObject.map(hashObject.hash, newJson);
+  // var x = hashObject.map(hashObject.hash, oldJson);
+  // var y = hashObject.map(hashObject.hash, newJson);
   // Use LCS
   var tmpPatches = [];
   var tmpPatchHashes = [];
-  lcs.LCS(x, y, oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+  // lcs.LCS(x, y, oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+
+  // Use sortBack
+  tmpPatches = lcs.sortBack(oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+
   for (var l = 0; l < tmpPatches.length; l++) {
     patches.push(tmpPatches[l]);
   }

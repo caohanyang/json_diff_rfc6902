@@ -1,5 +1,6 @@
 var deepEqual = require('./deepEquals.js');
 var hashObject = require('./hashObject.js');
+var applyPatches = require('./applyPatches');
 
 exports.generateUnchanged = generateUnchanged;
 exports.findValueInUnchanged = findValueInUnchanged;
@@ -47,16 +48,8 @@ function arrayCompare(oldArr, newArr, unchanged, path) {
 
 //********************Need to be changed ********************
 function generateUnchangedArray(oldJson, newJson, unchanged, path) {
-  //When is the Array, stop to find leaf node
-  var x = hashObject.map(hashObject.hash, oldJson);
-  var y = hashObject.map(hashObject.hash, newJson);
-
-  var miniLength = Math.min(x.length, y.length);
-  // console.log("miniLength is " + miniLength);
-  for (var i = 0; i < miniLength; i++) {
-    // generateUnchanged(x[i], y[i], unchanged, path + "/" + i);
-    arrayCompare(x[i], y[i], unchanged, path + "/" + i);
-  }
+    // Do nothing now
+    // Generate when diff
 }
 
 function generateUnchangedObject(oldJson, newJson, unchanged, path) {
