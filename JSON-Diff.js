@@ -1,5 +1,5 @@
 var applyPatches = require('./applyPatches');
-var lcs = require('./LCS.js');
+var arrayTransformation = require('./arrayTransformation.js');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 var hashObject = require('./hashObject.js');
@@ -50,7 +50,6 @@ function generateDiff(oldJson, newJson, unchanged, patches, path) {
 function generateValueDiff(oldJson, newJson, unchanged, patches, path) {
   // the endpoint
   if (newJson !== oldJson) {
-    // console.log({ op: "replace", path: path, value: copy.clone(newJson)});
     patches.push({ op: "replace", path: path, value: newJson});
   }
 
@@ -64,10 +63,9 @@ function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // Use LCS
   var tmpPatches = [];
   var tmpPatchHashes = [];
-  // lcs.LCS(x, y, oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
 
   // Use sortBack
-  tmpPatches = lcs.sortBack(oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+  tmpPatches = arrayTransformation.transformArray(oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
 
   for (var l = 0; l < tmpPatches.length; l++) {
     patches.push(tmpPatches[l]);
@@ -80,17 +78,11 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
   var newKeys = Object.keys(newJson);
   var removed = false;
 
-  // console.log("oldKeys: " + oldKeys);
-  // console.log("newKeys: " + newKeys);
-
   var oldKey, oldValue;
   // Loop from the old; from lengths -1 to 0
   for (var i = oldKeys.length -1; i >= 0; i--) {
     oldKey = oldKeys[i];
     oldValue = oldJson[oldKey];
-
-    // console.log("oldKey: " + oldKey);
-    // console.log("oldValue: " + JSON.stringify(oldValue));
 
     if (newJson.hasOwnProperty(oldKey)) {
 
@@ -100,7 +92,6 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
 
     } else {
       // Remove
-      // console.log({ op: "remove", path: path + "/" + patchPointString(oldKey), value: copy.clone(oldValue) });
       removed = true;
       patches.push({ op: "remove", path: path + "/" + patchPointString(oldKey), value: oldValue });
     }
@@ -122,29 +113,20 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
       //Try to find the value in the unchanged area
       // change JSON.stringify()
       var pointer = unchangedArea.findValueInUnchanged(JSON.stringify(newVal), unchanged);
-      // console.log("pointer: " + pointer);
       if (pointer) {
         //COPY
-        // console.log({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
         patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
       } else {
         // no json.stringnify
-        // if (typeof newVal === "string") {
-        //   // Ajust 333 => "333"
-        //    newVal = "\"" + newVal + "\"";
-        // }
         var previousIndex = patchArea.findValueInPatch(newVal, patches);
-        // console.log("previousIndex: " + previousIndex);
 
         if (previousIndex !== -1) {
           // MOVE
           var oldPath = patches[previousIndex].path;
           patches.splice(previousIndex, 1);
-          // console.log({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
           patches.push({ op: "move", from: oldPath, path: path + "/" + patchPointString(newKey)});
         } else {
           //ADD
-          // console.log({ op: "add", path: path + "/" + patchPointString(newKey), value: copy.clone(newVal)});
           patches.push({ op: "add", path: path + "/" + patchPointString(newKey), value: newVal});
         }
 
