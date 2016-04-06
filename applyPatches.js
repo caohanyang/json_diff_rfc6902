@@ -36,6 +36,7 @@ var objectOps = {
     apply(all_json, [tmpOp]);
     apply(all_json, [{"op": "remove", "path": this.from}]);
     apply(all_json, [{"op": "add", "path": this.path, "value": tmpOp.value}]);
+    return true;
   },
   val_get: function(child_json, key) {
     this.value = child_json[key];
@@ -110,7 +111,8 @@ function apply(all_json, patches) {
       key = keys[keys.length -1];
 
       //This is the root operations
-      if (key === "") {
+      // Attention: "" is not undefined
+      if (key === undefined) {
         // console.log("The key is undefined");
         rootOps[patch.op].call(patch, child_json, stringToPoint(key), all_json);
         break;
