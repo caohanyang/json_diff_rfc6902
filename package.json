@@ -4,8 +4,6 @@
   "description": "This framework is to compare two JSON data and generate the Patch",
   "main": "JSON-Diff.js",
   "dependencies": {
-    "jiff": "^0.7.3",
-    "jsondiffpatch": "^0.1.41",
     "string-hash": "^1.1.0"
   },
   "devDependencies": {},
