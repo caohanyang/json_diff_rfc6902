@@ -15,9 +15,12 @@
     "url": "https://github.com/caohanyang/JSON-Diff.git"
   },
   "keywords": [
-    "JSON",
-    "Diff",
-    "Patch"
+    "json",
+    "diff",
+    "patch",
+    "rfc6902", 
+    "jsondiff",
+    "jsonpatch"
   ],
   "author": "Hanyang CAO",
   "license": "ISC",
