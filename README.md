@@ -47,6 +47,8 @@ jdr.apply(f_old, jdr_patch);
 ## TEST
 `npm install -g mocha`
 
+`cd tests`
+
 `node diff.js`
 
 `mocha`
