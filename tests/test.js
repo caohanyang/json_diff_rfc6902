@@ -1,8 +1,8 @@
-var jdr = require('./JSON-Diff');
+var jdr = require('../JSON-Diff');
 var fs = require('fs');
 var assert = require('assert');
 
-var n_pathlogic = 33;
+var n_pathlogic = 35;
 
 for (var i = 1; i <= n_pathlogic; i++) {
 
@@ -10,7 +10,7 @@ for (var i = 1; i <= n_pathlogic; i++) {
   describe('EqualJson', function() {
     console.log("Processing test case " + i);
 
-    var root = "./tests/" + i + "/";
+    var root = "./" + i + "/";
     var f_old = require(root + "old.json");
     var f_new = require(root + "new.json");
 

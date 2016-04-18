@@ -1,7 +1,7 @@
-var applyPatches = require('./applyPatches');
-var unchangedArea = require('./unchangedArea.js');
-var patchArea = require('./patchArea.js');
-var hashObject = require('./hashObject.js');
+var applyPatches = require('./lib/applyPatches');
+var unchangedArea = require('./lib/unchangedArea.js');
+var patchArea = require('./lib/patchArea.js');
+var hashObject = require('./lib/hashObject.js');
 var fjp = require('fast-json-patch');
 
 exports.diff = diff;
