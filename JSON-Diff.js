@@ -2,6 +2,7 @@ var applyPatches = require('./applyPatches');
 var unchangedArea = require('./unchangedArea.js');
 var patchArea = require('./patchArea.js');
 var hashObject = require('./hashObject.js');
+var fjp = require('fast-json-patch');
 
 exports.diff = diff;
 exports.apply = apply;
@@ -320,13 +321,17 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
       case 'add':
            arrPatch[m].index = transformIndex(arrPatch[m], m, arrPatch);
            // replace
-           if (arrPatch[m-1] !== void 0) {
+           if (arrPatch[m-1] !== void 0 ) {
              if (arrPatch[m-1].op === 'remove' && arrPatch[m-1].index === arrPatch[m].index) {
-               // if replace a object, go deeper
-               if (typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
+              //  if replace a object, go deeper
+              //  Set thresholds length == 30
+              // if (JSON.stringify(arrPatch[m-1].value).length > 20 && typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
+              if (typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
                  var tmPatch = [];
+                //1.
                  generateDiff(arrPatch[m-1].value, arrPatch[m].value, unchanged, tmPatch, path + "/" + arrPatch[m-1].index);
-                //  arrPatch.splice(m-1,1);
+                //2.
+                //  tmPatch = fjp.compare(arrPatch[m-1].value, arrPatch[m].value);
                  //Need to be fixed.
                  arrPatch[m].op = 'replace';
                  arrPatch.splice(m-1,1);
