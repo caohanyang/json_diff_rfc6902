@@ -8,16 +8,24 @@ exports.diff = diff;
 exports.apply = apply;
 
 // browserify -s jdr -e JSON-Diff.js -o json-diff-rfc6902.js
+var OBJ_COM = true;
+var ARR_COM = true;
 
 function apply(app_old, jpn_patch) {
   applyPatches.apply(app_old, jpn_patch);
 }
 
-function diff(oldJson, newJson) {
-
+function diff(oldJson, newJson, options) {
+  // Initial
+  if(typeof options === 'object') {
+    if(options.OBJ_COM !== void 0) {OBJ_COM = options.OBJ_COM;}
+    if(options.ARR_COM !== void 0) {ARR_COM = options.ARR_COM;}
+  }
   // Get the unchanged area
   var unchanged = [];
-  unchangedArea.generateUnchanged(oldJson, newJson, unchanged, '');
+  if (OBJ_COM === true) {
+    unchangedArea.generateUnchanged(oldJson, newJson, unchanged, '');
+  }
 
   // Generate the diff
   var patches = [];
@@ -72,7 +80,7 @@ function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
       patches.push(tmpPatches[l]);
     }
   }
-  
+
 }
 
 function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
@@ -89,8 +97,7 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     if (newJson.hasOwnProperty(oldKey)) {
 
       // go deeper
-      generateDiff(oldJson[oldKey], newJson[oldKey], unchanged, patches, path + "/" + oldKey );
-      // ???? patchPointString(oldKey)
+      generateDiff(oldJson[oldKey], newJson[oldKey], unchanged, patches, path + "/" + oldKey);
 
     } else {
       // Remove
@@ -120,7 +127,10 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
         patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
       } else {
         // no json.stringnify
-        var previousIndex = patchArea.findValueInPatch(newVal, patches);
+        var previousIndex = -1;
+        if (OBJ_COM === true) {
+          previousIndex = patchArea.findValueInPatch(newVal, patches);
+        }
 
         if (previousIndex !== -1 && patches[previousIndex].op === 'remove') {
           // MOVE
@@ -330,18 +340,29 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
               //  Set thresholds length == 30
               // if (JSON.stringify(arrPatch[m-1].value).length > 20 && typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
               if (typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
-                 var tmPatch = [];
-                //1.
-                 generateDiff(arrPatch[m-1].value, arrPatch[m].value, unchanged, tmPatch, path + "/" + arrPatch[m-1].index);
-                //2.
-                //  tmPatch = fjp.compare(arrPatch[m-1].value, arrPatch[m].value);
-                 //Need to be fixed.
-                 arrPatch[m].op = 'replace';
-                 arrPatch.splice(m-1,1);
 
-                 arrtmp.pop();
-                 arrtmp = arrtmp.concat(tmPatch);
-                 continue;
+                 if (ARR_COM === true) {
+                   var tmPatch = [];
+                  //1.
+                   generateDiff(arrPatch[m-1].value, arrPatch[m].value, unchanged, tmPatch, path + "/" + arrPatch[m-1].index);
+                  //2.
+                  //  tmPatch = fjp.compare(arrPatch[m-1].value, arrPatch[m].value);
+                   //Need to be fixed.
+                   arrPatch[m].op = 'replace';
+                   arrPatch.splice(m-1,1);
+
+                   arrtmp.pop();
+                   arrtmp = arrtmp.concat(tmPatch);
+                   continue;
+                 } else {
+                   arrPatch[m].op = 'replace';
+                   arrPatch.splice(m-1,1);
+
+                   arrtmp.pop();
+                   arrtmp.push({op: "replace", value: arrPatch[m-1].value, path: path + '/' + arrPatch[m-1].index});
+                   continue;
+                 }
+
                } else {
                  arrPatch[m].op = 'replace';
                  arrPatch.splice(m-1,1);

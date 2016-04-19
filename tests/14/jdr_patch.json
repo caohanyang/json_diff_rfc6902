@@ -1,12 +1,10 @@
 [
   {
     "op": "replace",
-    "path": "/1/f2",
-    "value": 7
-  },
-  {
-    "op": "replace",
-    "path": "/1/f1",
-    "value": 6
+    "value": {
+      "f1": 6,
+      "f2": 7
+    },
+    "path": "/1"
   }
 ]
