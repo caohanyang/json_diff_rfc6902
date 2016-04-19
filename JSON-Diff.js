@@ -63,13 +63,16 @@ function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   var tmpPatches = [];
   var tmpPatchHashes = [];
 
-  // Use sortBack
-  tmpPatches = transformArray(oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
-
-  for (var l = 0; l < tmpPatches.length; l++) {
-    patches.push(tmpPatches[l]);
+  if (oldJson.length === 0) {
+    patches.push({ op: "add", path: path, value: newJson});
+  } else {
+    // Use sortBack
+    tmpPatches = transformArray(oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+    for (var l = 0; l < tmpPatches.length; l++) {
+      patches.push(tmpPatches[l]);
+    }
   }
-  // console.log("--------Array complete-------");
+  
 }
 
 function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {

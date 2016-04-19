@@ -2,7 +2,7 @@ var jdr = require('../JSON-Diff');
 var fs = require('fs');
 var assert = require('assert');
 
-var n_pathlogic = 35;
+var n_pathlogic = 20;
 
 for (var i = 1; i <= n_pathlogic; i++) {
 

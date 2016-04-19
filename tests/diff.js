@@ -5,7 +5,7 @@ var jiff = require('jiff');
 var jsondiffpatch = require('jsondiffpatch');
 var jiff_options = { invertible: false };
 
-var n_pathlogic = 35;
+var n_pathlogic = 20;
 
 for (var i = 1; i <= n_pathlogic; i++) {
   console.log("Processing test case " + i);
@@ -31,7 +31,7 @@ for (var i = 1; i <= n_pathlogic; i++) {
   var jdp_patch = jsondiffpatch.diff(f_old, f_new);
   console.timeEnd("jdp-diff");
 
-  // Use fjp to apply the patch
+  // Use fjp to apply the patch fjp_patch jdr_patch
   fjp.apply(f_old, fjp_patch);
 
   jdr.apply(app_old, jdr_patch);
