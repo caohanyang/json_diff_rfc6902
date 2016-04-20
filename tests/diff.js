@@ -22,9 +22,9 @@ for (var i = 1; i <= n_pathlogic; i++) {
   var jdr_patch = jdr.diff(f_old, f_new, {OBJ_COM: true, ARR_COM: true});
   console.timeEnd("jdr-diff");
 
-  // console.time("jiff-diff");
-  // var jiff_patch = jiff.diff(f_old, f_new, jiff_options);
-  // console.timeEnd("jiff-diff");
+  console.time("jiff-diff");
+  var jiff_patch = jiff.diff(f_old, f_new, jiff_options);
+  console.timeEnd("jiff-diff");
   console.time("fjp-diff");
   var fjp_patch = fjp.compare(f_old, f_new);
   console.timeEnd("fjp-diff");
@@ -32,14 +32,14 @@ for (var i = 1; i <= n_pathlogic; i++) {
   var jdp_patch = jsondiffpatch.diff(f_old, f_new);
   console.timeEnd("jdp-diff");
 
-  // Use fjp to apply the patch fjp_patch jdr_patch
-  fjp.apply(f_old, fjp_patch);
+  // Use fjp to apply the patch fjp_patch jdr_patch jiff_patch
+  fjp.apply(f_old, jiff_patch);
 
   jdr.apply(app_old, jdr_patch);
 
   fs.writeFile(root + "jdr_patch.json", JSON.stringify(jdr_patch, null, 0));
   fs.writeFile(root + "fjp_patch.json", JSON.stringify(fjp_patch, null, 0));
-  // fs.writeFile(root + "jiff_patch.json", JSON.stringify(jiff_patch, null, 2));
+  fs.writeFile(root + "jiff_patch.json", JSON.stringify(jiff_patch, null, 0));
   fs.writeFile(root + "fjp_new.json", JSON.stringify(f_old, null, 0));
   fs.writeFile(root + "jdr_new.json", JSON.stringify(app_old, null, 0));
   fs.writeFile(root + "new_ori.json", JSON.stringify(f_new, null, 0));

@@ -39,7 +39,13 @@ _**Array**_
 var jdr = require('json-diff-rfc6902');
 
 //diff the two JSON objects to get the pathes
-var jdr_patch = jdr.diff(f_old, f_new);
+var jdr_patch = jdr.diff(f_old, f_new [, options]);
+
+The third parameter is optional, use the object options.
+Default:
+options.OBJ_COM = true   // Generate copy and move for object
+options.ARR_COM = true   // Generate minimal patch for array
+
 //apply the patches to the f_old object
 jdr.apply(f_old, jdr_patch);
 ```
