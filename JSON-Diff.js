@@ -67,6 +67,8 @@ function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
   // x, y is the hash of json
   // var x = hashObject.map(hashObject.hash, oldJson);
   // var y = hashObject.map(hashObject.hash, newJson);
+  if (oldJson.length === 0 && newJson.length ===0 ) {return;}
+
   // Use LCS
   var tmpPatches = [];
   var tmpPatchHashes = [];
@@ -299,7 +301,7 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
         } else if (x_sorted[i].hash === y_sorted[j].hash) {
           // Unchanged push
           unchanged.push( path + '/' + y_sorted[j].index + "=" + JSON.stringify(x_sorted[i].hash));
-          arrPatch.push({op: "move", value: y_sorted[j].value, from: x_sorted[i].index , index: y_sorted[j].index, hash: y_sorted[j].hash });
+          arrPatch.push({op: "move", value: y_sorted[j].value, valueOld: x_sorted[i].value, from: x_sorted[i].index , index: y_sorted[j].index, hash: y_sorted[j].hash });
           i++;
           j++;
 
@@ -340,6 +342,17 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
               //  Set thresholds length == 30
               // if (JSON.stringify(arrPatch[m-1].value).length > 20 && typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
               if (typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
+
+                //  var oldHash = simhash(JSON.stringify(arrPatch[m-1].value)).toString().replace(/,/g,"");
+                //  var newHash = simhash(JSON.stringify(arrPatch[m].value)).toString().replace(/,/g,"");
+                //  var distance = hamming(oldHash, newHash);
+                //  console.log("distance: " + distance);
+
+                // var simi = stringSimilarity.compareTwoStrings(JSON.stringify(arrPatch[m-1].value), JSON.stringify(arrPatch[m].value));
+                // console.log("simi: " + simi);
+
+                // var simi = sift(JSON.stringify(arrPatch[m-1].value), JSON.stringify(arrPatch[m].value));
+                // console.log(simi);
 
                  if (ARR_COM === true) {
                    var tmPatch = [];
@@ -412,9 +425,22 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
       case 'move':
            arrPatch[m].from = transformIndex(arrPatch[m], m, arrPatch);
            if (arrPatch[m].index === arrPatch[m].from) {
-             arrUnchanged.push(arrPatch[m]);
-             arrPatch.splice(m, 1);
-             continue;
+             if (JSON.stringify(arrPatch[m].valueOld) === JSON.stringify(arrPatch[m].value)) {
+
+               arrUnchanged.push(arrPatch[m]);
+               arrPatch.splice(m, 1);
+               continue;
+             } else {
+               //If index is the same, go to the internal node
+               var tmMove = [];
+               generateDiff(arrPatch[m].valueOld, arrPatch[m].value, unchanged, tmMove, path + "/" + arrPatch[m].index);
+
+               // Remove current move in the patch.
+               arrPatch.splice(m,1);
+               arrtmp = arrtmp.concat(tmMove);
+               continue;
+             }
+
            }
 
            arrtmp.push({op: "move", from: path + '/' + arrPatch[m].from, path: path + '/' + arrPatch[m].index});
