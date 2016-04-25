@@ -2,7 +2,6 @@ var applyPatches = require('./lib/applyPatches');
 var unchangedArea = require('./lib/unchangedArea.js');
 var patchArea = require('./lib/patchArea.js');
 var hashObject = require('./lib/hashObject.js');
-var fjp = require('fast-json-patch');
 
 exports.diff = diff;
 exports.apply = apply;
@@ -10,6 +9,7 @@ exports.apply = apply;
 // browserify -s jdr -e JSON-Diff.js -o json-diff-rfc6902.js
 var OBJ_COM = true;
 var ARR_COM = true;
+var HASH_ID = null;
 
 function apply(app_old, jpn_patch) {
   applyPatches.apply(app_old, jpn_patch);
@@ -20,6 +20,7 @@ function diff(oldJson, newJson, options) {
   if(typeof options === 'object') {
     if(options.OBJ_COM !== void 0) {OBJ_COM = options.OBJ_COM;}
     if(options.ARR_COM !== void 0) {ARR_COM = options.ARR_COM;}
+    if(options.HASH_ID !== void 0) {HASH_ID = options.HASH_ID;}
   }
   // Get the unchanged area
   var unchanged = [];
@@ -274,8 +275,8 @@ function findCopyInArray(element, m, array, arrUnchanged) {
 function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path, jsondiff) {
   //When is the Array, stop to find leaf node
   // (hash, value, index)
-  var x = hashObject.mapArray(hashObject.hash, oldJson);
-  var y = hashObject.mapArray(hashObject.hash, newJson);
+  var x = hashObject.mapArray(hashObject.hash, oldJson, HASH_ID);
+  var y = hashObject.mapArray(hashObject.hash, newJson, HASH_ID);
 
   // Reserve the origin index
   // COPY ARRAY
@@ -327,8 +328,6 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
   //Get the patch to make all the elements are the same, but index is random
   arrPatch = arrPatch.sort(compare);
 
-  // console.log(arrPatch);
-
   var m = 0;
   while(arrPatch[m] !== void 0) {
     // f_index = transformIndex(arrPatch[m], arrPatch);
@@ -342,17 +341,6 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
               //  Set thresholds length == 30
               // if (JSON.stringify(arrPatch[m-1].value).length > 20 && typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
               if (typeof arrPatch[m-1].value === "object" && arrPatch[m-1].value !== null && typeof arrPatch[m].value === "object"  && arrPatch[m].value !== null) {
-
-                //  var oldHash = simhash(JSON.stringify(arrPatch[m-1].value)).toString().replace(/,/g,"");
-                //  var newHash = simhash(JSON.stringify(arrPatch[m].value)).toString().replace(/,/g,"");
-                //  var distance = hamming(oldHash, newHash);
-                //  console.log("distance: " + distance);
-
-                // var simi = stringSimilarity.compareTwoStrings(JSON.stringify(arrPatch[m-1].value), JSON.stringify(arrPatch[m].value));
-                // console.log("simi: " + simi);
-
-                // var simi = sift(JSON.stringify(arrPatch[m-1].value), JSON.stringify(arrPatch[m].value));
-                // console.log(simi);
 
                  if (ARR_COM === true) {
                    var tmPatch = [];
@@ -452,11 +440,6 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
   }
 
-  // console.log(arrtmp);
-  // console.log("==========================");
-  // console.log(arrPatch);
-  //
-  // console.log("========Final===============");
   arrPatch = arrPatch.map(function(obj) {
     obj.path = path + '/' + obj.index;
     delete obj.hash;
@@ -468,7 +451,6 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
     return obj;
   });
-  // console.log(arrPatch);
 
   return arrtmp;
 
