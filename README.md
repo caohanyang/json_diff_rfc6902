@@ -45,6 +45,9 @@ The third parameter is optional, use the object options.
 Default:
 options.OBJ_COM = true   // Generate copy and move for object
 options.ARR_COM = true   // Generate minimal patch for array
+options.HASH_ID = null   // manually set the hash value
+
+For example, if options.HASH_ID = "title", it will get the property value "title" of the elements in the array, and use them as the hash value to execute the operations transformation algorithem.
 
 //apply the patches to the f_old object
 jdr.apply(f_old, jdr_patch);

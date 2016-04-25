@@ -1,0 +1,11 @@
+[
+  {
+    "op": "add",
+    "path": "/d",
+    "value": "333"
+  },
+  {
+    "op": "remove",
+    "path": "/c"
+  }
+]
