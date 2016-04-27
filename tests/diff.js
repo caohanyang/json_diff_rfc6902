@@ -2,12 +2,11 @@ var jdr = require('../JSON-Diff');
 var fs = require('fs');
 var fjp = require('fast-json-patch');
 var jiff = require('jiff');
-var jsondiffpatch = require('jsondiffpatch');
 var jiff_options = { invertible: false };
 var json8 = require('json8-patch');
 var rfc6902 = require('rfc6902');
 
-var n_pathlogic = 20;
+var n_pathlogic = 21;
 
 for (var i = 1; i <= n_pathlogic; i++) {
   console.log("Processing test case " + i);
@@ -30,9 +29,6 @@ for (var i = 1; i <= n_pathlogic; i++) {
   console.time("fjp-diff");
   var fjp_patch = fjp.compare(f_old, f_new);
   console.timeEnd("fjp-diff");
-  console.time("jdp-diff");
-  var jdp_patch = jsondiffpatch.diff(f_old, f_new);
-  console.timeEnd("jdp-diff");
   console.time("rfc6902");
   var rfc6902_patch = rfc6902.createPatch(f_old, f_new);
   console.timeEnd("rfc6902");
@@ -52,7 +48,7 @@ for (var i = 1; i <= n_pathlogic; i++) {
   fs.writeFile(root + "json8_patch.json", JSON.stringify(json8_patch, null, 2));
   fs.writeFile(root + "fjp_new.json", JSON.stringify(f_old, null, 2));
   fs.writeFile(root + "jdr_new.json", JSON.stringify(app_old, null, 2));
-  fs.writeFile(root + "new_ori.json", JSON.stringify(f_new, null, 2));
-  fs.writeFile(root + "old_ori.json", JSON.stringify(old_ori, null, 2));
+  // fs.writeFile(root + "new_ori.json", JSON.stringify(f_new, null, 2));
+  // fs.writeFile(root + "old_ori.json", JSON.stringify(old_ori, null, 2));
 
 }

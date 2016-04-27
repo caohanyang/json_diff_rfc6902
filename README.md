@@ -48,13 +48,17 @@ options.ARR_COM = true   // Generate minimal patch for array
 options.HASH_ID = null   // manually set the hash value
 
 // For example, if options.HASH_ID = "title", it will get the property value "title" of the elements in the array, and use them as the hash value to execute the operations transformation algorithem.
+var jdr_patch = jdr.diff(f_old, f_new, {OBJ_COM: true, ARR_COM: true, HASH_ID: "title"});
 
 // apply the patches to the f_old object
 jdr.apply(f_old, jdr_patch);
+
 ```
 
 ## TEST
 `npm install -g mocha`
+
+`npm install -g fast-json-patch jiff json8-patch rfc6902`
 
 `cd tests`
 
@@ -181,3 +185,9 @@ Permutation of a objects in an array of objects. [a, b, c] => [c, b, a]
 ARR_OBJ_PERM5
 
 Permutation of a objects in an array of objects. [a, b, c] => [c, a, b]
+
+# Test 21
+
+ARR_OBJ_MOD
+
+This is an array of objects where every object is added a field.
