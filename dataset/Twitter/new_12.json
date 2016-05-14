@@ -1,0 +1,4373 @@
+[
+  {
+    "created_at": "Thu Apr 21 08:51:59 +0000 2016",
+    "id": 723071771700781000,
+    "id_str": "723071771700781057",
+    "text": "RT @MediapartLeClub: #21Avril, le mot clef de la politique couchée https://t.co/KyokB9qEVh",
+    "entities": {
+      "hashtags": [
+        {
+          "text": "21Avril",
+          "indices": [
+            21,
+            29
+          ]
+        }
+      ],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "MediapartLeClub",
+          "name": "Le Club de Mediapart",
+          "id": 562854016,
+          "id_str": "562854016",
+          "indices": [
+            3,
+            19
+          ]
+        }
+      ],
+      "urls": [
+        {
+          "url": "https://t.co/KyokB9qEVh",
+          "expanded_url": "http://dlvr.it/L6PqZ6",
+          "display_url": "dlvr.it/L6PqZ6",
+          "indices": [
+            67,
+            90
+          ]
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 19976004,
+      "id_str": "19976004",
+      "name": "Mediapart",
+      "screen_name": "mediapart",
+      "location": "Paris",
+      "description": "Les tweets de Mediapart.fr : le journal d'information politique et générale, d'investigation, indépendant et participatif.",
+      "url": "http://t.co/FTZqSuHNaD",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/FTZqSuHNaD",
+              "expanded_url": "http://www.mediapart.fr",
+              "display_url": "mediapart.fr",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1533112,
+      "friends_count": 1517,
+      "listed_count": 8865,
+      "created_at": "Tue Feb 03 15:07:42 +0000 2009",
+      "favourites_count": 796,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 52615,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "EDEFE8",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/742450190/c93f604b210eeb6f575f067ec1bce592.png",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/742450190/c93f604b210eeb6f575f067ec1bce592.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/583204093000359936/cldody3K_normal.png",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/583204093000359936/cldody3K_normal.png",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/19976004/1422272267",
+      "profile_link_color": "868A00",
+      "profile_sidebar_border_color": "000000",
+      "profile_sidebar_fill_color": "FFFFFF",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 3,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr",
+    "retweeted_status": {
+      "created_at": "Thu Apr 21 08:21:36 +0000 2016",
+      "id": 723064127933947900,
+      "id_str": "723064127933947904",
+      "text": "#21Avril, le mot clef de la politique couchée https://t.co/KyokB9qEVh",
+      "entities": {
+        "hashtags": [
+          {
+            "text": "21Avril",
+            "indices": [
+              0,
+              8
+            ]
+          }
+        ],
+        "symbols": [],
+        "user_mentions": [],
+        "urls": [
+          {
+            "url": "https://t.co/KyokB9qEVh",
+            "expanded_url": "http://dlvr.it/L6PqZ6",
+            "display_url": "dlvr.it/L6PqZ6",
+            "indices": [
+              46,
+              69
+            ]
+          }
+        ]
+      },
+      "truncated": false,
+      "source": "<a href=\"http://dlvr.it\" rel=\"nofollow\">dlvr.it</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 562854016,
+        "id_str": "562854016",
+        "name": "Le Club de Mediapart",
+        "screen_name": "MediapartLeClub",
+        "location": "Paris",
+        "description": "Mediapart mais gratuit. Club, blogs, tribunes.",
+        "url": "http://t.co/xKPEH5gsJW",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "url": "http://t.co/xKPEH5gsJW",
+                "expanded_url": "http://blogs.mediapart.fr/",
+                "display_url": "blogs.mediapart.fr",
+                "indices": [
+                  0,
+                  22
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": []
+          }
+        },
+        "protected": false,
+        "followers_count": 18253,
+        "friends_count": 138,
+        "listed_count": 342,
+        "created_at": "Wed Apr 25 12:46:16 +0000 2012",
+        "favourites_count": 2,
+        "utc_offset": 7200,
+        "time_zone": "Amsterdam",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 16441,
+        "lang": "fr",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "C0DEED",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/669073223322062848/4Jw3eyl9_normal.png",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/669073223322062848/4Jw3eyl9_normal.png",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/562854016/1448354764",
+        "profile_link_color": "0084B4",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": true,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 3,
+      "favorite_count": 1,
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "possibly_sensitive_appealable": false,
+      "lang": "fr"
+    }
+  },
+  {
+    "created_at": "Thu Apr 21 08:50:04 +0000 2016",
+    "id": 723071289611571200,
+    "id_str": "723071289611571200",
+    "text": "Bientôt la fin des feux tricolores? https://t.co/IiAIEOPxJI https://t.co/IUeFhaMBBp",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/IiAIEOPxJI",
+          "expanded_url": "http://auto.bfmtv.com/actualite/bientot-la-fin-des-feux-tricolores-968319.html",
+          "display_url": "auto.bfmtv.com/actualite/bien…",
+          "indices": [
+            36,
+            59
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723064371367256000,
+          "id_str": "723064371367256064",
+          "indices": [
+            60,
+            83
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjXNv0WIAAT4uS.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjXNv0WIAAT4uS.jpg",
+          "url": "https://t.co/IUeFhaMBBp",
+          "display_url": "pic.twitter.com/IUeFhaMBBp",
+          "expanded_url": "http://twitter.com/BFMTV/status/723071289611571200/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1000,
+              "h": 600,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 204,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 360,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723064371367256000,
+          "id_str": "723064371367256064",
+          "indices": [
+            60,
+            83
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjXNv0WIAAT4uS.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjXNv0WIAAT4uS.jpg",
+          "url": "https://t.co/IUeFhaMBBp",
+          "display_url": "pic.twitter.com/IUeFhaMBBp",
+          "expanded_url": "http://twitter.com/BFMTV/status/723071289611571200/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1000,
+              "h": 600,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 204,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 360,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 133663801,
+      "id_str": "133663801",
+      "name": "BFMTV",
+      "screen_name": "BFMTV",
+      "location": "France",
+      "description": "1ère chaîne info de France. Retrouvez-nous sur Snapchat/Instagram ➡ bfmtv",
+      "url": "http://t.co/RJduZtgCoz",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/RJduZtgCoz",
+              "expanded_url": "http://www.bfmtv.com",
+              "display_url": "bfmtv.com",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1772159,
+      "friends_count": 410,
+      "listed_count": 6877,
+      "created_at": "Fri Apr 16 09:55:26 +0000 2010",
+      "favourites_count": 62,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 155719,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "1277C9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/112913010/fond_twitter.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/112913010/fond_twitter.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716882609788358656/VTZMk0d4_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716882609788358656/VTZMk0d4_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/133663801/1460096326",
+      "profile_link_color": "1277C9",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 3,
+    "favorite_count": 3,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:49:14 +0000 2016",
+    "id": 723071079921664000,
+    "id_str": "723071079921664000",
+    "text": ".Nicolas #Maurice-Belay ne perd pas une miette de l'opposition, avant de partir courir avec le Kiné #training https://t.co/by93P6BSoC",
+    "entities": {
+      "hashtags": [
+        {
+          "text": "Maurice",
+          "indices": [
+            9,
+            17
+          ]
+        },
+        {
+          "text": "training",
+          "indices": [
+            100,
+            109
+          ]
+        }
+      ],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [],
+      "media": [
+        {
+          "id": 723071045289295900,
+          "id_str": "723071045289295872",
+          "indices": [
+            110,
+            133
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjdSOHWwAACMrE.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjdSOHWwAACMrE.jpg",
+          "url": "https://t.co/by93P6BSoC",
+          "display_url": "pic.twitter.com/by93P6BSoC",
+          "expanded_url": "http://twitter.com/girondins/status/723071079921664000/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 1067,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 1820,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 604,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723071045289295900,
+          "id_str": "723071045289295872",
+          "indices": [
+            110,
+            133
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjdSOHWwAACMrE.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjdSOHWwAACMrE.jpg",
+          "url": "https://t.co/by93P6BSoC",
+          "display_url": "pic.twitter.com/by93P6BSoC",
+          "expanded_url": "http://twitter.com/girondins/status/723071079921664000/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 1067,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 1820,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 604,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 154586685,
+      "id_str": "154586685",
+      "name": "FCGirondins Bordeaux",
+      "screen_name": "girondins",
+      "location": "Bordeaux",
+      "description": "Le Twitter officiel du FC Girondins de Bordeaux.",
+      "url": "http://t.co/58mu7XEwJT",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/58mu7XEwJT",
+              "expanded_url": "http://www.girondins.com",
+              "display_url": "girondins.com",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 211515,
+      "friends_count": 1861,
+      "listed_count": 1040,
+      "created_at": "Fri Jun 11 17:09:40 +0000 2010",
+      "favourites_count": 1226,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 44356,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "010E26",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000178566123/zKKqNY6L.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000178566123/zKKqNY6L.jpeg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/429026575279874048/gNKeLUZr_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/429026575279874048/gNKeLUZr_normal.jpeg",
+      "profile_link_color": "266BEB",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "00173F",
+      "profile_text_color": "95A1BD",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false,
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/154586685/1458376165"
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 3,
+    "favorite_count": 3,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:49:05 +0000 2016",
+    "id": 723071042151964700,
+    "id_str": "723071042151964672",
+    "text": "Le riz de Camargue en danger https://t.co/QU59tK82f0 https://t.co/wWJT93BQAh",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/QU59tK82f0",
+          "expanded_url": "http://l.leparisien.fr/klw2-DTqB",
+          "display_url": "l.leparisien.fr/klw2-DTqB",
+          "indices": [
+            29,
+            52
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723071040184787000,
+          "id_str": "723071040184786944",
+          "indices": [
+            53,
+            76
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjdR7GWIAAgzu8.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjdR7GWIAAgzu8.jpg",
+          "url": "https://t.co/wWJT93BQAh",
+          "display_url": "pic.twitter.com/wWJT93BQAh",
+          "expanded_url": "http://twitter.com/le_Parisien/status/723071042151964672/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 402,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 686,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 228,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723071040184787000,
+          "id_str": "723071040184786944",
+          "indices": [
+            53,
+            76
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjdR7GWIAAgzu8.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjdR7GWIAAgzu8.jpg",
+          "url": "https://t.co/wWJT93BQAh",
+          "display_url": "pic.twitter.com/wWJT93BQAh",
+          "expanded_url": "http://twitter.com/le_Parisien/status/723071042151964672/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 402,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 686,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 228,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://www.nonli.com\" rel=\"nofollow\">Nonli</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 38142665,
+      "id_str": "38142665",
+      "name": "Le Parisien",
+      "screen_name": "le_Parisien",
+      "location": "",
+      "description": "Le Parisien-Aujourd'hui en France, 1er quotidien généraliste de France",
+      "url": "https://t.co/AQz9Qh12Ry",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/AQz9Qh12Ry",
+              "expanded_url": "http://www.leparisien.fr",
+              "display_url": "leparisien.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1475489,
+      "friends_count": 811,
+      "listed_count": 6425,
+      "created_at": "Wed May 06 08:50:13 +0000 2009",
+      "favourites_count": 220,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 155333,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "0A506E",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/308633771/twitter_leparisien.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/308633771/twitter_leparisien.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716965509368061952/9yXu91IA_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716965509368061952/9yXu91IA_normal.jpg",
+      "profile_link_color": "3CB4F0",
+      "profile_sidebar_border_color": "225CC7",
+      "profile_sidebar_fill_color": "AABABF",
+      "profile_text_color": "333366",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 3,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:48:07 +0000 2016",
+    "id": 723070801352613900,
+    "id_str": "723070801352613888",
+    "text": "Stephen Curry pourrait manquer un deuxième match consécutif de play-offs jeudi soir, face… https://t.co/d0xDRJ08Kj https://t.co/Xsy0DgkbTf",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/d0xDRJ08Kj",
+          "expanded_url": "http://bit.ly/1ScNSI5",
+          "display_url": "bit.ly/1ScNSI5",
+          "indices": [
+            91,
+            114
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723070801193238500,
+          "id_str": "723070801193238529",
+          "indices": [
+            115,
+            138
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjdEAyUgAEoY3Z.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjdEAyUgAEoY3Z.jpg",
+          "url": "https://t.co/Xsy0DgkbTf",
+          "display_url": "pic.twitter.com/Xsy0DgkbTf",
+          "expanded_url": "http://twitter.com/lequipe/status/723070801352613888/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 302,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large": {
+              "w": 665,
+              "h": 335,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 171,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723070801193238500,
+          "id_str": "723070801193238529",
+          "indices": [
+            115,
+            138
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjdEAyUgAEoY3Z.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjdEAyUgAEoY3Z.jpg",
+          "url": "https://t.co/Xsy0DgkbTf",
+          "display_url": "pic.twitter.com/Xsy0DgkbTf",
+          "expanded_url": "http://twitter.com/lequipe/status/723070801352613888/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 302,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large": {
+              "w": 665,
+              "h": 335,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 171,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://dlvr.it\" rel=\"nofollow\">dlvr.it</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 18936161,
+      "id_str": "18936161",
+      "name": "L'ÉQUIPE",
+      "screen_name": "lequipe",
+      "location": "France",
+      "description": "Toute l'actualité sportive en temps réel. Suivez-nous sur Snapchat : lequipe.fr",
+      "url": "https://t.co/gJQW9sRsiw",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/gJQW9sRsiw",
+              "expanded_url": "http://www.lequipe.fr/",
+              "display_url": "lequipe.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 3761560,
+      "friends_count": 1708,
+      "listed_count": 7629,
+      "created_at": "Tue Jan 13 12:08:23 +0000 2009",
+      "favourites_count": 182,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 120255,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "E0E0E0",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/668717196529545217/5Lv_tAdv_normal.png",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/668717196529545217/5Lv_tAdv_normal.png",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/18936161/1460387338",
+      "profile_link_color": "E60004",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "EDEDED",
+      "profile_text_color": "1B1B1F",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 6,
+    "favorite_count": 6,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:45:25 +0000 2016",
+    "id": 723070120919179300,
+    "id_str": "723070120919179264",
+    "text": "RT @ajpourlafrance: Début de journée autour des élus d'Ille-et-Vilaine pour @alainjuppe. https://t.co/fhu33Nk6Ps",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "ajpourlafrance",
+          "name": "AJ pour la France",
+          "id": 2805896213,
+          "id_str": "2805896213",
+          "indices": [
+            3,
+            18
+          ]
+        },
+        {
+          "screen_name": "alainjuppe",
+          "name": "Alain Juppé",
+          "id": 258345629,
+          "id_str": "258345629",
+          "indices": [
+            76,
+            87
+          ]
+        }
+      ],
+      "urls": [],
+      "media": [
+        {
+          "id": 723068263010304000,
+          "id_str": "723068263010304000",
+          "indices": [
+            89,
+            112
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjawRUWgAArR8K.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjawRUWgAArR8K.jpg",
+          "url": "https://t.co/fhu33Nk6Ps",
+          "display_url": "pic.twitter.com/fhu33Nk6Ps",
+          "expanded_url": "http://twitter.com/ajpourlafrance/status/723068276641812480/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 450,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 255,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 723068276641812500,
+          "source_status_id_str": "723068276641812480",
+          "source_user_id": 2805896213,
+          "source_user_id_str": "2805896213"
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723068263010304000,
+          "id_str": "723068263010304000",
+          "indices": [
+            89,
+            112
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjawRUWgAArR8K.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjawRUWgAArR8K.jpg",
+          "url": "https://t.co/fhu33Nk6Ps",
+          "display_url": "pic.twitter.com/fhu33Nk6Ps",
+          "expanded_url": "http://twitter.com/ajpourlafrance/status/723068276641812480/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 450,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 255,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 723068276641812500,
+          "source_status_id_str": "723068276641812480",
+          "source_user_id": 2805896213,
+          "source_user_id_str": "2805896213"
+        },
+        {
+          "id": 723068270597804000,
+          "id_str": "723068270597804032",
+          "indices": [
+            89,
+            112
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjawtlWkAAG-Ex.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjawtlWkAAG-Ex.jpg",
+          "url": "https://t.co/fhu33Nk6Ps",
+          "display_url": "pic.twitter.com/fhu33Nk6Ps",
+          "expanded_url": "http://twitter.com/ajpourlafrance/status/723068276641812480/photo/1",
+          "type": "photo",
+          "sizes": {
+            "small": {
+              "w": 340,
+              "h": 255,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 450,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large": {
+              "w": 800,
+              "h": 600,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 723068276641812500,
+          "source_status_id_str": "723068276641812480",
+          "source_user_id": 2805896213,
+          "source_user_id_str": "2805896213"
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 258345629,
+      "id_str": "258345629",
+      "name": "Alain Juppé",
+      "screen_name": "alainjuppe",
+      "location": "France - Bordeaux",
+      "description": "Maire de @Bordeaux, président de @bxmetro, ancien Premier ministre. Candidat aux #primaires2016 pour l'élection #présidentielle2017",
+      "url": "https://t.co/Vr2aR3MdTy",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/Vr2aR3MdTy",
+              "expanded_url": "http://www.al1jup.com",
+              "display_url": "al1jup.com",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 342943,
+      "friends_count": 4347,
+      "listed_count": 2362,
+      "created_at": "Sun Feb 27 14:23:04 +0000 2011",
+      "favourites_count": 4914,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 7236,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "FFFFFF",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000171539981/PnxP-z9l.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000171539981/PnxP-z9l.jpeg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716386126685192192/JmB5UyKi_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716386126685192192/JmB5UyKi_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/258345629/1452159806",
+      "profile_link_color": "000000",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "000000",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweeted_status": {
+      "created_at": "Thu Apr 21 08:38:05 +0000 2016",
+      "id": 723068276641812500,
+      "id_str": "723068276641812480",
+      "text": "Début de journée autour des élus d'Ille-et-Vilaine pour @alainjuppe. https://t.co/fhu33Nk6Ps",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [
+          {
+            "screen_name": "alainjuppe",
+            "name": "Alain Juppé",
+            "id": 258345629,
+            "id_str": "258345629",
+            "indices": [
+              56,
+              67
+            ]
+          }
+        ],
+        "urls": [],
+        "media": [
+          {
+            "id": 723068263010304000,
+            "id_str": "723068263010304000",
+            "indices": [
+              69,
+              92
+            ],
+            "media_url": "http://pbs.twimg.com/media/CgjawRUWgAArR8K.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/CgjawRUWgAArR8K.jpg",
+            "url": "https://t.co/fhu33Nk6Ps",
+            "display_url": "pic.twitter.com/fhu33Nk6Ps",
+            "expanded_url": "http://twitter.com/ajpourlafrance/status/723068276641812480/photo/1",
+            "type": "photo",
+            "sizes": {
+              "large": {
+                "w": 1024,
+                "h": 768,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 600,
+                "h": 450,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "small": {
+                "w": 340,
+                "h": 255,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "extended_entities": {
+        "media": [
+          {
+            "id": 723068263010304000,
+            "id_str": "723068263010304000",
+            "indices": [
+              69,
+              92
+            ],
+            "media_url": "http://pbs.twimg.com/media/CgjawRUWgAArR8K.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/CgjawRUWgAArR8K.jpg",
+            "url": "https://t.co/fhu33Nk6Ps",
+            "display_url": "pic.twitter.com/fhu33Nk6Ps",
+            "expanded_url": "http://twitter.com/ajpourlafrance/status/723068276641812480/photo/1",
+            "type": "photo",
+            "sizes": {
+              "large": {
+                "w": 1024,
+                "h": 768,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 600,
+                "h": 450,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "small": {
+                "w": 340,
+                "h": 255,
+                "resize": "fit"
+              }
+            }
+          },
+          {
+            "id": 723068270597804000,
+            "id_str": "723068270597804032",
+            "indices": [
+              69,
+              92
+            ],
+            "media_url": "http://pbs.twimg.com/media/CgjawtlWkAAG-Ex.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/CgjawtlWkAAG-Ex.jpg",
+            "url": "https://t.co/fhu33Nk6Ps",
+            "display_url": "pic.twitter.com/fhu33Nk6Ps",
+            "expanded_url": "http://twitter.com/ajpourlafrance/status/723068276641812480/photo/1",
+            "type": "photo",
+            "sizes": {
+              "small": {
+                "w": 340,
+                "h": 255,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 600,
+                "h": 450,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "large": {
+                "w": 800,
+                "h": 600,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "truncated": false,
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 2805896213,
+        "id_str": "2805896213",
+        "name": "AJ pour la France",
+        "screen_name": "ajpourlafrance",
+        "location": "France",
+        "description": "Compte officiel du rassemblement initié par @alainjuppe dans l'objectif des #Primaires2016 ouvertes pour l'élection présidentielle de 2017\n#AJ2017",
+        "url": "https://t.co/1ZCTJ4e6p6",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "url": "https://t.co/1ZCTJ4e6p6",
+                "expanded_url": "http://www.alainjuppe2017.fr/",
+                "display_url": "alainjuppe2017.fr",
+                "indices": [
+                  0,
+                  23
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": []
+          }
+        },
+        "protected": false,
+        "followers_count": 6470,
+        "friends_count": 844,
+        "listed_count": 68,
+        "created_at": "Sat Oct 04 17:40:53 +0000 2014",
+        "favourites_count": 1315,
+        "utc_offset": 7200,
+        "time_zone": "Belgrade",
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 5654,
+        "lang": "fr",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "C0DEED",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/716738786311475200/tDQVpdmX_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/716738786311475200/tDQVpdmX_normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/2805896213/1461127289",
+        "profile_link_color": "0084B4",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": true,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 12,
+      "favorite_count": 2,
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "possibly_sensitive_appealable": false,
+      "lang": "fr"
+    },
+    "is_quote_status": false,
+    "retweet_count": 12,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:45:22 +0000 2016",
+    "id": 723070109326123000,
+    "id_str": "723070109326123008",
+    "text": "Gouvernement : Macron poussé vers la sortie https://t.co/3KWvLl8OXJ https://t.co/pbFo4C6rCw",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/3KWvLl8OXJ",
+          "expanded_url": "http://l.leparisien.fr/gXEx-0in1",
+          "display_url": "l.leparisien.fr/gXEx-0in1",
+          "indices": [
+            44,
+            67
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723070107317096400,
+          "id_str": "723070107317096448",
+          "indices": [
+            68,
+            91
+          ],
+          "media_url": "http://pbs.twimg.com/media/Cgjcbn5W0AAvjZ_.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Cgjcbn5W0AAvjZ_.jpg",
+          "url": "https://t.co/pbFo4C6rCw",
+          "display_url": "pic.twitter.com/pbFo4C6rCw",
+          "expanded_url": "http://twitter.com/le_Parisien/status/723070109326123008/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 840,
+              "h": 1140,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 461,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 814,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723070107317096400,
+          "id_str": "723070107317096448",
+          "indices": [
+            68,
+            91
+          ],
+          "media_url": "http://pbs.twimg.com/media/Cgjcbn5W0AAvjZ_.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Cgjcbn5W0AAvjZ_.jpg",
+          "url": "https://t.co/pbFo4C6rCw",
+          "display_url": "pic.twitter.com/pbFo4C6rCw",
+          "expanded_url": "http://twitter.com/le_Parisien/status/723070109326123008/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 840,
+              "h": 1140,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 461,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 814,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://www.nonli.com\" rel=\"nofollow\">Nonli</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 38142665,
+      "id_str": "38142665",
+      "name": "Le Parisien",
+      "screen_name": "le_Parisien",
+      "location": "",
+      "description": "Le Parisien-Aujourd'hui en France, 1er quotidien généraliste de France",
+      "url": "https://t.co/AQz9Qh12Ry",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/AQz9Qh12Ry",
+              "expanded_url": "http://www.leparisien.fr",
+              "display_url": "leparisien.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1475489,
+      "friends_count": 811,
+      "listed_count": 6425,
+      "created_at": "Wed May 06 08:50:13 +0000 2009",
+      "favourites_count": 220,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 155333,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "0A506E",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/308633771/twitter_leparisien.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/308633771/twitter_leparisien.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716965509368061952/9yXu91IA_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716965509368061952/9yXu91IA_normal.jpg",
+      "profile_link_color": "3CB4F0",
+      "profile_sidebar_border_color": "225CC7",
+      "profile_sidebar_fill_color": "AABABF",
+      "profile_text_color": "333366",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 7,
+    "favorite_count": 3,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:45:14 +0000 2016",
+    "id": 723070072902803500,
+    "id_str": "723070072902803456",
+    "text": "Les kitesurfeurs sur un nuage avec l'application Woo Kite https://t.co/MKVEA7bz1j https://t.co/k53GMxdYuA",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/MKVEA7bz1j",
+          "expanded_url": "http://l.leparisien.fr/bDKi-lWfp",
+          "display_url": "l.leparisien.fr/bDKi-lWfp",
+          "indices": [
+            58,
+            81
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723070070956552200,
+          "id_str": "723070070956552193",
+          "indices": [
+            82,
+            105
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcZgcU8AECyxc.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcZgcU8AECyxc.jpg",
+          "url": "https://t.co/k53GMxdYuA",
+          "display_url": "pic.twitter.com/k53GMxdYuA",
+          "expanded_url": "http://twitter.com/le_Parisien/status/723070072902803456/photo/1",
+          "type": "photo",
+          "sizes": {
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 460,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 784,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 260,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723070070956552200,
+          "id_str": "723070070956552193",
+          "indices": [
+            82,
+            105
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcZgcU8AECyxc.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcZgcU8AECyxc.jpg",
+          "url": "https://t.co/k53GMxdYuA",
+          "display_url": "pic.twitter.com/k53GMxdYuA",
+          "expanded_url": "http://twitter.com/le_Parisien/status/723070072902803456/photo/1",
+          "type": "photo",
+          "sizes": {
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 460,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 784,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 260,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://www.nonli.com\" rel=\"nofollow\">Nonli</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 38142665,
+      "id_str": "38142665",
+      "name": "Le Parisien",
+      "screen_name": "le_Parisien",
+      "location": "",
+      "description": "Le Parisien-Aujourd'hui en France, 1er quotidien généraliste de France",
+      "url": "https://t.co/AQz9Qh12Ry",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/AQz9Qh12Ry",
+              "expanded_url": "http://www.leparisien.fr",
+              "display_url": "leparisien.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1475489,
+      "friends_count": 811,
+      "listed_count": 6425,
+      "created_at": "Wed May 06 08:50:13 +0000 2009",
+      "favourites_count": 220,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 155333,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "0A506E",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/308633771/twitter_leparisien.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/308633771/twitter_leparisien.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716965509368061952/9yXu91IA_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716965509368061952/9yXu91IA_normal.jpg",
+      "profile_link_color": "3CB4F0",
+      "profile_sidebar_border_color": "225CC7",
+      "profile_sidebar_fill_color": "AABABF",
+      "profile_text_color": "333366",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 2,
+    "favorite_count": 2,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:45:12 +0000 2016",
+    "id": 723070068553187300,
+    "id_str": "723070068553187329",
+    "text": "Val-d'Oise: un Airbus évite un drone à 2.000 mètres d'altitude https://t.co/iyz2FSOUst https://t.co/laHkE7H37v",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/iyz2FSOUst",
+          "expanded_url": "http://www.bfmtv.com//societe/val-d-oise-un-airbus-evite-un-drone-a-2-000-metres-d-altitude-968559.html",
+          "display_url": "bfmtv.com//societe/val-d…",
+          "indices": [
+            63,
+            86
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723070067513147400,
+          "id_str": "723070067513147392",
+          "indices": [
+            87,
+            110
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcZTnWwAAxme5.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcZTnWwAAxme5.jpg",
+          "url": "https://t.co/laHkE7H37v",
+          "display_url": "pic.twitter.com/laHkE7H37v",
+          "expanded_url": "http://twitter.com/BFMTV/status/723070068553187329/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1000,
+              "h": 600,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 360,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 204,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723070067513147400,
+          "id_str": "723070067513147392",
+          "indices": [
+            87,
+            110
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcZTnWwAAxme5.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcZTnWwAAxme5.jpg",
+          "url": "https://t.co/laHkE7H37v",
+          "display_url": "pic.twitter.com/laHkE7H37v",
+          "expanded_url": "http://twitter.com/BFMTV/status/723070068553187329/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1000,
+              "h": 600,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 360,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 204,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 133663801,
+      "id_str": "133663801",
+      "name": "BFMTV",
+      "screen_name": "BFMTV",
+      "location": "France",
+      "description": "1ère chaîne info de France. Retrouvez-nous sur Snapchat/Instagram ➡ bfmtv",
+      "url": "http://t.co/RJduZtgCoz",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/RJduZtgCoz",
+              "expanded_url": "http://www.bfmtv.com",
+              "display_url": "bfmtv.com",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1772159,
+      "friends_count": 410,
+      "listed_count": 6877,
+      "created_at": "Fri Apr 16 09:55:26 +0000 2010",
+      "favourites_count": 62,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 155719,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "1277C9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/112913010/fond_twitter.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/112913010/fond_twitter.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716882609788358656/VTZMk0d4_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716882609788358656/VTZMk0d4_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/133663801/1460096326",
+      "profile_link_color": "1277C9",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 8,
+    "favorite_count": 1,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:45:10 +0000 2016",
+    "id": 723070056490491900,
+    "id_str": "723070056490491904",
+    "text": "Le musée Unterlinden de Colmar recherche six chefs-d'oeuvre d'Otto Dix https://t.co/KGuCRf3Qdh https://t.co/5yxQXi2fQW",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/KGuCRf3Qdh",
+          "expanded_url": "http://l.leparisien.fr/sUZx-bFdo",
+          "display_url": "l.leparisien.fr/sUZx-bFdo",
+          "indices": [
+            71,
+            94
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723070054439342100,
+          "id_str": "723070054439342080",
+          "indices": [
+            95,
+            118
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcYi6UUAAoN_c.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcYi6UUAAoN_c.jpg",
+          "url": "https://t.co/5yxQXi2fQW",
+          "display_url": "pic.twitter.com/5yxQXi2fQW",
+          "expanded_url": "http://twitter.com/le_Parisien/status/723070056490491904/photo/1",
+          "type": "photo",
+          "sizes": {
+            "small": {
+              "w": 340,
+              "h": 246,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 434,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large": {
+              "w": 1024,
+              "h": 741,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723070054439342100,
+          "id_str": "723070054439342080",
+          "indices": [
+            95,
+            118
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcYi6UUAAoN_c.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcYi6UUAAoN_c.jpg",
+          "url": "https://t.co/5yxQXi2fQW",
+          "display_url": "pic.twitter.com/5yxQXi2fQW",
+          "expanded_url": "http://twitter.com/le_Parisien/status/723070056490491904/photo/1",
+          "type": "photo",
+          "sizes": {
+            "small": {
+              "w": 340,
+              "h": 246,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 434,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "large": {
+              "w": 1024,
+              "h": 741,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://www.nonli.com\" rel=\"nofollow\">Nonli</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 38142665,
+      "id_str": "38142665",
+      "name": "Le Parisien",
+      "screen_name": "le_Parisien",
+      "location": "",
+      "description": "Le Parisien-Aujourd'hui en France, 1er quotidien généraliste de France",
+      "url": "https://t.co/AQz9Qh12Ry",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/AQz9Qh12Ry",
+              "expanded_url": "http://www.leparisien.fr",
+              "display_url": "leparisien.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1475489,
+      "friends_count": 811,
+      "listed_count": 6425,
+      "created_at": "Wed May 06 08:50:13 +0000 2009",
+      "favourites_count": 220,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 155333,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "0A506E",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/308633771/twitter_leparisien.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/308633771/twitter_leparisien.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716965509368061952/9yXu91IA_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716965509368061952/9yXu91IA_normal.jpg",
+      "profile_link_color": "3CB4F0",
+      "profile_sidebar_border_color": "225CC7",
+      "profile_sidebar_fill_color": "AABABF",
+      "profile_text_color": "333366",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 1,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:44:37 +0000 2016",
+    "id": 723069918653100000,
+    "id_str": "723069918653100032",
+    "text": "RT @louane: Super déloc @Nrj_toulouse ❤️💁🏼 https://t.co/gXRiPqDHyK",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "louane",
+          "name": "Louane Emera",
+          "id": 1084305312,
+          "id_str": "1084305312",
+          "indices": [
+            3,
+            10
+          ]
+        },
+        {
+          "screen_name": "NRJ_TOULOUSE",
+          "name": "NRJ Toulouse",
+          "id": 511970780,
+          "id_str": "511970780",
+          "indices": [
+            24,
+            37
+          ]
+        }
+      ],
+      "urls": [],
+      "media": [
+        {
+          "id": 722786129368522800,
+          "id_str": "722786129368522752",
+          "indices": [
+            43,
+            66
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgfaJ7mXIAA7txO.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgfaJ7mXIAA7txO.jpg",
+          "url": "https://t.co/gXRiPqDHyK",
+          "display_url": "pic.twitter.com/gXRiPqDHyK",
+          "expanded_url": "http://twitter.com/louane/status/722786149798961152/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 960,
+              "h": 1280,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 800,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 453,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            }
+          },
+          "source_status_id": 722786149798961200,
+          "source_status_id_str": "722786149798961152",
+          "source_user_id": 1084305312,
+          "source_user_id_str": "1084305312"
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 722786129368522800,
+          "id_str": "722786129368522752",
+          "indices": [
+            43,
+            66
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgfaJ7mXIAA7txO.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgfaJ7mXIAA7txO.jpg",
+          "url": "https://t.co/gXRiPqDHyK",
+          "display_url": "pic.twitter.com/gXRiPqDHyK",
+          "expanded_url": "http://twitter.com/louane/status/722786149798961152/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 960,
+              "h": 1280,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 800,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 453,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            }
+          },
+          "source_status_id": 722786149798961200,
+          "source_status_id_str": "722786149798961152",
+          "source_user_id": 1084305312,
+          "source_user_id_str": "1084305312"
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 32419107,
+      "id_str": "32419107",
+      "name": "NRJ",
+      "screen_name": "NRJhitmusiconly",
+      "location": "France",
+      "description": "NRJ Radio Hit Music Only. Twitter officiel de la radio musicale NRJ. Découvre aussi nos sites sur https://t.co/S32SRepQgR community manager: @tonyonestas",
+      "url": "https://t.co/S32SRepQgR",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/S32SRepQgR",
+              "expanded_url": "http://www.nrj.fr",
+              "display_url": "nrj.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": [
+            {
+              "url": "https://t.co/S32SRepQgR",
+              "expanded_url": "http://www.nrj.fr",
+              "display_url": "nrj.fr",
+              "indices": [
+                98,
+                121
+              ]
+            }
+          ]
+        }
+      },
+      "protected": false,
+      "followers_count": 3247984,
+      "friends_count": 1734,
+      "listed_count": 2587,
+      "created_at": "Fri Apr 17 14:13:17 +0000 2009",
+      "favourites_count": 2008,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 60913,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "FFFFFF",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/590828659910385664/0v4cd68P.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/590828659910385664/0v4cd68P.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/699255364315967488/DfYiDCMN_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/699255364315967488/DfYiDCMN_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/32419107/1460967714",
+      "profile_link_color": "DF0B25",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "EFEFEF",
+      "profile_text_color": "333333",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweeted_status": {
+      "created_at": "Wed Apr 20 13:57:01 +0000 2016",
+      "id": 722786149798961200,
+      "id_str": "722786149798961152",
+      "text": "Super déloc @Nrj_toulouse ❤️💁🏼 https://t.co/gXRiPqDHyK",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "user_mentions": [
+          {
+            "screen_name": "NRJ_TOULOUSE",
+            "name": "NRJ Toulouse",
+            "id": 511970780,
+            "id_str": "511970780",
+            "indices": [
+              12,
+              25
+            ]
+          }
+        ],
+        "urls": [],
+        "media": [
+          {
+            "id": 722786129368522800,
+            "id_str": "722786129368522752",
+            "indices": [
+              31,
+              54
+            ],
+            "media_url": "http://pbs.twimg.com/media/CgfaJ7mXIAA7txO.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/CgfaJ7mXIAA7txO.jpg",
+            "url": "https://t.co/gXRiPqDHyK",
+            "display_url": "pic.twitter.com/gXRiPqDHyK",
+            "expanded_url": "http://twitter.com/louane/status/722786149798961152/photo/1",
+            "type": "photo",
+            "sizes": {
+              "large": {
+                "w": 960,
+                "h": 1280,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 600,
+                "h": 800,
+                "resize": "fit"
+              },
+              "small": {
+                "w": 340,
+                "h": 453,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              }
+            }
+          }
+        ]
+      },
+      "extended_entities": {
+        "media": [
+          {
+            "id": 722786129368522800,
+            "id_str": "722786129368522752",
+            "indices": [
+              31,
+              54
+            ],
+            "media_url": "http://pbs.twimg.com/media/CgfaJ7mXIAA7txO.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/CgfaJ7mXIAA7txO.jpg",
+            "url": "https://t.co/gXRiPqDHyK",
+            "display_url": "pic.twitter.com/gXRiPqDHyK",
+            "expanded_url": "http://twitter.com/louane/status/722786149798961152/photo/1",
+            "type": "photo",
+            "sizes": {
+              "large": {
+                "w": 960,
+                "h": 1280,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 600,
+                "h": 800,
+                "resize": "fit"
+              },
+              "small": {
+                "w": 340,
+                "h": 453,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              }
+            }
+          }
+        ]
+      },
+      "truncated": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 1084305312,
+        "id_str": "1084305312",
+        "name": "Louane Emera",
+        "screen_name": "louane",
+        "location": "Lille - Paris",
+        "description": "Album Chambre 12. En tournée jusqu'au 15 août 2016. Infos sur https://t.co/t90B9EGbmf",
+        "url": "https://t.co/HbGM5vZMrt",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "url": "https://t.co/HbGM5vZMrt",
+                "expanded_url": "http://Instagram.com/louuuuuane",
+                "display_url": "Instagram.com/louuuuuane",
+                "indices": [
+                  0,
+                  23
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": [
+              {
+                "url": "https://t.co/t90B9EGbmf",
+                "expanded_url": "http://louaneofficiel.com",
+                "display_url": "louaneofficiel.com",
+                "indices": [
+                  62,
+                  85
+                ]
+              }
+            ]
+          }
+        },
+        "protected": false,
+        "followers_count": 586536,
+        "friends_count": 1067,
+        "listed_count": 341,
+        "created_at": "Sat Jan 12 22:35:06 +0000 2013",
+        "favourites_count": 5825,
+        "utc_offset": 7200,
+        "time_zone": "Amsterdam",
+        "geo_enabled": true,
+        "verified": true,
+        "statuses_count": 4523,
+        "lang": "fr",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "1A1B1F",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme9/bg.gif",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme9/bg.gif",
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/670513984399876096/-n3UGB0h_normal.png",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/670513984399876096/-n3UGB0h_normal.png",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/1084305312/1455793876",
+        "profile_link_color": "2FC2EF",
+        "profile_sidebar_border_color": "181A1E",
+        "profile_sidebar_fill_color": "252429",
+        "profile_text_color": "666666",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": {
+        "id": "3980fd5d8a818646",
+        "url": "https://api.twitter.com/1.1/geo/id/3980fd5d8a818646.json",
+        "place_type": "city",
+        "name": "Toulouse",
+        "full_name": "Toulouse, France",
+        "country_code": "FR",
+        "country": "France",
+        "contained_within": [],
+        "bounding_box": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                1.3504251,
+                43.5328401
+              ],
+              [
+                1.5153761,
+                43.5328401
+              ],
+              [
+                1.5153761,
+                43.6686742
+              ],
+              [
+                1.3504251,
+                43.6686742
+              ]
+            ]
+          ]
+        },
+        "attributes": {}
+      },
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 228,
+      "favorite_count": 809,
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "possibly_sensitive_appealable": false,
+      "lang": "fr"
+    },
+    "is_quote_status": false,
+    "retweet_count": 228,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:44:25 +0000 2016",
+    "id": 723069867960721400,
+    "id_str": "723069867960721408",
+    "text": "RT @LeMonde_Afrique: #Marrakech célèbre la verve érotique du peintre Farid Belkahia https://t.co/VIgprUJxeq https://t.co/6M1xs4FGli",
+    "entities": {
+      "hashtags": [
+        {
+          "text": "Marrakech",
+          "indices": [
+            21,
+            31
+          ]
+        }
+      ],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "LeMonde_Afrique",
+          "name": "Le Monde Afrique",
+          "id": 2876393283,
+          "id_str": "2876393283",
+          "indices": [
+            3,
+            19
+          ]
+        }
+      ],
+      "urls": [
+        {
+          "url": "https://t.co/VIgprUJxeq",
+          "expanded_url": "http://bit.ly/1Sm5Qo3",
+          "display_url": "bit.ly/1Sm5Qo3",
+          "indices": [
+            84,
+            107
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723068827169370100,
+          "id_str": "723068827169370112",
+          "indices": [
+            108,
+            131
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjbRG-WsAAjQzY.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjbRG-WsAAjQzY.jpg",
+          "url": "https://t.co/6M1xs4FGli",
+          "display_url": "pic.twitter.com/6M1xs4FGli",
+          "expanded_url": "http://twitter.com/LeMonde_Afrique/status/723068828297605120/photo/1",
+          "type": "photo",
+          "sizes": {
+            "small": {
+              "w": 340,
+              "h": 178,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 314,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 600,
+              "h": 314,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 723068828297605100,
+          "source_status_id_str": "723068828297605120",
+          "source_user_id": 2876393283,
+          "source_user_id_str": "2876393283"
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723068827169370100,
+          "id_str": "723068827169370112",
+          "indices": [
+            108,
+            131
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjbRG-WsAAjQzY.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjbRG-WsAAjQzY.jpg",
+          "url": "https://t.co/6M1xs4FGli",
+          "display_url": "pic.twitter.com/6M1xs4FGli",
+          "expanded_url": "http://twitter.com/LeMonde_Afrique/status/723068828297605120/photo/1",
+          "type": "photo",
+          "sizes": {
+            "small": {
+              "w": 340,
+              "h": 178,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 314,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 600,
+              "h": 314,
+              "resize": "fit"
+            }
+          },
+          "source_status_id": 723068828297605100,
+          "source_status_id_str": "723068828297605120",
+          "source_user_id": 2876393283,
+          "source_user_id_str": "2876393283"
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 24744541,
+      "id_str": "24744541",
+      "name": "Le Monde",
+      "screen_name": "lemondefr",
+      "location": "Paris",
+      "description": "Bienvenue sur le compte officiel des rédactions du Monde | Piloté par @vengeurmask et @martelclem",
+      "url": "https://t.co/MSbP2rnPNV",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/MSbP2rnPNV",
+              "expanded_url": "http://www.lemonde.fr",
+              "display_url": "lemonde.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 5318804,
+      "friends_count": 366,
+      "listed_count": 29932,
+      "created_at": "Mon Mar 16 18:44:51 +0000 2009",
+      "favourites_count": 586,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 164322,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "DDE1EA",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/255939997/twitter_lmfr.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/255939997/twitter_lmfr.jpg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/671239734904102912/i9lRddT8_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/671239734904102912/i9lRddT8_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/24744541/1453113211",
+      "profile_link_color": "50B6CF",
+      "profile_sidebar_border_color": "131316",
+      "profile_sidebar_fill_color": "131316",
+      "profile_text_color": "3292A8",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "retweeted_status": {
+      "created_at": "Thu Apr 21 08:40:17 +0000 2016",
+      "id": 723068828297605100,
+      "id_str": "723068828297605120",
+      "text": "#Marrakech célèbre la verve érotique du peintre Farid Belkahia https://t.co/VIgprUJxeq https://t.co/6M1xs4FGli",
+      "entities": {
+        "hashtags": [
+          {
+            "text": "Marrakech",
+            "indices": [
+              0,
+              10
+            ]
+          }
+        ],
+        "symbols": [],
+        "user_mentions": [],
+        "urls": [
+          {
+            "url": "https://t.co/VIgprUJxeq",
+            "expanded_url": "http://bit.ly/1Sm5Qo3",
+            "display_url": "bit.ly/1Sm5Qo3",
+            "indices": [
+              63,
+              86
+            ]
+          }
+        ],
+        "media": [
+          {
+            "id": 723068827169370100,
+            "id_str": "723068827169370112",
+            "indices": [
+              87,
+              110
+            ],
+            "media_url": "http://pbs.twimg.com/media/CgjbRG-WsAAjQzY.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/CgjbRG-WsAAjQzY.jpg",
+            "url": "https://t.co/6M1xs4FGli",
+            "display_url": "pic.twitter.com/6M1xs4FGli",
+            "expanded_url": "http://twitter.com/LeMonde_Afrique/status/723068828297605120/photo/1",
+            "type": "photo",
+            "sizes": {
+              "small": {
+                "w": 340,
+                "h": 178,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "medium": {
+                "w": 600,
+                "h": 314,
+                "resize": "fit"
+              },
+              "large": {
+                "w": 600,
+                "h": 314,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "extended_entities": {
+        "media": [
+          {
+            "id": 723068827169370100,
+            "id_str": "723068827169370112",
+            "indices": [
+              87,
+              110
+            ],
+            "media_url": "http://pbs.twimg.com/media/CgjbRG-WsAAjQzY.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/CgjbRG-WsAAjQzY.jpg",
+            "url": "https://t.co/6M1xs4FGli",
+            "display_url": "pic.twitter.com/6M1xs4FGli",
+            "expanded_url": "http://twitter.com/LeMonde_Afrique/status/723068828297605120/photo/1",
+            "type": "photo",
+            "sizes": {
+              "small": {
+                "w": 340,
+                "h": 178,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "medium": {
+                "w": 600,
+                "h": 314,
+                "resize": "fit"
+              },
+              "large": {
+                "w": 600,
+                "h": 314,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "truncated": false,
+      "source": "<a href=\"https://secure.echoboxapp.com\" rel=\"nofollow\">Echobox Social</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 2876393283,
+        "id_str": "2876393283",
+        "name": "Le Monde Afrique",
+        "screen_name": "LeMonde_Afrique",
+        "location": "Afrique",
+        "description": "Bienvenue sur le fil d'actualité du Monde Afrique. Compte piloté par @Voodart",
+        "url": "http://t.co/AypUbnaZNc",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "url": "http://t.co/AypUbnaZNc",
+                "expanded_url": "http://www.lemonde.fr/afrique/",
+                "display_url": "lemonde.fr/afrique/",
+                "indices": [
+                  0,
+                  22
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": []
+          }
+        },
+        "protected": false,
+        "followers_count": 37578,
+        "friends_count": 107,
+        "listed_count": 638,
+        "created_at": "Fri Nov 14 13:49:53 +0000 2014",
+        "favourites_count": 227,
+        "utc_offset": 7200,
+        "time_zone": "Ljubljana",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 12017,
+        "lang": "fr",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "000000",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/702498098719752193/0w98mge6_normal.png",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/702498098719752193/0w98mge6_normal.png",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/2876393283/1455895384",
+        "profile_link_color": "0084B4",
+        "profile_sidebar_border_color": "000000",
+        "profile_sidebar_fill_color": "000000",
+        "profile_text_color": "000000",
+        "profile_use_background_image": false,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 5,
+      "favorite_count": 6,
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "possibly_sensitive_appealable": false,
+      "lang": "fr"
+    },
+    "is_quote_status": false,
+    "retweet_count": 5,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:44:07 +0000 2016",
+    "id": 723069793033719800,
+    "id_str": "723069793033719808",
+    "text": "Here's the lineup of new faces on the $5, $10 and $20 bills https://t.co/jS7CPzW0iW https://t.co/pBqx5NdEA2",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/jS7CPzW0iW",
+          "expanded_url": "http://nyti.ms/1r1n833",
+          "display_url": "nyti.ms/1r1n833",
+          "indices": [
+            60,
+            83
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723069792236765200,
+          "id_str": "723069792236765185",
+          "indices": [
+            84,
+            107
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcJSIWgAEhwaF.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcJSIWgAEhwaF.jpg",
+          "url": "https://t.co/pBqx5NdEA2",
+          "display_url": "pic.twitter.com/pBqx5NdEA2",
+          "expanded_url": "http://twitter.com/nytimes/status/723069793033719808/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 720,
+              "h": 403,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 190,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 336,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723069792236765200,
+          "id_str": "723069792236765185",
+          "indices": [
+            84,
+            107
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcJSIWgAEhwaF.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcJSIWgAEhwaF.jpg",
+          "url": "https://t.co/pBqx5NdEA2",
+          "display_url": "pic.twitter.com/pBqx5NdEA2",
+          "expanded_url": "http://twitter.com/nytimes/status/723069793033719808/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 720,
+              "h": 403,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 190,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 336,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 807095,
+      "id_str": "807095",
+      "name": "The New York Times",
+      "screen_name": "nytimes",
+      "location": "New York City",
+      "description": "Where the conversation begins. Follow for breaking news, special reports, RTs of our journalists and more from https://t.co/YapuoqX0HS.",
+      "url": "http://t.co/ahvuWqicF9",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/ahvuWqicF9",
+              "expanded_url": "http://www.nytimes.com/",
+              "display_url": "nytimes.com",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": [
+            {
+              "url": "https://t.co/YapuoqX0HS",
+              "expanded_url": "http://NYTimes.com",
+              "display_url": "NYTimes.com",
+              "indices": [
+                111,
+                134
+              ]
+            }
+          ]
+        }
+      },
+      "protected": false,
+      "followers_count": 26814834,
+      "friends_count": 987,
+      "listed_count": 176130,
+      "created_at": "Fri Mar 02 20:41:42 +0000 2007",
+      "favourites_count": 10861,
+      "utc_offset": -14400,
+      "time_zone": "Eastern Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 227718,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "131516",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/736339684/948f072cc2da4e3a5e9f2ebfb3b1a0e7.png",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/736339684/948f072cc2da4e3a5e9f2ebfb3b1a0e7.png",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/2044921128/finals_normal.png",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/2044921128/finals_normal.png",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/807095/1355346050",
+      "profile_link_color": "607696",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "EFEFEF",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 66,
+    "favorite_count": 63,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "en"
+  },
+  {
+    "created_at": "Thu Apr 21 08:43:40 +0000 2016",
+    "id": 723069682073260000,
+    "id_str": "723069682073260032",
+    "text": "Fête de la musique : jouez comme des pros sur une scène #Bordeaux culture https://t.co/bw7mvILufe #FDLM https://t.co/M5hMtXqIdF",
+    "entities": {
+      "hashtags": [
+        {
+          "text": "Bordeaux",
+          "indices": [
+            56,
+            65
+          ]
+        },
+        {
+          "text": "FDLM",
+          "indices": [
+            98,
+            103
+          ]
+        }
+      ],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/bw7mvILufe",
+          "expanded_url": "http://www.bordeaux.fr/p81321",
+          "display_url": "bordeaux.fr/p81321",
+          "indices": [
+            74,
+            97
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723069680873668600,
+          "id_str": "723069680873668608",
+          "indices": [
+            104,
+            127
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcCzRUgAANQUC.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcCzRUgAANQUC.jpg",
+          "url": "https://t.co/M5hMtXqIdF",
+          "display_url": "pic.twitter.com/M5hMtXqIdF",
+          "expanded_url": "http://twitter.com/Bordeaux/status/723069682073260032/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 288,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 640,
+              "h": 307,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 163,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723069680873668600,
+          "id_str": "723069680873668608",
+          "indices": [
+            104,
+            127
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjcCzRUgAANQUC.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjcCzRUgAANQUC.jpg",
+          "url": "https://t.co/M5hMtXqIdF",
+          "display_url": "pic.twitter.com/M5hMtXqIdF",
+          "expanded_url": "http://twitter.com/Bordeaux/status/723069682073260032/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 288,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 640,
+              "h": 307,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 163,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 44127582,
+      "id_str": "44127582",
+      "name": "Bordeaux",
+      "screen_name": "Bordeaux",
+      "location": "Bordeaux, France",
+      "description": "Compte officiel de la ville de #Bordeaux. Infos, actu... Des nouvelles du Port de la lune !",
+      "url": "http://t.co/FVQKVUts8o",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/FVQKVUts8o",
+              "expanded_url": "http://www.bordeaux.fr",
+              "display_url": "bordeaux.fr",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 138471,
+      "friends_count": 2360,
+      "listed_count": 969,
+      "created_at": "Tue Jun 02 14:29:03 +0000 2009",
+      "favourites_count": 162,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 10091,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "FFFFFF",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/481078788600496130/8HKZdHdi.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/481078788600496130/8HKZdHdi.jpeg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/668741752480768000/YNGiImI1_normal.png",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/668741752480768000/YNGiImI1_normal.png",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/44127582/1459342372",
+      "profile_link_color": "0099B9",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDDFEB",
+      "profile_text_color": "000000",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 5,
+    "favorite_count": 3,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:43:14 +0000 2016",
+    "id": 723069573361070100,
+    "id_str": "723069573361070080",
+    "text": "Pesticides: l'agriculteur qui attaquait l'Etat débouté\nhttps://t.co/dXnSBp7shG https://t.co/gfdRWikjJO",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/dXnSBp7shG",
+          "expanded_url": "http://www.bfmtv.com//societe/pesticides-l-agriculteur-qui-attaquait-l-etat-deboute-968561.html",
+          "display_url": "bfmtv.com//societe/pesti…",
+          "indices": [
+            55,
+            78
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723069572224553000,
+          "id_str": "723069572224552960",
+          "indices": [
+            79,
+            102
+          ],
+          "media_url": "http://pbs.twimg.com/media/Cgjb8ehWkAAzaAp.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Cgjb8ehWkAAzaAp.jpg",
+          "url": "https://t.co/gfdRWikjJO",
+          "display_url": "pic.twitter.com/gfdRWikjJO",
+          "expanded_url": "http://twitter.com/BFMTV/status/723069573361070080/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 338,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 192,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 577,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723069572224553000,
+          "id_str": "723069572224552960",
+          "indices": [
+            79,
+            102
+          ],
+          "media_url": "http://pbs.twimg.com/media/Cgjb8ehWkAAzaAp.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Cgjb8ehWkAAzaAp.jpg",
+          "url": "https://t.co/gfdRWikjJO",
+          "display_url": "pic.twitter.com/gfdRWikjJO",
+          "expanded_url": "http://twitter.com/BFMTV/status/723069573361070080/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 338,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 192,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 577,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 133663801,
+      "id_str": "133663801",
+      "name": "BFMTV",
+      "screen_name": "BFMTV",
+      "location": "France",
+      "description": "1ère chaîne info de France. Retrouvez-nous sur Snapchat/Instagram ➡ bfmtv",
+      "url": "http://t.co/RJduZtgCoz",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/RJduZtgCoz",
+              "expanded_url": "http://www.bfmtv.com",
+              "display_url": "bfmtv.com",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1772159,
+      "friends_count": 410,
+      "listed_count": 6877,
+      "created_at": "Fri Apr 16 09:55:26 +0000 2010",
+      "favourites_count": 62,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 155719,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "1277C9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/112913010/fond_twitter.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/112913010/fond_twitter.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716882609788358656/VTZMk0d4_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716882609788358656/VTZMk0d4_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/133663801/1460096326",
+      "profile_link_color": "1277C9",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 5,
+    "favorite_count": 4,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:42:28 +0000 2016",
+    "id": 723069379320135700,
+    "id_str": "723069379320135680",
+    "text": "Gorillaz prépare un nouvel album courant 2016 https://t.co/ePxKdLnjhy https://t.co/DItpMJ1ANt",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/ePxKdLnjhy",
+          "expanded_url": "http://bit.ly/1Sm5eih",
+          "display_url": "bit.ly/1Sm5eih",
+          "indices": [
+            46,
+            69
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723069378489684000,
+          "id_str": "723069378489683968",
+          "indices": [
+            70,
+            93
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjbxMzXEAAx5GN.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjbxMzXEAAx5GN.jpg",
+          "url": "https://t.co/DItpMJ1ANt",
+          "display_url": "pic.twitter.com/DItpMJ1ANt",
+          "expanded_url": "http://twitter.com/20Minutes/status/723069379320135680/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 480,
+              "h": 360,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 255,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 480,
+              "h": 360,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723069378489684000,
+          "id_str": "723069378489683968",
+          "indices": [
+            70,
+            93
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjbxMzXEAAx5GN.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjbxMzXEAAx5GN.jpg",
+          "url": "https://t.co/DItpMJ1ANt",
+          "display_url": "pic.twitter.com/DItpMJ1ANt",
+          "expanded_url": "http://twitter.com/20Minutes/status/723069379320135680/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 480,
+              "h": 360,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 255,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 480,
+              "h": 360,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://secure.echoboxapp.com\" rel=\"nofollow\">Echobox Social</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 2649991,
+      "id_str": "2649991",
+      "name": "20 Minutes",
+      "screen_name": "20Minutes",
+      "location": "Paris, France",
+      "description": "Information en continu. Actualités, Politique, Sport, People, High Tech / Sur Facebook : http://t.co/39vntgKz",
+      "url": "http://t.co/L4UTqAUSMc",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/L4UTqAUSMc",
+              "expanded_url": "http://www.20minutes.fr",
+              "display_url": "20minutes.fr",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": [
+            {
+              "url": "http://t.co/39vntgKz",
+              "expanded_url": "http://www.facebook.com/20minutes",
+              "display_url": "facebook.com/20minutes",
+              "indices": [
+                89,
+                109
+              ]
+            }
+          ]
+        }
+      },
+      "protected": false,
+      "followers_count": 1911536,
+      "friends_count": 1378,
+      "listed_count": 8453,
+      "created_at": "Wed Mar 28 12:14:38 +0000 2007",
+      "favourites_count": 212,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 142847,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "1A497E",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/332708788/20minutes-twitter-uni_v2.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/332708788/20minutes-twitter-uni_v2.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/675268720915300356/6ppdMWgH_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/675268720915300356/6ppdMWgH_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/2649991/1457375577",
+      "profile_link_color": "3E5087",
+      "profile_sidebar_border_color": "E0E0E0",
+      "profile_sidebar_fill_color": "FCFDFF",
+      "profile_text_color": "474347",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 26,
+    "favorite_count": 31,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:41:28 +0000 2016",
+    "id": 723069125166243800,
+    "id_str": "723069125166243840",
+    "text": "Village de 500 habitants recherche agriculteur https://t.co/yN0od2UVLd par @antonin https://t.co/stx5s6DNCe",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "antonin",
+          "name": "Antonin Sabot",
+          "id": 9583292,
+          "id_str": "9583292",
+          "indices": [
+            75,
+            83
+          ]
+        }
+      ],
+      "urls": [
+        {
+          "url": "https://t.co/yN0od2UVLd",
+          "expanded_url": "http://bit.ly/1pjxr0Y",
+          "display_url": "bit.ly/1pjxr0Y",
+          "indices": [
+            47,
+            70
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723069124490985500,
+          "id_str": "723069124490985472",
+          "indices": [
+            84,
+            107
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjbialWgAAAS77.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjbialWgAAAS77.jpg",
+          "url": "https://t.co/stx5s6DNCe",
+          "display_url": "pic.twitter.com/stx5s6DNCe",
+          "expanded_url": "http://twitter.com/lemondefr/status/723069125166243840/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 644,
+              "h": 322,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 300,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 170,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723069124490985500,
+          "id_str": "723069124490985472",
+          "indices": [
+            84,
+            107
+          ],
+          "media_url": "http://pbs.twimg.com/media/CgjbialWgAAAS77.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/CgjbialWgAAAS77.jpg",
+          "url": "https://t.co/stx5s6DNCe",
+          "display_url": "pic.twitter.com/stx5s6DNCe",
+          "expanded_url": "http://twitter.com/lemondefr/status/723069125166243840/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 644,
+              "h": 322,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 600,
+              "h": 300,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 170,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"https://secure.echoboxapp.com\" rel=\"nofollow\">Echobox Social</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 24744541,
+      "id_str": "24744541",
+      "name": "Le Monde",
+      "screen_name": "lemondefr",
+      "location": "Paris",
+      "description": "Bienvenue sur le compte officiel des rédactions du Monde | Piloté par @vengeurmask et @martelclem",
+      "url": "https://t.co/MSbP2rnPNV",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/MSbP2rnPNV",
+              "expanded_url": "http://www.lemonde.fr",
+              "display_url": "lemonde.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 5318804,
+      "friends_count": 366,
+      "listed_count": 29932,
+      "created_at": "Mon Mar 16 18:44:51 +0000 2009",
+      "favourites_count": 586,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 164322,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "DDE1EA",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/255939997/twitter_lmfr.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/255939997/twitter_lmfr.jpg",
+      "profile_background_tile": true,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/671239734904102912/i9lRddT8_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/671239734904102912/i9lRddT8_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/24744541/1453113211",
+      "profile_link_color": "50B6CF",
+      "profile_sidebar_border_color": "131316",
+      "profile_sidebar_fill_color": "131316",
+      "profile_text_color": "3292A8",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 25,
+    "favorite_count": 17,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:40:27 +0000 2016",
+    "id": 723068872258023400,
+    "id_str": "723068872258023424",
+    "text": "Une réduction d'impôt pour les #entreprises qui mettent des vélos à disposition de leurs salariés https://t.co/RnBkP4mU5t #santé #fiscalité",
+    "entities": {
+      "hashtags": [
+        {
+          "text": "entreprises",
+          "indices": [
+            31,
+            43
+          ]
+        },
+        {
+          "text": "santé",
+          "indices": [
+            122,
+            128
+          ]
+        },
+        {
+          "text": "fiscalité",
+          "indices": [
+            129,
+            139
+          ]
+        }
+      ],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/RnBkP4mU5t",
+          "expanded_url": "https://goo.gl/b5lwrb",
+          "display_url": "goo.gl/b5lwrb",
+          "indices": [
+            98,
+            121
+          ]
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 90449921,
+      "id_str": "90449921",
+      "name": "Generali France",
+      "screen_name": "generalifrance",
+      "location": "France",
+      "description": "L'actualité de l'#assurance & des finances personnelles avec Generali n°1 français de l'assurance vie en ligne. #Epargne #Bourse & aussi #prévention #RSE #sport",
+      "url": "https://t.co/YptKY3JtRh",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/YptKY3JtRh",
+              "expanded_url": "http://www.generali.fr",
+              "display_url": "generali.fr",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 13961,
+      "friends_count": 784,
+      "listed_count": 322,
+      "created_at": "Mon Nov 16 18:17:19 +0000 2009",
+      "favourites_count": 1441,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 3178,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "EBEBEB",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/436125374863273984/jZsLF9Lt.png",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/436125374863273984/jZsLF9Lt.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/672014527693737984/c9T9TAly_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/672014527693737984/c9T9TAly_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/90449921/1455807220",
+      "profile_link_color": "A82727",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "F3F3F3",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 0,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:39:03 +0000 2016",
+    "id": 723068519391191000,
+    "id_str": "723068519391191040",
+    "text": "Le BCG, vaccin contre la tuberculose, est en rupture de stock https://t.co/m4oc0wkVPK https://t.co/gWG3aC1hwG",
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [
+        {
+          "url": "https://t.co/m4oc0wkVPK",
+          "expanded_url": "http://www.bfmtv.com/societe/le-bcg-vaccin-contre-la-tuberculose-est-en-rupture-de-stock-968531.html",
+          "display_url": "bfmtv.com/societe/le-bcg…",
+          "indices": [
+            62,
+            85
+          ]
+        }
+      ],
+      "media": [
+        {
+          "id": 723068518338551800,
+          "id_str": "723068518338551808",
+          "indices": [
+            86,
+            109
+          ],
+          "media_url": "http://pbs.twimg.com/media/Cgja_IfWYAAHjZB.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Cgja_IfWYAAHjZB.jpg",
+          "url": "https://t.co/gWG3aC1hwG",
+          "display_url": "pic.twitter.com/gWG3aC1hwG",
+          "expanded_url": "http://twitter.com/BFMTV/status/723068519391191040/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 338,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 192,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 577,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723068518338551800,
+          "id_str": "723068518338551808",
+          "indices": [
+            86,
+            109
+          ],
+          "media_url": "http://pbs.twimg.com/media/Cgja_IfWYAAHjZB.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Cgja_IfWYAAHjZB.jpg",
+          "url": "https://t.co/gWG3aC1hwG",
+          "display_url": "pic.twitter.com/gWG3aC1hwG",
+          "expanded_url": "http://twitter.com/BFMTV/status/723068519391191040/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 600,
+              "h": 338,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 340,
+              "h": 192,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1024,
+              "h": 577,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 133663801,
+      "id_str": "133663801",
+      "name": "BFMTV",
+      "screen_name": "BFMTV",
+      "location": "France",
+      "description": "1ère chaîne info de France. Retrouvez-nous sur Snapchat/Instagram ➡ bfmtv",
+      "url": "http://t.co/RJduZtgCoz",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/RJduZtgCoz",
+              "expanded_url": "http://www.bfmtv.com",
+              "display_url": "bfmtv.com",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 1772159,
+      "friends_count": 410,
+      "listed_count": 6877,
+      "created_at": "Fri Apr 16 09:55:26 +0000 2010",
+      "favourites_count": 62,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 155719,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": true,
+      "profile_background_color": "1277C9",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/112913010/fond_twitter.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/112913010/fond_twitter.jpg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/716882609788358656/VTZMk0d4_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/716882609788358656/VTZMk0d4_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/133663801/1460096326",
+      "profile_link_color": "1277C9",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": false,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 12,
+    "favorite_count": 2,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  },
+  {
+    "created_at": "Thu Apr 21 08:38:59 +0000 2016",
+    "id": 723068501108396000,
+    "id_str": "723068501108396032",
+    "text": "Opposition à 11 contre 11. @IKieseThelin est le premier buteur d'une tête piquée ! #training https://t.co/A6HbHYyso8",
+    "entities": {
+      "hashtags": [
+        {
+          "text": "training",
+          "indices": [
+            83,
+            92
+          ]
+        }
+      ],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "IKieseThelin",
+          "name": "IsaacKieseThelin",
+          "id": 384769635,
+          "id_str": "384769635",
+          "indices": [
+            27,
+            40
+          ]
+        }
+      ],
+      "urls": [],
+      "media": [
+        {
+          "id": 723068472176087000,
+          "id_str": "723068472176087040",
+          "indices": [
+            93,
+            116
+          ],
+          "media_url": "http://pbs.twimg.com/media/Cgja8chXEAAwGDR.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Cgja8chXEAAwGDR.jpg",
+          "url": "https://t.co/A6HbHYyso8",
+          "display_url": "pic.twitter.com/A6HbHYyso8",
+          "expanded_url": "http://twitter.com/girondins/status/723068501108396032/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1024,
+              "h": 576,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 191,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 338,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 723068472176087000,
+          "id_str": "723068472176087040",
+          "indices": [
+            93,
+            116
+          ],
+          "media_url": "http://pbs.twimg.com/media/Cgja8chXEAAwGDR.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/Cgja8chXEAAwGDR.jpg",
+          "url": "https://t.co/A6HbHYyso8",
+          "display_url": "pic.twitter.com/A6HbHYyso8",
+          "expanded_url": "http://twitter.com/girondins/status/723068501108396032/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1024,
+              "h": 576,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 340,
+              "h": 191,
+              "resize": "fit"
+            },
+            "medium": {
+              "w": 600,
+              "h": 338,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            }
+          }
+        }
+      ]
+    },
+    "truncated": false,
+    "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 154586685,
+      "id_str": "154586685",
+      "name": "FCGirondins Bordeaux",
+      "screen_name": "girondins",
+      "location": "Bordeaux",
+      "description": "Le Twitter officiel du FC Girondins de Bordeaux.",
+      "url": "http://t.co/58mu7XEwJT",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/58mu7XEwJT",
+              "expanded_url": "http://www.girondins.com",
+              "display_url": "girondins.com",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 211515,
+      "friends_count": 1861,
+      "listed_count": 1040,
+      "created_at": "Fri Jun 11 17:09:40 +0000 2010",
+      "favourites_count": 1226,
+      "utc_offset": 7200,
+      "time_zone": "Paris",
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 44356,
+      "lang": "fr",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "010E26",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000178566123/zKKqNY6L.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000178566123/zKKqNY6L.jpeg",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/429026575279874048/gNKeLUZr_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/429026575279874048/gNKeLUZr_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/154586685/1458376165",
+      "profile_link_color": "266BEB",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "00173F",
+      "profile_text_color": "95A1BD",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 5,
+    "favorite_count": 4,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "fr"
+  }
+]

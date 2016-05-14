@@ -1,0 +1,19 @@
+{
+  "name": "dataset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate_patch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hanyang CAO",
+  "license": "ISC",
+  "dependencies": {
+    "fast-json-patch": "^0.5.7",
+    "jiff": "^0.7.3",
+    "json-diff-rfc6902": "^1.3.3",
+    "json8-patch": "^0.4.0",
+    "performance-now": "^0.2.0",
+    "rfc6902": "^1.2.1"
+  }
+}
