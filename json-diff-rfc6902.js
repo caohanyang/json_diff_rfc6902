@@ -23,6 +23,12 @@ function diff(oldJson, newJson, options) {
     if(options.ARR_COM !== void 0) {ARR_COM = options.ARR_COM;}
     if(options.HASH_ID !== void 0) {HASH_ID = options.HASH_ID;}
   }
+
+  // check the input value
+  if (oldJson === undefined || newJson === undefined) {
+    throw new Error("Invalid input: A JSON value can be an object, array, number, string, true, false, or null.");
+  }
+
   // Get the unchanged area
   var unchanged = [];
   if (OBJ_COM === true) {
@@ -38,6 +44,11 @@ function diff(oldJson, newJson, options) {
 }
 
 function generateDiff(oldJson, newJson, unchanged, patches, path) {
+
+  // check the input value
+  if (oldJson === undefined || newJson === undefined) {
+    throw new Error("Invalid input: A JSON value can be an object, array, number, string, true, false, or null.");
+  }
 
   // var a = null  object     Array.isArray: false
   // var a = 5     number
@@ -98,6 +109,11 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     oldKey = oldKeys[i];
     oldValue = oldJson[oldKey];
 
+    // check the value
+    if (oldValue === undefined) {
+      throw new Error("Invalid input: A JSON value can be an object, array, number, string, true, false, or null.");
+    }
+
     if (newJson.hasOwnProperty(oldKey)) {
 
       // go deeper
@@ -122,6 +138,12 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
   for (var j = 0; j < newKeys.length; j ++) {
     newKey = newKeys[j];
     newVal = newJson[newKey];
+
+    // check the value
+    if (newVal === undefined) {
+      throw new Error("Invalid input: A JSON value can be an object, array, number, string, true, false, or null.");
+    }
+
     if (!oldJson.hasOwnProperty(newKey)) {
       //Try to find the value in the unchanged area
       // change JSON.stringify()
@@ -701,7 +723,7 @@ function hash(obj, HASH_ID) {
   } else {
     // || hashToNum(JSON.stringify(obj))
     // || (obj.title === undefined)? obj.title: hashToNum(JSON.stringify(obj.title))
-    return obj.id || obj._id || (obj.title === undefined? obj.title: hashToNum(JSON.stringify(obj.title))) || hashToNum(JSON.stringify(obj));
+    return obj.id || obj._id || obj.answer_id || (obj.title === undefined? obj.title: hashToNum(JSON.stringify(obj.title))) || hashToNum(JSON.stringify(obj));
   }
 
 }
@@ -867,18 +889,23 @@ function findValueInUnchanged(newValue, unchanged) {
 }
 
 },{"./applyPatches":2,"./deepEquals.js":3,"./hashObject.js":4}],7:[function(require,module,exports){
-module.exports = function(str) {
-  var hash = 5381,
-      i    = str.length
+"use strict";
 
-  while(i)
-    hash = (hash * 33) ^ str.charCodeAt(--i)
+function hash(str) {
+  var hash = 5381,
+      i    = str.length;
+
+  while(i) {
+    hash = (hash * 33) ^ str.charCodeAt(--i);
+  }
 
   /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
-   * integers. Since we want the results to be always positive, if the high bit
-   * is set, unset it and add it back in through (64-bit IEEE) addition. */
-  return hash >= 0 ? hash : (hash & 0x7FFFFFFF) + 0x80000000
+   * integers. Since we want the results to be always positive, convert the
+   * signed int to an unsigned by doing an unsigned bitshift. */
+  return hash >>> 0;
 }
+
+module.exports = hash;
 
 },{}]},{},[1])(1)
 });
