@@ -22,6 +22,12 @@ function diff(oldJson, newJson, options) {
     if(options.ARR_COM !== void 0) {ARR_COM = options.ARR_COM;}
     if(options.HASH_ID !== void 0) {HASH_ID = options.HASH_ID;}
   }
+
+  // check the input value
+  if (oldJson === undefined || newJson === undefined) {
+    throw new Error("Invalid input: A JSON value can be an object, array, number, string, true, false, or null.");
+  }
+
   // Get the unchanged area
   var unchanged = [];
   if (OBJ_COM === true) {
@@ -37,6 +43,11 @@ function diff(oldJson, newJson, options) {
 }
 
 function generateDiff(oldJson, newJson, unchanged, patches, path) {
+
+  // check the input value
+  if (oldJson === undefined || newJson === undefined) {
+    throw new Error("Invalid input: A JSON value can be an object, array, number, string, true, false, or null.");
+  }
 
   // var a = null  object     Array.isArray: false
   // var a = 5     number
@@ -97,6 +108,11 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     oldKey = oldKeys[i];
     oldValue = oldJson[oldKey];
 
+    // check the value
+    if (oldValue === undefined) {
+      throw new Error("Invalid input: A JSON value can be an object, array, number, string, true, false, or null.");
+    }
+
     if (newJson.hasOwnProperty(oldKey)) {
 
       // go deeper
@@ -121,6 +137,12 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
   for (var j = 0; j < newKeys.length; j ++) {
     newKey = newKeys[j];
     newVal = newJson[newKey];
+
+    // check the value
+    if (newVal === undefined) {
+      throw new Error("Invalid input: A JSON value can be an object, array, number, string, true, false, or null.");
+    }
+
     if (!oldJson.hasOwnProperty(newKey)) {
       //Try to find the value in the unchanged area
       // change JSON.stringify()
