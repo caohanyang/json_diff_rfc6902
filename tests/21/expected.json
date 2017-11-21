@@ -1,0 +1,17 @@
+[
+  {
+    "op": "add",
+    "path": "/2/f3",
+    "value": 9
+  },
+  {
+    "op": "add",
+    "path": "/1/f3",
+    "value": 8
+  },
+  {
+    "op": "add",
+    "path": "/0/f3",
+    "value": 7
+  }
+]
