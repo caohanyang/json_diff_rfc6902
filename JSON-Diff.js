@@ -83,13 +83,13 @@ function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
 
   // Use LCS
   var tmpPatches = [];
-  var tmpPatchHashes = [];
 
   if (oldJson.length === 0) {
     patches.push({ op: "add", path: path, value: newJson});
   } else {
     // Use sortBack
-    tmpPatches = transformArray(oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+    // deleted unused parameters from the call
+    tmpPatches = transformArray(oldJson, newJson, unchanged, path);
     for (var l = 0; l < tmpPatches.length; l++) {
       patches.push(tmpPatches[l]);
     }
@@ -146,7 +146,9 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     if (!oldJson.hasOwnProperty(newKey)) {
       //Try to find the value in the unchanged area
       // change JSON.stringify()
-      var pointer = unchangedArea.findValueInUnchanged(JSON.stringify(newVal), unchanged);
+      
+      // pass the value here, apply JSON.stringify in the method
+      var pointer = unchangedArea.findValueInUnchanged(newVal, unchanged);
       if (pointer) {
         //COPY
         patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
@@ -294,7 +296,8 @@ function findCopyInArray(element, m, array, arrUnchanged) {
   return copyIndex;
 }
 
-function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path, jsondiff) {
+// deleted unused parameters
+function transformArray(oldJson, newJson, unchanged, path) {
   //When is the Array, stop to find leaf node
   // (hash, value, index)
   var x = hashObject.mapArray(hashObject.hash, oldJson, HASH_ID);
@@ -315,6 +318,7 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
   while (i < x_sorted.length) {
     while( j < y_sorted.length) {
+
       if(x_sorted[i] !== void 0) {
 
         if (x_sorted[i].hash > y_sorted[j].hash) {
@@ -323,7 +327,11 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
         } else if (x_sorted[i].hash === y_sorted[j].hash) {
           // Unchanged push
-          unchanged.push( path + '/' + y_sorted[j].index + "=" + JSON.stringify(x_sorted[i].hash));
+          //no point to insert if already there
+          var el = path + '/' + y_sorted[j].index + "=" + JSON.stringify(x_sorted[i].value);
+          if (unchanged.indexOf(el)<0)
+            unchanged.push(el);
+
           arrPatch.push({op: "move", value: y_sorted[j].value, valueOld: x_sorted[i].value, from: x_sorted[i].index , index: y_sorted[j].index, hash: y_sorted[j].hash });
           i++;
           j++;
@@ -338,14 +346,15 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
         j++;
       }
 
-    }
+    } //j
 
     if (i < x_sorted.length) {
       // Remove the rest elements of the x_sorted
-      arrPatch.push({op: "remove",  index: x_sorted[i].index, value: x_sorted[i].value });
+      // for being consistent, added hash as well like for other operators
+      arrPatch.push({op: "remove",  index: x_sorted[i].index, value: x_sorted[i].value, hash: x_sorted[i].hash });
       i++;
     }
-  }
+  } //i
 
   //Get the patch to make all the elements are the same, but index is random
   arrPatch = arrPatch.sort(compare);
@@ -462,6 +471,8 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
   }
 
+/*
+  // no reason to do anything with arrPatch local variable at this point
   arrPatch = arrPatch.map(function(obj) {
     obj.path = path + '/' + obj.index;
     delete obj.hash;
@@ -473,7 +484,7 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
     return obj;
   });
+*/
 
   return arrtmp;
-
 }

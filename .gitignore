@@ -1,0 +1,5 @@
+*_new.json
+*_patch.json
+*.csv
+node_modules/
+package-lock.json

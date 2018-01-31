@@ -1,12 +1,12 @@
 [
   {
     "op": "move",
-    "from": "/0",
-    "path": "/2"
+    "from": "/2",
+    "path": "/0"
   },
   {
     "op": "move",
-    "from": "/0",
+    "from": "/2",
     "path": "/1"
   }
 ]
