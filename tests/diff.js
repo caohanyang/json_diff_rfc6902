@@ -41,13 +41,14 @@ for (var i = 1; i <= n_pathlogic; i++) {
 
   jdr.apply(app_old, jdr_patch);
 
-  fs.writeFile(root + "jdr_patch.json", JSON.stringify(jdr_patch, null, 2));
-  fs.writeFile(root + "fjp_patch.json", JSON.stringify(fjp_patch, null, 2));
-  fs.writeFile(root + "jiff_patch.json", JSON.stringify(jiff_patch, null, 2));
-  fs.writeFile(root + "rfc6902_patch.json", JSON.stringify(rfc6902_patch, null, 2));
-  fs.writeFile(root + "json8_patch.json", JSON.stringify(json8_patch, null, 2));
-  fs.writeFile(root + "fjp_new.json", JSON.stringify(f_old, null, 2));
-  fs.writeFile(root + "jdr_new.json", JSON.stringify(app_old, null, 2));
+  //use synched to avoid fs warning
+  fs.writeFileSync(root + "jdr_patch.json", JSON.stringify(jdr_patch, null, 2));
+  fs.writeFileSync(root + "fjp_patch.json", JSON.stringify(fjp_patch, null, 2));
+  fs.writeFileSync(root + "jiff_patch.json", JSON.stringify(jiff_patch, null, 2));
+  fs.writeFileSync(root + "rfc6902_patch.json", JSON.stringify(rfc6902_patch, null, 2));
+  fs.writeFileSync(root + "json8_patch.json", JSON.stringify(json8_patch, null, 2));
+  fs.writeFileSync(root + "fjp_new.json", JSON.stringify(f_old, null, 2));
+  fs.writeFileSync(root + "jdr_new.json", JSON.stringify(app_old, null, 2));
   // fs.writeFile(root + "new_ori.json", JSON.stringify(f_new, null, 2));
   // fs.writeFile(root + "old_ori.json", JSON.stringify(old_ori, null, 2));
 

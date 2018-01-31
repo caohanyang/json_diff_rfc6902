@@ -1,7 +1,7 @@
 var jsonpatch = require('fast-json-patch'),
 jiff = require('jiff'),
 rfc6902 = require('rfc6902'),
-jdr = require('json-diff-rfc6902'),
+jdr = require('../json-diff-rfc6902'),
 json8 = require('json8-patch'),
 fs = require('fs'),
 now = require("performance-now");
@@ -18,7 +18,8 @@ for (var i = 0; i < data.length; i++) {
    var root = "./" + data[i] + "/";
    // Write title
    var title = data[i]+',A0_DT,A0_PS,A1_DT,A1_PS,A2_DT,A2_PS,A3_DT,A3_PS,A4_DT,A4_PS,A5_DT,A5_PS' + '\n';
-   fs.writeFile(root + data[i] +'.csv', title, {flag: 'a'} );
+   //use synched to avoid fs warning
+   fs.writeFileSync(root + data[i] +'.csv', title, {flag: 'a'} );
 
    for (var j = 1; j <= versionNum; j++) {
 
@@ -87,8 +88,8 @@ function generatePatch(root, data, f_old, f_new, version, algorithm) {
       result = result + '\n';
     }
 
-
-    fs.writeFile(root + data +'.csv', result, {flag: 'a'});
+    //use synched to avoid fs warning
+    fs.writeFileSync(root + data +'.csv', result, {flag: 'a'});
 
   }
 
