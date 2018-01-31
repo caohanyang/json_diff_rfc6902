@@ -84,13 +84,13 @@ function generateArrayDiff(oldJson, newJson, unchanged, patches, path) {
 
   // Use LCS
   var tmpPatches = [];
-  var tmpPatchHashes = [];
 
   if (oldJson.length === 0) {
     patches.push({ op: "add", path: path, value: newJson});
   } else {
     // Use sortBack
-    tmpPatches = transformArray(oldJson, newJson, unchanged, tmpPatches, tmpPatchHashes, path);
+    // deleted unused parameters from the call
+    tmpPatches = transformArray(oldJson, newJson, unchanged, path);
     for (var l = 0; l < tmpPatches.length; l++) {
       patches.push(tmpPatches[l]);
     }
@@ -147,7 +147,9 @@ function generateObjectDiff(oldJson, newJson, unchanged, patches, path) {
     if (!oldJson.hasOwnProperty(newKey)) {
       //Try to find the value in the unchanged area
       // change JSON.stringify()
-      var pointer = unchangedArea.findValueInUnchanged(JSON.stringify(newVal), unchanged);
+      
+      // pass the value here, apply JSON.stringify in the method
+      var pointer = unchangedArea.findValueInUnchanged(newVal, unchanged);
       if (pointer) {
         //COPY
         patches.push({ op: "copy", path: path + "/" + patchPointString(newKey), from: pointer});
@@ -295,7 +297,8 @@ function findCopyInArray(element, m, array, arrUnchanged) {
   return copyIndex;
 }
 
-function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path, jsondiff) {
+// deleted unused parameters
+function transformArray(oldJson, newJson, unchanged, path) {
   //When is the Array, stop to find leaf node
   // (hash, value, index)
   var x = hashObject.mapArray(hashObject.hash, oldJson, HASH_ID);
@@ -316,6 +319,7 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
   while (i < x_sorted.length) {
     while( j < y_sorted.length) {
+
       if(x_sorted[i] !== void 0) {
 
         if (x_sorted[i].hash > y_sorted[j].hash) {
@@ -324,7 +328,11 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
         } else if (x_sorted[i].hash === y_sorted[j].hash) {
           // Unchanged push
-          unchanged.push( path + '/' + y_sorted[j].index + "=" + JSON.stringify(x_sorted[i].hash));
+          //no point to insert if already there
+          var el = path + '/' + y_sorted[j].index + "=" + JSON.stringify(x_sorted[i].value);
+          if (unchanged.indexOf(el)<0)
+            unchanged.push(el);
+
           arrPatch.push({op: "move", value: y_sorted[j].value, valueOld: x_sorted[i].value, from: x_sorted[i].index , index: y_sorted[j].index, hash: y_sorted[j].hash });
           i++;
           j++;
@@ -339,14 +347,15 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
         j++;
       }
 
-    }
+    } //j
 
     if (i < x_sorted.length) {
       // Remove the rest elements of the x_sorted
-      arrPatch.push({op: "remove",  index: x_sorted[i].index, value: x_sorted[i].value });
+      // for being consistent, added hash as well like for other operators
+      arrPatch.push({op: "remove",  index: x_sorted[i].index, value: x_sorted[i].value, hash: x_sorted[i].hash });
       i++;
     }
-  }
+  } //i
 
   //Get the patch to make all the elements are the same, but index is random
   arrPatch = arrPatch.sort(compare);
@@ -463,6 +472,8 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
   }
 
+/*
+  // no reason to do anything with arrPatch local variable at this point
   arrPatch = arrPatch.map(function(obj) {
     obj.path = path + '/' + obj.index;
     delete obj.hash;
@@ -474,9 +485,9 @@ function transformArray(oldJson, newJson, unchanged, patches, patchHashes, path,
 
     return obj;
   });
+*/
 
   return arrtmp;
-
 }
 
 },{"./lib/applyPatches":2,"./lib/hashObject.js":4,"./lib/patchArea.js":5,"./lib/unchangedArea.js":6}],2:[function(require,module,exports){
@@ -721,9 +732,11 @@ function hash(obj, HASH_ID) {
   if (obj[HASH_ID] !== void 0 ) {
     return typeof obj[HASH_ID] === "string"? hashToNum(obj[HASH_ID]): obj[HASH_ID];
   } else {
+  	// no speculation about magical properties - just use the hashToNum(JSON.stringify(obj))
+    return hashToNum(JSON.stringify(obj));
     // || hashToNum(JSON.stringify(obj))
     // || (obj.title === undefined)? obj.title: hashToNum(JSON.stringify(obj.title))
-    return obj.id || obj._id || obj.answer_id || (obj.title === undefined? obj.title: hashToNum(JSON.stringify(obj.title))) || hashToNum(JSON.stringify(obj));
+    //return obj.id || obj._id || obj.answer_id || (obj.title === undefined? obj.title: hashToNum(JSON.stringify(obj.title))) || hashToNum(JSON.stringify(obj));
   }
 
 }
@@ -767,6 +780,8 @@ function mapArray(f, a, HASH_ID) {
 }
 
 },{"string-hash":7}],5:[function(require,module,exports){
+var deepEqual = require('./deepEquals.js');
+
 exports.findValueInPatchHashes = findValueInPatchHashes;
 exports.findValueInPatch = findValueInPatch;
 exports.handlePatch = handlePatch;
@@ -792,8 +807,10 @@ function findValueInPatch(newValue, patches) {
 
   for (var i = 0; i < patches.length; i++) {
     patchValue = patches[i].value;
-
-    if (newValue === patchValue) {
+    
+    // the two values are not neccessarily primitives
+    if (deepEqual._equals(newValue, patchValue)) {
+    //if (newValue === patchValue) {
       return i;
     }
   }
@@ -811,7 +828,7 @@ function handlePatch(patches) {
   }
 }
 
-},{}],6:[function(require,module,exports){
+},{"./deepEquals.js":3}],6:[function(require,module,exports){
 var deepEqual = require('./deepEquals.js');
 var hashObject = require('./hashObject.js');
 var applyPatches = require('./applyPatches');
@@ -819,20 +836,23 @@ var applyPatches = require('./applyPatches');
 exports.generateUnchanged = generateUnchanged;
 exports.findValueInUnchanged = findValueInUnchanged;
 
-
 function generateUnchanged(oldJson, newJson, unchanged, path) {
+  
+  // Not equal
+  // Check the type - faster if this one goes first
+  if (typeof oldJson !== typeof newJson) { return; }
+
   // Check if two json is the same
   // Equal
   if (deepEqual._equals(oldJson, newJson)) {
   // if (equal(oldJson, newJson)) {
     // console.log({path: path, value: copy.clone(newJson)});
-    unchanged.push( path + "=" + JSON.stringify(newJson));
+    // add the same value only once
+    var el = path + "=" + JSON.stringify(newJson);
+    if (unchanged.indexOf(el) < 0)
+      unchanged.push(el);
     return;
   }
-
-  // Not equal
-  // Check the type
-  if (typeof oldJson !== typeof newJson) { return; }
 
   // Type is the same
   if (Array.isArray(oldJson) && Array.isArray(newJson)) {
@@ -848,22 +868,11 @@ function generateUnchanged(oldJson, newJson, unchanged, path) {
   }
 }
 
-function arrayCompare(oldArr, newArr, unchanged, path) {
-  // Check if two array element (string) is the same
-  // Equal
-  if (oldArr === newArr) {
-  // if (equal(oldJson, newJson)) {
-    // console.log({path: path, value: copy.clone(newJson)});
-    unchanged.push( path + "=" + newArr);
-    return;
-  }
-
-}
-
 //********************Need to be changed ********************
 function generateUnchangedArray(oldJson, newJson, unchanged, path) {
-    // Do nothing now
-    // Generate when diff
+    for(var i = 0, n = Math.min(oldJson.length, newJson.length); i < n; i++) {
+        generateUnchanged(oldJson[i], newJson[i], unchanged, path + "/" + i);
+    }
 }
 
 function generateUnchangedObject(oldJson, newJson, unchanged, path) {
@@ -879,11 +888,12 @@ function generateUnchangedObject(oldJson, newJson, unchanged, path) {
 }
 
 function findValueInUnchanged(newValue, unchanged) {
+  // some optimization
+  var toStr = JSON.stringify(newValue), parts;
   for (var i = 0; i < unchanged.length; i++) {
-    var value = unchanged[i].split("=")[1];
-
-    if (newValue.toString() === value) {
-      return unchanged[i].split("=")[0];
+  	parts = unchanged[i].split("=");
+    if (toStr === parts[1]) {
+      return parts[0];
     }
   }
 }
